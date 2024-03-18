@@ -193,7 +193,7 @@
                                             <div class="form-control mb-2">
                                                 <a-select
                                                     ref="select"
-                                                    v-model:value="value1"
+                                                    v-model:value="value2"
                                                     style="width: 120px"
                                                     :options="options4"
                                                     @focus="focus"
@@ -247,7 +247,7 @@
                                             <div class="form-control mb-2">
                                                 <a-select
                                                     ref="select"
-                                                    v-model:value="value1"
+                                                    v-model:value="value3"
                                                     style="width: 120px"
                                                     :options="options2"
                                                     @focus="focus"
@@ -446,7 +446,7 @@
                                                 <div class="form-control">
                                                     <a-select
                                                         ref="select"
-                                                        v-model:value="value1"
+                                                        v-model:value="value4"
                                                         style="width: 120px"
                                                         :options="options3"
                                                         @focus="focus"
@@ -539,31 +539,48 @@
                                     <div class="card-body pt-0">
                                         <!-- begin::Input Group -->
                                         <div
-                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                            class="d-flex justify-content-between flex-wrap"
                                         >
-                                            <!-- begin::Label -->
-                                            <div class="required form-label">
-                                                Tiêu đề
-                                            </div>
-                                            <!-- end::Label -->
+                                            <div
+                                                class="col-12 col-xl-8 mb-3 mb-xl-0"
+                                            >
+                                                <!-- begin::Label -->
+                                                <div class="form-label">
+                                                    Tên liên hệ
+                                                </div>
+                                                <!-- end::Label -->
 
-                                            <!-- begin::Input -->
-                                            <div class="form-control mb-2">
-                                                <a-input
-                                                    v-model:value="value"
-                                                    placeholder="Nhập tiêu đề bài viết"
-                                                    size="medium"
-                                                    class="w-100"
-                                                />
+                                                <!-- begin::Input -->
+                                                <div class="form-control">
+                                                    <a-input
+                                                        v-model:value="value"
+                                                        placeholder="Nhập tên"
+                                                        size="medium"
+                                                    />
+                                                </div>
+                                                <!-- end::Input -->
                                             </div>
-                                            <!-- end::Input -->
+                                            <div class="col-12 col-xl-3">
+                                                <!-- begin::Label -->
+                                                <div class="form-label">
+                                                    Số điện thoại
+                                                </div>
+                                                <!-- end::Label -->
 
-                                            <!-- begin::Description -->
-                                            <!-- <div class="text-muted fs-7">
-                                                Tiêu đề bài viết là bắt buộc và
-                                                nên là duy nhất.
-                                            </div> -->
-                                            <!-- end::Description -->
+                                                <!-- begin::Select -->
+                                                <div class="form-control">
+                                                    <a-select
+                                                        ref="select"
+                                                        v-model:value="value5"
+                                                        style="width: 120px"
+                                                        :options="options5"
+                                                        @focus="focus"
+                                                        @change="handleChange"
+                                                        class="mb-2 w-100 d-flex justify-content-between align-items-center"
+                                                    ></a-select>
+                                                </div>
+                                                <!-- end::Select -->
+                                            </div>
                                         </div>
                                         <!-- end::Input Group -->
 
@@ -704,7 +721,11 @@ import {
 } from "@ant-design/icons-vue";
 
 // select menu
-const value1 = ref("VD: Nhà riêng");
+// const value1 = ref("VD: Nhà riêng");
+// const value2 = ref("VD: Nhà riêng");
+// const value3 = ref("VD: Nhà riêng");
+// const value4 = ref("VD: Nhà riêng");
+// const value5 = ref("VD: Nhà riêng");
 
 const options1 = ref([
     {
@@ -716,51 +737,61 @@ const options1 = ref([
         label: "Chưa bán",
     },
 ]);
+const options5 = ref([
+    {
+        value: "phone1",
+        label: "0986853388",
+    },
+    {
+        value: "phone2",
+        label: "0373388843",
+    },
+]);
 
 const options2 = ref([
     {
-        value: "1",
+        value: "city1",
         label: "8X Rainbow",
     },
     {
-        value: "2",
+        value: "city2",
         label: "Alo City",
     },
     {
-        value: "3",
+        value: "city3",
         label: "An Lạc Phát",
     },
     {
-        value: "4",
+        value: "city4",
         label: "An Lạc Plaza",
     },
 ]);
 
 const options3 = ref([
     {
-        value: "1",
+        value: "vnd",
         label: "VND",
     },
     {
-        value: "2",
+        value: "price",
         label: "Giá/m2",
     },
     {
-        value: "3",
+        value: "deal",
         label: "Thỏa thuận",
     },
 ]);
 const options4 = ref([
     {
-        value: "1",
+        value: "100001",
         label: "Bán căn hộ chung cư",
     },
     {
-        value: "2",
+        value: "100002",
         label: "Bán nhà riêng",
     },
     {
-        value: "3",
+        value: "100003",
         label: "Bán nhà mặt phố",
     },
 ]);
@@ -782,20 +813,20 @@ const columns = [
     {
         title: "Khách hàng",
         dataIndex: "name",
-        key: "2",
+        key: "1001",
         width: 100,
     },
 
     {
         title: "Comment",
         dataIndex: "comment",
-        key: "3",
+        key: "1002",
         width: 150,
     },
     {
         title: "Thời gian",
         dataIndex: "date",
-        key: "4",
+        key: "1003",
         width: 100,
     },
 ];
