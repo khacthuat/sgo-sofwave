@@ -137,9 +137,8 @@ export default {
 }
 
 .card .card-body {
-    padding: 1.5rem 1.75rem;
+    padding: 2rem 2.25rem;
 }
-
 .image-input {
     position: relative;
     display: inline-block;

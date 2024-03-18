@@ -114,7 +114,7 @@
                         </div>
                         <!-- end::Card Header -->
                         <!-- begin::Card Body -->
-                        <div class="card-body text-center pt-0">
+                        <div class="card-body pt-0">
                             <!-- begin:Statistic views -->
                             <div>
                                 <a-col class="col-12">
@@ -458,19 +458,6 @@
                                             </div>
                                         </div>
                                         <!-- end::Input Group -->
-
-                                        <!-- begin::Input Group -->
-                                        <div
-                                            class="mb-3 fv-row fv-plugins-icon-container"
-                                        >
-                                            <!-- begin::Description -->
-                                            <!-- <div class="text-muted fs-7">
-                                                Tiêu đề bài viết là bắt buộc và
-                                                nên là duy nhất.
-                                            </div> -->
-                                            <!-- end::Description -->
-                                        </div>
-                                        <!-- end::Input Group -->
                                     </div>
                                     <!-- end::Card Body -->
                                 </div>
@@ -539,7 +526,7 @@
                                     <div class="card-body pt-0">
                                         <!-- begin::Input Group -->
                                         <div
-                                            class="d-flex justify-content-between flex-wrap"
+                                            class="d-flex mb-3 justify-content-between flex-wrap"
                                         >
                                             <div
                                                 class="col-12 col-xl-8 mb-3 mb-xl-0"
@@ -589,49 +576,19 @@
                                             class="mb-3 fv-row fv-plugins-icon-container"
                                         >
                                             <!-- begin::Label -->
-                                            <div class="form-label">
-                                                Địa điểm
-                                            </div>
+                                            <div class="form-label">Email</div>
                                             <!-- end::Label -->
 
-                                            <!-- begin::Cascader City -->
+                                            <!-- begin::Email-->
                                             <div>
-                                                <a-cascader
+                                                <a-input
                                                     v-model:value="value"
-                                                    placeholder="Chọn địa điểm"
-                                                    :options="options"
+                                                    placeholder="Nhập email"
+                                                    size="medium"
                                                     class="w-100"
                                                 />
                                             </div>
-                                            <!-- end::Cascader City-->
-                                        </div>
-                                        <!-- end::Input Group -->
-
-                                        <!-- begin::Input Group -->
-                                        <div
-                                            class="mb-10 fv-row fv-plugins-icon-container"
-                                        >
-                                            <!-- begin::Label -->
-                                            <div class="required form-label">
-                                                Mô tả
-                                            </div>
-                                            <!-- end::Label -->
-
-                                            <!-- begin::Editor -->
-                                            <div>
-                                                <a-textarea
-                                                    v-model:value="value"
-                                                    placeholder="Nhập mô tả bài viết"
-                                                    :rows="4"
-                                                />
-                                            </div>
-                                            <!-- end::Editor -->
-
-                                            <!-- begin::Description -->
-                                            <!-- <div class="text-muted fs-7">
-                                                Thêm mô tả cho bài viết để tăng
-                                                khả năng hiển thị chi tiết.
-                                            </div> -->
+                                            <!-- end::Email-->
                                         </div>
                                         <!-- end::Input Group -->
                                     </div>
