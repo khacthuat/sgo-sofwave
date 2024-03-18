@@ -15,7 +15,7 @@
                         <div class="card-header">
                             <!-- begin::Card Title -->
                             <div class="card-title">
-                                <h2>Hình ảnh</h2>
+                                <h2>Hình ảnh chính</h2>
                             </div>
                         </div>
                         <!-- end::Card Header -->
@@ -87,35 +87,19 @@
                         <!-- begin::Card Body -->
                         <div class="card-body text-center pt-0">
                             <!-- begin::Select -->
-                            <a-dropdown
+                            <a-select
+                                ref="select"
+                                v-model:value="value1"
+                                style="width: 120px"
+                                :options="options1"
+                                @focus="focus"
+                                @change="handleChange"
                                 class="mb-2 w-100 d-flex justify-content-between align-items-center"
-                                trigger="click"
-                            >
-                                <template #overlay>
-                                    <a-menu @click="handleMenuClick">
-                                        <a-menu-item key="1">
-                                            <UserOutlined />
-                                            Publish
-                                        </a-menu-item>
-                                        <a-menu-item key="2">
-                                            <UserOutlined />
-                                            Pulibc
-                                        </a-menu-item>
-                                        <a-menu-item key="3">
-                                            <UserOutlined />
-                                            Inactive
-                                        </a-menu-item>
-                                    </a-menu>
-                                </template>
-                                <a-button>
-                                    Trạng thái
-                                    <DownOutlined />
-                                </a-button>
-                            </a-dropdown>
+                            ></a-select>
                             <!-- end::Select -->
 
                             <!-- begin::Description -->
-                            <div class="text-muted fs-7">Tình trạng đăng</div>
+                            <!-- <div class="text-muted fs-7">Tình trạng đăng</div> -->
                             <!-- end::Description -->
                         </div>
                     </div>
@@ -184,12 +168,12 @@
                             v-show="activeTab === 'general'"
                         >
                             <div class="d-flex flex-column gap-7 gap-lg-10">
-                                <!-- begin::General Option -->
+                                <!-- begin::Basic Infor Option -->
                                 <div class="card card-flush py-4">
                                     <div class="card-header">
                                         <!-- begin::Card Title -->
                                         <div class="card-title">
-                                            <h2>Tổng quan</h2>
+                                            <h2>Thông tin cơ bản</h2>
                                         </div>
                                     </div>
                                     <!-- end::Card Header -->
@@ -197,7 +181,138 @@
                                     <div class="card-body pt-0">
                                         <!-- begin::Input Group -->
                                         <div
-                                            class="mb-5 fv-row fv-plugins-icon-container"
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="required form-label">
+                                                Loại bất động sản
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Select -->
+                                            <div class="form-control mb-2">
+                                                <a-select
+                                                    ref="select"
+                                                    v-model:value="value1"
+                                                    style="width: 120px"
+                                                    :options="options4"
+                                                    @focus="focus"
+                                                    @change="handleChange"
+                                                    class="mb-2 w-100 d-flex justify-content-between align-items-center"
+                                                ></a-select>
+                                            </div>
+                                            <!-- end::Select -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="form-label">
+                                                Địa điểm
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Cascader City -->
+                                            <div>
+                                                <a-cascader
+                                                    v-model:value="value"
+                                                    placeholder="Chọn địa điểm"
+                                                    :options="options"
+                                                    class="w-100"
+                                                />
+                                            </div>
+                                            <!-- end::Cascader City-->
+                                        </div>
+                                        <!-- end::Input Group -->
+
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="form-label">Dự án</div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Select -->
+                                            <div class="form-control mb-2">
+                                                <a-select
+                                                    ref="select"
+                                                    v-model:value="value1"
+                                                    style="width: 120px"
+                                                    :options="options2"
+                                                    @focus="focus"
+                                                    @change="handleChange"
+                                                    class="mb-2 w-100 d-flex justify-content-between align-items-center"
+                                                ></a-select>
+                                            </div>
+                                            <!-- end::Select -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="required form-label">
+                                                Địa chỉ hiển thị trên tin đăng
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Input -->
+                                            <div class="form-control mb-2">
+                                                <a-input
+                                                    v-model:value="value"
+                                                    placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ..."
+                                                    size="medium"
+                                                    class="w-100"
+                                                />
+                                            </div>
+                                            <!-- end::Input -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+                                    </div>
+                                    <!-- end::Card Body -->
+                                </div>
+                                <!-- end::Basic Infor Option -->
+
+                                <!-- begin::Post Infor Option -->
+                                <div class="card card-flush py-4">
+                                    <div class="card-header">
+                                        <!-- begin::Card Title -->
+                                        <div class="card-title">
+                                            <h2>Thông tin bài viết</h2>
+                                        </div>
+                                    </div>
+                                    <!-- end::Card Header -->
+                                    <!-- begin::Card Body -->
+                                    <div class="card-body pt-0">
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
                                         >
                                             <!-- begin::Label -->
                                             <div class="required form-label">
@@ -211,22 +326,250 @@
                                                     v-model:value="value"
                                                     placeholder="Nhập tiêu đề bài viết"
                                                     size="medium"
-                                                    style="width: 100%"
+                                                    class="w-100"
                                                 />
                                             </div>
                                             <!-- end::Input -->
 
                                             <!-- begin::Description -->
-                                            <div class="text-muted fs-7">
+                                            <!-- <div class="text-muted fs-7">
                                                 Tiêu đề bài viết là bắt buộc và
                                                 nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-10 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="required form-label">
+                                                Mô tả
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Editor -->
+                                            <div>
+                                                <a-textarea
+                                                    v-model:value="value"
+                                                    placeholder="Nhập mô tả bài viết"
+                                                    :rows="4"
+                                                />
+                                            </div>
+                                            <!-- end::Editor -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Thêm mô tả cho bài viết để tăng
+                                                khả năng hiển thị chi tiết.
+                                            </div> -->
+                                        </div>
+                                        <!-- end::Input Group -->
+                                    </div>
+                                    <!-- end::Card Body -->
+                                </div>
+                                <!-- end::Post Infor Option -->
+                                <!-- begin::Land Infor Option -->
+                                <div class="card card-flush py-4">
+                                    <div class="card-header">
+                                        <!-- begin::Card Title -->
+                                        <div class="card-title">
+                                            <h2>Thông tin bất động sản</h2>
+                                        </div>
+                                    </div>
+                                    <!-- end::Card Header -->
+                                    <!-- begin::Card Body -->
+                                    <div class="card-body pt-0">
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="required form-label">
+                                                Diện tích
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Input -->
+                                            <div class="form-control mb-2">
+                                                <a-input
+                                                    v-model:value="value"
+                                                    placeholder="Nhập diện tích, VD 80"
+                                                    size="medium"
+                                                    class="w-100"
+                                                />
+                                            </div>
+                                            <!-- end::Input -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="d-flex justify-content-between flex-wrap"
+                                        >
+                                            <div
+                                                class="col-12 col-xl-8 mb-3 mb-xl-0"
+                                            >
+                                                <!-- begin::Label -->
+                                                <div class="form-label">
+                                                    Mức giá
+                                                </div>
+                                                <!-- end::Label -->
+
+                                                <!-- begin::Input -->
+                                                <div class="form-control">
+                                                    <a-input
+                                                        v-model:value="value"
+                                                        placeholder="Nhập giá, VD 12000000"
+                                                        size="medium"
+                                                    />
+                                                </div>
+                                                <!-- end::Input -->
+                                            </div>
+                                            <div class="col-12 col-xl-3">
+                                                <!-- begin::Label -->
+                                                <div class="form-label">
+                                                    Đơn vị
+                                                </div>
+                                                <!-- end::Label -->
+
+                                                <!-- begin::Select -->
+                                                <div class="form-control">
+                                                    <a-select
+                                                        ref="select"
+                                                        v-model:value="value1"
+                                                        style="width: 120px"
+                                                        :options="options3"
+                                                        @focus="focus"
+                                                        @change="handleChange"
+                                                        class="mb-2 w-100 d-flex justify-content-between align-items-center"
+                                                    ></a-select>
+                                                </div>
+                                                <!-- end::Select -->
                                             </div>
                                         </div>
                                         <!-- end::Input Group -->
 
                                         <!-- begin::Input Group -->
                                         <div
-                                            class="mb-5 fv-row fv-plugins-icon-container"
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+                                    </div>
+                                    <!-- end::Card Body -->
+                                </div>
+                                <!-- end::Land Infor Option -->
+                                <!-- begin::Media Option -->
+                                <div class="card card-flush py-4">
+                                    <div class="card-header">
+                                        <!-- begin::Card Title -->
+                                        <div class="card-title">
+                                            <h2>Hình ảnh & Video</h2>
+                                        </div>
+                                    </div>
+                                    <!-- end::Card Header -->
+                                    <!-- begin::Card Body -->
+                                    <div class="card-body pt-0">
+                                        <!-- begin::Input Group -->
+                                        <div class="fv-row mb-2">
+                                            <!-- begin::Dropzone -->
+                                            <div>
+                                                <a-upload-dragger
+                                                    v-model:fileList="fileList"
+                                                    name="file"
+                                                    :multiple="true"
+                                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                                    @change="handleChange"
+                                                    @drop="handleDrop"
+                                                >
+                                                    <p
+                                                        class="ant-upload-drag-icon"
+                                                    >
+                                                        <inbox-outlined></inbox-outlined>
+                                                    </p>
+                                                    <p class="ant-upload-text">
+                                                        Click hoặc kéo thả file
+                                                        vào đây để tải lên
+                                                    </p>
+                                                    <p class="ant-upload-hint">
+                                                        Hỗ trợ tải lên nhiều
+                                                        file cùng lúc
+                                                    </p>
+                                                </a-upload-dragger>
+                                            </div>
+                                            <!-- end::Dropzone -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Thêm mô tả cho bài viết để tăng
+                                                khả năng hiển thị chi tiết.
+                                            </div> -->
+                                        </div>
+                                        <!-- end::Input Group -->
+                                    </div>
+                                    <!-- end::Card Body -->
+                                </div>
+                                <!-- end::Media Option -->
+                                <!-- begin::Contact Infor Option -->
+                                <div class="card card-flush py-4">
+                                    <div class="card-header">
+                                        <!-- begin::Card Title -->
+                                        <div class="card-title">
+                                            <h2>Thông tin liên hệ</h2>
+                                        </div>
+                                    </div>
+                                    <!-- end::Card Header -->
+                                    <!-- begin::Card Body -->
+                                    <div class="card-body pt-0">
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
+                                        >
+                                            <!-- begin::Label -->
+                                            <div class="required form-label">
+                                                Tiêu đề
+                                            </div>
+                                            <!-- end::Label -->
+
+                                            <!-- begin::Input -->
+                                            <div class="form-control mb-2">
+                                                <a-input
+                                                    v-model:value="value"
+                                                    placeholder="Nhập tiêu đề bài viết"
+                                                    size="medium"
+                                                    class="w-100"
+                                                />
+                                            </div>
+                                            <!-- end::Input -->
+
+                                            <!-- begin::Description -->
+                                            <!-- <div class="text-muted fs-7">
+                                                Tiêu đề bài viết là bắt buộc và
+                                                nên là duy nhất.
+                                            </div> -->
+                                            <!-- end::Description -->
+                                        </div>
+                                        <!-- end::Input Group -->
+
+                                        <!-- begin::Input Group -->
+                                        <div
+                                            class="mb-3 fv-row fv-plugins-icon-container"
                                         >
                                             <!-- begin::Label -->
                                             <div class="form-label">
@@ -268,67 +611,16 @@
                                             <!-- end::Editor -->
 
                                             <!-- begin::Description -->
-                                            <div class="text-muted fs-7">
+                                            <!-- <div class="text-muted fs-7">
                                                 Thêm mô tả cho bài viết để tăng
                                                 khả năng hiển thị chi tiết.
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <!-- end::Input Group -->
                                     </div>
                                     <!-- end::Card Body -->
                                 </div>
-                                <!-- end::General Option -->
-                                <!-- begin::Media Option -->
-                                <div class="card card-flush py-4">
-                                    <div class="card-header">
-                                        <!-- begin::Card Title -->
-                                        <div class="card-title">
-                                            <h2>Video</h2>
-                                        </div>
-                                    </div>
-                                    <!-- end::Card Header -->
-                                    <!-- begin::Card Body -->
-                                    <div class="card-body pt-0">
-                                        <!-- begin::Input Group -->
-                                        <div class="fv-row mb-2">
-                                            <!-- begin::Dropzone -->
-                                            <div>
-                                                <a-upload-dragger
-                                                    v-model:fileList="fileList"
-                                                    name="file"
-                                                    :multiple="true"
-                                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                                    @change="handleChange"
-                                                    @drop="handleDrop"
-                                                >
-                                                    <p
-                                                        class="ant-upload-drag-icon"
-                                                    >
-                                                        <inbox-outlined></inbox-outlined>
-                                                    </p>
-                                                    <p class="ant-upload-text">
-                                                        Click hoặc kéo thả file
-                                                        vào đây để tải lên
-                                                    </p>
-                                                    <p class="ant-upload-hint">
-                                                        Hỗ trợ tải lên nhiều
-                                                        file cùng lúc
-                                                    </p>
-                                                </a-upload-dragger>
-                                            </div>
-                                            <!-- end::Dropzone -->
-
-                                            <!-- begin::Description -->
-                                            <div class="text-muted fs-7">
-                                                Thêm mô tả cho bài viết để tăng
-                                                khả năng hiển thị chi tiết.
-                                            </div>
-                                        </div>
-                                        <!-- end::Input Group -->
-                                    </div>
-                                    <!-- end::Card Body -->
-                                </div>
-                                <!-- end::Media Option -->
+                                <!-- end::Contact Infor Option -->
                             </div>
                         </div>
                         <!-- end::Tab Pane -->
@@ -355,7 +647,6 @@
                                             <a-table
                                                 :columns="columns"
                                                 :data-source="data"
-                                                :scroll="{ x: 1500 }"
                                             >
                                                 <template
                                                     #bodyCell="{ column }"
@@ -412,6 +703,68 @@ import {
     SettingOutlined,
 } from "@ant-design/icons-vue";
 
+// select menu
+const value1 = ref("VD: Nhà riêng");
+
+const options1 = ref([
+    {
+        value: "sold",
+        label: "Đã bán",
+    },
+    {
+        value: "unsold",
+        label: "Chưa bán",
+    },
+]);
+
+const options2 = ref([
+    {
+        value: "1",
+        label: "8X Rainbow",
+    },
+    {
+        value: "2",
+        label: "Alo City",
+    },
+    {
+        value: "3",
+        label: "An Lạc Phát",
+    },
+    {
+        value: "4",
+        label: "An Lạc Plaza",
+    },
+]);
+
+const options3 = ref([
+    {
+        value: "1",
+        label: "VND",
+    },
+    {
+        value: "2",
+        label: "Giá/m2",
+    },
+    {
+        value: "3",
+        label: "Thỏa thuận",
+    },
+]);
+const options4 = ref([
+    {
+        value: "1",
+        label: "Bán căn hộ chung cư",
+    },
+    {
+        value: "2",
+        label: "Bán nhà riêng",
+    },
+    {
+        value: "3",
+        label: "Bán nhà mặt phố",
+    },
+]);
+
 // tab pane
 const activeTab = ref("general"); // Tab mặc định được chọn
 
@@ -427,38 +780,31 @@ const state = reactive({
 // table
 const columns = [
     {
-        title: "Đánh giá",
-        dataIndex: "rating",
-        key: "1",
-        width: 30,
-    },
-    {
         title: "Khách hàng",
-        width: 50,
         dataIndex: "name",
         key: "2",
+        width: 100,
     },
 
     {
         title: "Comment",
         dataIndex: "comment",
         key: "3",
-        width: 100,
+        width: 150,
     },
     {
         title: "Thời gian",
         dataIndex: "date",
         key: "4",
-        width: 30,
+        width: 100,
     },
 ];
 const data = [];
 for (let i = 0; i < 100; i++) {
     data.push({
-        rating: 32,
         name: `Edrward ${i}`,
         comment: `London Park no. ${i}`,
-        date: `1 phut truoc`,
+        date: `1 phút trước`,
         key: i,
     });
 }
@@ -505,11 +851,6 @@ const items = ref([
         title: "general",
     },
     {
-        key: "advanced",
-        label: "Nâng cao",
-        title: "advanced",
-    },
-    {
         key: "comments",
         label: "Bình luận",
         title: "comments",
@@ -518,9 +859,6 @@ const items = ref([
 
 const handleButtonClick = (e) => {
     console.log("click left button", e);
-};
-const handleMenuClick = (e) => {
-    console.log("click", e);
 };
 </script>
 

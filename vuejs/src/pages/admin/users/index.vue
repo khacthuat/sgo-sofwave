@@ -15,7 +15,7 @@
 
             <!-- begin::Card Toolbar -->
             <div class="card-toolbar my-1">
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end flex-wrap">
                     <!-- begin::Filter -->
                     <a-button
                         class="me-3"
@@ -63,7 +63,7 @@
 
                     <!-- begin::Export -->
                     <a-button
-                        class="me-3"
+                        class="me-0 me-sm-3 mb-3 mb-lg-0"
                         :size="size"
                         @click="showModalExport"
                     >
@@ -441,7 +441,6 @@ const columns = [
     {
         title: "Action",
         key: "operation",
-        fixed: "right",
         width: 120,
     },
 ];
