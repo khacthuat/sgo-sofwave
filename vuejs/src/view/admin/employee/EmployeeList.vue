@@ -433,7 +433,7 @@ const columns = [
         width: 150,
     },
     {
-        title: "Hoạt động",
+        title: "Số tin đã đăng",
         dataIndex: "activity",
         key: "8",
         width: 150,
@@ -456,7 +456,7 @@ for (let i = 0; i < 102; i++) {
             updated_at: "2021-10-10 10:10:10",
             role: "admin",
             status: "online",
-            activity: "Active",
+            activity: "120",
         });
     } else {
         data.push({
@@ -467,7 +467,7 @@ for (let i = 0; i < 102; i++) {
             updated_at: "2021-10-10 10:10:10",
             role: "user",
             status: "offline",
-            activity: "Active",
+            activity: "120",
         });
     }
 }

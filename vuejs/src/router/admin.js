@@ -1,7 +1,8 @@
 const admin = [
     {
         path: "/",
-        component: () => import("../layouts/admin.vue"),
+        redirect: "/admin/users"
+
     },
     {
         path: "/admin",
@@ -10,28 +11,24 @@ const admin = [
             {
                 path: "users",
                 name: "admin-users",
-                component: () => import("../pages/admin/users/index.vue"),
-            },
-            {
-                path: "roles",
-                name: "admin-roles",
-                component: () => import("../pages/admin/roles/index.vue"),
-            },
-            {
-                path: "settings",
-                name: "admin-settings",
-                component: () => import("../pages/admin/settings/index.vue"),
+                component: () => import("../view/admin/employee/EmployeeList.vue"),
             },
             {
                 path: "news",
                 name: "admin-news",
-                component: () => import("../pages/admin/news/index.vue"),
+                component: () => import("../view/admin/news/NewsList.vue"),
             },
             {
                 path: "news-detail",
                 name: "admin-news-detail",
-                component: () => import("../pages/admin/news/detail.vue"),
+                component: () => import("../view/admin/news/NewsDetail.vue"),
             },
+            {
+                path: "news-statistic",
+                name: "admin-news-statistic",
+                component: () => import("../view/admin/news/NewsBrowse.vue"),
+            },
+
         ],
     },
 ];

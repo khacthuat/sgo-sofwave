@@ -202,13 +202,6 @@
                                                 ></a-select>
                                             </div>
                                             <!-- end::Select -->
-
-                                            <!-- begin::Description -->
-                                            <!-- <div class="text-muted fs-7">
-                                                Tiêu đề bài viết là bắt buộc và
-                                                nên là duy nhất.
-                                            </div> -->
-                                            <!-- end::Description -->
                                         </div>
                                         <!-- end::Input Group -->
 
@@ -278,7 +271,7 @@
                                             <!-- begin::Input -->
                                             <div class="form-control mb-2">
                                                 <a-input
-                                                    v-model:value="value"
+                                                    v-model:value="value6"
                                                     placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ..."
                                                     size="medium"
                                                     class="w-100"
@@ -323,7 +316,7 @@
                                             <!-- begin::Input -->
                                             <div class="form-control mb-2">
                                                 <a-input
-                                                    v-model:value="value"
+                                                    v-model:value="value7"
                                                     placeholder="Nhập tiêu đề bài viết"
                                                     size="medium"
                                                     class="w-100"
@@ -353,7 +346,7 @@
                                             <!-- begin::Editor -->
                                             <div>
                                                 <a-textarea
-                                                    v-model:value="value"
+                                                    v-model:value="value8"
                                                     placeholder="Nhập mô tả bài viết"
                                                     :rows="4"
                                                 />
@@ -395,7 +388,7 @@
                                             <!-- begin::Input -->
                                             <div class="form-control mb-2">
                                                 <a-input
-                                                    v-model:value="value"
+                                                    v-model:value="value9"
                                                     placeholder="Nhập diện tích, VD 80"
                                                     size="medium"
                                                     class="w-100"
@@ -428,7 +421,7 @@
                                                 <!-- begin::Input -->
                                                 <div class="form-control">
                                                     <a-input
-                                                        v-model:value="value"
+                                                        v-model:value="value10"
                                                         placeholder="Nhập giá, VD 12000000"
                                                         size="medium"
                                                     />
@@ -540,7 +533,7 @@
                                                 <!-- begin::Input -->
                                                 <div class="form-control">
                                                     <a-input
-                                                        v-model:value="value"
+                                                        v-model:value="value11"
                                                         placeholder="Nhập tên"
                                                         size="medium"
                                                     />
@@ -582,7 +575,7 @@
                                             <!-- begin::Email-->
                                             <div>
                                                 <a-input
-                                                    v-model:value="value"
+                                                    v-model:value="value12"
                                                     placeholder="Nhập email"
                                                     size="medium"
                                                     class="w-100"
@@ -621,6 +614,7 @@
                                             <a-table
                                                 :columns="columns"
                                                 :data-source="data"
+                                                :scroll="{ x: 576 }"
                                             >
                                                 <template
                                                     #bodyCell="{ column }"
