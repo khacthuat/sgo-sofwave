@@ -1,26 +1,26 @@
-const admin = [
+const user = [
     {
         path: "/",
-        redirect: "/admin/users"
+        component: () => import("../layouts/user.vue"),
 
     },
     {
-        path: "/admin",
-        component: () => import("../layouts/admin.vue"),
+        path: "/user",
+        component: () => import("../layouts/user.vue"),
         children: [
             {
                 path: "users",
-                name: "admin-users",
+                name: "users",
                 component: () => import("../views/admin/employee/EmployeeList.vue"),
             },
             {
                 path: "news",
-                name: "admin-news",
+                name: "user-news",
                 component: () => import("../views/admin/news/NewsList.vue"),
             },
             {
                 path: "news-detail",
-                name: "admin-news-detail",
+                name: "user-news-detail",
                 component: () => import("../views/admin/news/NewsDetail.vue"),
             },
             {
@@ -33,4 +33,4 @@ const admin = [
     },
 ];
 
-export default admin;
+export default user;
