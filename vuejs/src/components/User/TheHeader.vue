@@ -1,21 +1,19 @@
 <template>
     <!-- begin::Header -->
     <div
-        class="app-header d-flex justify-content-center align-items-center"
+        class="app-header flex justify-content-center align-items-center"
         style="height: 80px"
     >
         <!-- begin::Header Container -->
         <div
-            class="app-container container-fluid d-flex align-items-stretch justify-content-between"
+            class="app-container container-fluid flex align-items-stretch justify-content-between"
         >
             <!-- begin::Header Wrapper -->
-            <div
-                class="d-flex align-items-center justify-content-between w-100"
-            >
-                <div class="d-flex align-items-center flex-grow-1">
+            <div class="flex align-items-center justify-content-between w-100">
+                <div class="flex align-items-center flex-grow-1">
                     <!-- begin::Logo -->
                     <div
-                        class="app-header-logo d-flex align-items-center justify-content-center gap-2 me-lg-5"
+                        class="app-header-logo flex align-items-center justify-content-center gap-2 me-lg-5"
                     >
                         <!-- begin::Sidebar Toggle -->
                         <!-- end::Sidebar Toggle -->
@@ -33,26 +31,14 @@
                     <!-- begin:: Menu Wrapper -->
                     <div class="" id="app-header-menu-wrapper">
                         <!-- begin::Menu Item -->
-                        <div class="app-menu-item d-flex">
+                        <!-- <div class="app-menu-item flex">
                             <a-menu
                                 v-model:selectedKeys="current1"
                                 mode="horizontal"
                                 :items="items1"
                                 :subMenuOpenDelay="0.4"
                             />
-                            <a-menu
-                                v-model:selectedKeys="current1"
-                                mode="horizontal"
-                                :items="items2"
-                                :subMenuOpenDelay="0.4"
-                            />
-                            <a-menu
-                                v-model:selectedKeys="current1"
-                                mode="horizontal"
-                                :items="items3"
-                                :subMenuOpenDelay="0.4"
-                            />
-                        </div>
+                        </div> -->
                         <!-- end::Menu Item -->
                     </div>
                 </div>
@@ -65,50 +51,46 @@
                     <div class="">
                         <!-- begin::Control Menu Item -->
                         <div
-                            class="app-control-menu-item d-flex align-items-center"
+                            class="app-control-menu-item flex align-items-center"
                         >
-                            <a-button class="me-4"
+                            <a-button
+                                class="flex justify-center align-items-center me-4"
                                 ><NotificationOutlined
                             /></a-button>
-                            <div class="d-flex align-items-center me-4">
-                                <a-avatar
-                                    size="large"
-                                    class="me-2"
-                                    :style="{
-                                        backgroundColor: '#f50',
-                                        verticalAlign: 'middle',
-                                    }"
-                                >
-                                    Bách
-                                </a-avatar>
+                            <div class="flex align-items-center me-4">
                                 <a-dropdown :placement="'bottomRight'">
                                     <template #overlay>
-                                        <a-menu
-                                            @click="handleMenuClick"
-                                            class="mt-3"
-                                        >
+                                        <a-menu class="mt-2">
                                             <a-menu-item key="1">
-                                                <UserOutlined />
                                                 Quản lý tin đăng
                                             </a-menu-item>
                                             <a-menu-item key="2">
-                                                <UserOutlined />
                                                 Quản lý tài trợ
                                             </a-menu-item>
                                             <a-menu-item key="3">
-                                                <UserOutlined />
                                                 Thay đổi thông tin các nhân
                                             </a-menu-item>
                                             <a-menu-item key="4">
-                                                <UserOutlined />
                                                 Đăng xuất
                                             </a-menu-item>
                                         </a-menu>
                                     </template>
                                     <div
-                                        class="ant-dropdown-link flex justify-center align-items-center"
+                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer"
                                     >
-                                        <div class="">Nguyễn Văn Bách</div>
+                                        <a-avatar
+                                            size="large"
+                                            class="me-2"
+                                            :style="{
+                                                backgroundColor: '#f50',
+                                                verticalAlign: 'middle',
+                                            }"
+                                        >
+                                            Bách
+                                        </a-avatar>
+                                        <div class="d-none d-xl-block">
+                                            Nguyễn Văn Bách
+                                        </div>
                                         <div class="mx-2">
                                             <DownOutlined />
                                         </div>

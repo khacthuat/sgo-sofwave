@@ -106,23 +106,6 @@ export default {
     padding: 0 2.25rem;
 }
 
-/* app-container css */
-@media (min-width: 992px) {
-    .app-container {
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-    }
-    .me-lg-10 {
-        margin-right: 2.5rem !important;
-    }
-    .gap-lg-10 {
-        gap: 2.5rem !important;
-    }
-}
-
-.gap-7 {
-    gap: 1.75rem !important;
-}
 /* card image css */
 .image-input .image-input-wrapper {
     width: 120px;
