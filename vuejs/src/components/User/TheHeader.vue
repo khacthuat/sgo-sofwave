@@ -6,58 +6,110 @@
             class="app-container container-fluid d-flex align-items-stretch justify-content-between"
         >
             <!-- begin::Header Wrapper -->
-            <div class="d-flex align-items-center flex-grow-1">
-                <!-- begin::Logo -->
-                <div
-                    class="app-header-logo d-flex align-items-center justify-content-center gap-2 me-lg-5"
-                >
-                    <!-- begin::Sidebar Toggle -->
-                    <!-- end::Sidebar Toggle -->
-                    <!-- begin::Logo Image -->
-                    <img
-                        src="../../assets/logo/logo.png"
-                        alt="Logo"
-                        class="app-header-logo-image"
-                        style="height: 50px"
-                    />
-                </div>
-                <!-- end::Logo -->
-
-                <!-- begin:: Menu Wrapper -->
-                <div class="" id="app-header-menu-wrapper">
-                    <!-- begin::Menu Item -->
-                    <div class="app-menu-item d-flex">
-                        <a-menu
-                            v-model:selectedKeys="current1"
-                            mode="horizontal"
-                            :items="items1"
-                            :subMenuOpenDelay="0.5"
-                        />
-                        <a-menu
-                            v-model:selectedKeys="current1"
-                            mode="horizontal"
-                            :items="items2"
-                            :subMenuOpenDelay="0.5"
-                        />
-                        <a-menu
-                            v-model:selectedKeys="current1"
-                            mode="horizontal"
-                            :items="items3"
-                            :subMenuOpenDelay="0.5"
+            <div
+                class="d-flex align-items-center justify-content-between w-100"
+            >
+                <div class="d-flex align-items-center flex-grow-1">
+                    <!-- begin::Logo -->
+                    <div
+                        class="app-header-logo d-flex align-items-center justify-content-center gap-2 me-lg-5"
+                    >
+                        <!-- begin::Sidebar Toggle -->
+                        <!-- end::Sidebar Toggle -->
+                        <!-- begin::Logo Image -->
+                        <img
+                            src="../../assets/logo/logo.png"
+                            alt="Logo"
+                            class="app-header-logo-image"
+                            style="height: 50px"
                         />
                     </div>
+                    <!-- end::Logo -->
 
-                    <!-- end::Menu Item -->
+                    <!-- begin:: Menu Wrapper -->
+                    <div class="" id="app-header-menu-wrapper">
+                        <!-- begin::Menu Item -->
+                        <div class="app-menu-item d-flex">
+                            <a-menu
+                                v-model:selectedKeys="current1"
+                                mode="horizontal"
+                                :items="items1"
+                                :subMenuOpenDelay="0.4"
+                            />
+                            <a-menu
+                                v-model:selectedKeys="current1"
+                                mode="horizontal"
+                                :items="items2"
+                                :subMenuOpenDelay="0.4"
+                            />
+                            <a-menu
+                                v-model:selectedKeys="current1"
+                                mode="horizontal"
+                                :items="items3"
+                                :subMenuOpenDelay="0.4"
+                            />
+                        </div>
+
+                        <!-- end::Menu Item -->
+                    </div>
                 </div>
 
                 <!-- end:: Menu Wrapper -->
 
                 <!-- begin::Control Menu -->
-                <div>
+                <div class="app-header-control-menu">
                     <!-- begin::Control Menu Wrapper -->
-                    <div>
+                    <div class="">
                         <!-- begin::Control Menu Item -->
-                        <div></div>
+                        <div
+                            class="app-control-menu-item d-flex align-items-center"
+                        >
+                            <a-button class="me-4"
+                                ><NotificationOutlined
+                            /></a-button>
+                            <div class="d-flex align-items-center me-4">
+                                <a-avatar
+                                    size="large"
+                                    class="me-2"
+                                    :style="{
+                                        backgroundColor: '#f50',
+                                        verticalAlign: 'middle',
+                                    }"
+                                >
+                                    Bách
+                                </a-avatar>
+                                <a-dropdown>
+                                    <template #overlay>
+                                        <a-menu
+                                            @click="handleMenuClick"
+                                            class="mt-3"
+                                        >
+                                            <a-menu-item key="1">
+                                                <UserOutlined />
+                                                Quản lý tin đăng
+                                            </a-menu-item>
+                                            <a-menu-item key="2">
+                                                <UserOutlined />
+                                                Quản lý tài trợ
+                                            </a-menu-item>
+                                            <a-menu-item key="3">
+                                                <UserOutlined />
+                                                Thay đổi thông tin các nhân
+                                            </a-menu-item>
+                                            <a-menu-item key="4">
+                                                <UserOutlined />
+                                                Đăng xuất
+                                            </a-menu-item>
+                                        </a-menu>
+                                    </template>
+                                    <div class="ant-dropdown-link">
+                                        Nguyễn Văn Bách
+                                        <DownOutlined />
+                                    </div>
+                                </a-dropdown>
+                            </div>
+                            <a-button class=""> Đăng tin </a-button>
+                        </div>
                         <!-- end::Control Menu Item -->
                     </div>
                     <!-- end::Control Menu Wrapper -->
@@ -73,11 +125,7 @@
 
 <script setup>
 import { h, ref } from "vue";
-import {
-    MailOutlined,
-    AppstoreOutlined,
-    SettingOutlined,
-} from "@ant-design/icons-vue";
+import { NotificationOutlined, DownOutlined } from "@ant-design/icons-vue";
 const current1 = ref(["sub1"]);
 const items1 = ref([
     {
