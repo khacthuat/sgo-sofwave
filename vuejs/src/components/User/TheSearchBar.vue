@@ -2,7 +2,7 @@
     <!-- begin::Search Bar -->
     <div class="">
         <!-- begin::Search Bar Container-->
-        <div class="app-container fixed-top mt-[80px] z-10 bg-slate-300">
+        <div class="app-container fixed-top mt-[80px] z-10 bg-slate-200">
             <!-- begin::Search Bar Wrapper -->
             <div class="flex flex-wrap align-items-center mt-2 border-t-[1px]">
                 <!-- begin::Search Bar Item Wrapper -->
@@ -39,12 +39,13 @@
                             </div>
                         </div>
                         <a-modal
-                            class="top-52"
+                            class="top-52 modal"
                             v-model:open="modal1Visible"
                             @ok="setModal1Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
                             zIndex="1050"
+                            :bodyStyle="{ paddingRight: '0' }"
                         >
                             <a-select
                                 v-model:value="value1"
@@ -99,7 +100,7 @@
                     <!-- end::Filter Item -->
 
                     <!-- begin::Filter Item -->
-                    <div class="filter-item col-4 col-sm-3 col-xl-2 h-100">
+                    <div class="filter-item col-4 col-sm-3 col-xl-3 h-100">
                         <div
                             class="flex flex-col justify-center h-100 border-y-0 border-x-[1px] px-3 rounded-none cursor-pointer hover:bg-slate-500"
                             @click.prevent
@@ -204,7 +205,7 @@
                     <!-- end::Filter Item -->
 
                     <!-- begin::Filter Item -->
-                    <div class="filter-item col-4 col-sm-3 col-xl-2 h-100">
+                    <div class="filter-item col-4 col-sm-3 col-xl-3 h-100">
                         <div
                             class="flex flex-col justify-center h-100 border-y-0 border-x-[1px] px-3 rounded-none cursor-pointer hover:bg-slate-500"
                             @click.prevent
@@ -310,7 +311,7 @@
 
                     <!-- begin::Filter Item -->
                     <div
-                        class="filter-item d-none d-sm-block col-sm-1 col-xl-2 h-100"
+                        class="filter-item d-none d-sm-block col-sm-1 col-xl-1 h-100"
                     >
                         <div
                             class="flex justify-center align-items-center w-100 h-100 border-y-0 border-x-[1px] rounded-none cursor-pointer hover:bg-slate-500"
@@ -318,7 +319,7 @@
                             @click="setModal4Visible(true)"
                         >
                             <FilterOutlined />
-                            <div class="ml-3 d-none d-xl-block">Lọc thêm</div>
+                            <div class="ml-3 d-none d-xxl-block">Lọc thêm</div>
                         </div>
 
                         <a-modal
@@ -460,13 +461,13 @@
 
                     <!-- begin::Filter Item -->
                     <div
-                        class="filter-item d-none d-sm-block col-sm-1 col-xl-2 h-100"
+                        class="filter-item d-none d-sm-block col-sm-1 col-xl-1 h-100"
                     >
                         <div
                             class="flex justify-center align-items-center w-100 h-100 border-y-0 border-x-[1px] rounded-none cursor-pointer hover:bg-slate-500"
                         >
                             <ReloadOutlined />
-                            <div class="ml-3 d-none d-xl-block">Đặt lại</div>
+                            <div class="ml-3 d-none d-xxl-block">Đặt lại</div>
                         </div>
                     </div>
                     <!-- end::Filter Item -->

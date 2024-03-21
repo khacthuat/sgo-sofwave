@@ -19,6 +19,12 @@ const user = [
                 name: "news-detail",
                 component: () => import("../views/user/news/NewsDetail.vue"),
             },
+            {
+                path: "news-form",
+                name: "news-form",
+                component: () => import("../views/admin/news/NewsDetail.vue"),
+            },
+
 
         ],
     },

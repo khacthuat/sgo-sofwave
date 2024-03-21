@@ -10,12 +10,8 @@
                     class="px-2 px-lg-4"
                     style="min-height: calc(100vh - 64px - 64px)"
                 >
-                    <!-- begin::Toolbar -->
-                    <ThePageHeader />
-                    <!-- end::Toolbar -->
-
                     <!-- begin::Content -->
-                    <router-view></router-view>
+                    <TheContent />
                     <!-- end::Content -->
                     <!-- begin::Support -->
                     <div class="support">
@@ -85,12 +81,14 @@ const footerStyle = {
 import TheSider from "../components/TheSider.vue";
 import TheHeader from "../components/TheHeader.vue";
 import ThePageHeader from "../components/ThePageHeader.vue";
+import TheContent from "../components/TheContent.vue";
 
 export default {
     components: {
         TheSider,
         TheHeader,
         ThePageHeader,
+        TheContent,
     },
 };
 </script>
@@ -108,8 +106,6 @@ export default {
 
 /* card image css */
 .image-input .image-input-wrapper {
-    width: 120px;
-    height: 120px;
     border-radius: 0.75rem;
     background-repeat: no-repeat;
     background-size: cover;

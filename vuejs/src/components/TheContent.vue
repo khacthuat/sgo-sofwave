@@ -1,11 +1,20 @@
 <template>
-    <div style="min-height: calc(100vh - 64px - 64px)">
-        <ThePageHeader />
-        <p></p>
+    <!-- begin::Content -->
+    <div class="bg-slate-100">
+        <!-- begin::Content Container -->
+        <ThePageHeader class="" />
+        <div class="app-container">
+            <!-- begin::Content Wrapper -->
+            <div class="flex">
+                <router-view></router-view>
+            </div>
+            <!-- end::Content Wrapper -->
+        </div>
+        <!-- end::Content Container -->
     </div>
+    <!-- end::Content -->
 </template>
 <script>
-import { defineComponent } from "vue";
 import ThePageHeader from "./ThePageHeader.vue";
 
 export default {
@@ -14,4 +23,4 @@ export default {
     },
 };
 </script>
-<style lang=""></style>
+<style></style>

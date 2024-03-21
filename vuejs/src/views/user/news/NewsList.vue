@@ -38,277 +38,285 @@
 
         <!-- begin::Main Content -->
         <div class="">
-            <!-- begin::Content Item -->
-            <div class="flex flex-col border-1 mb-4">
-                <!-- begin::Card Image -->
-                <div class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]">
+            <router-link to="/user/news-detail">
+                <!-- begin::Content Item -->
+                <div class="flex flex-col border-1 mb-4">
+                    <!-- begin::Card Image -->
                     <div
-                        class="col-span-4 row-span-2 bg-emerald-300 image-container"
+                        class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]"
                     >
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div
-                        class="col-span-2 row-span-1 bg-emerald-500 image-container"
-                    >
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div class="row-span-1 bg-emerald-600 image-container">
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div class="row-span-1 bg-emerald-300 image-container">
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                </div>
-                <!-- end::Card Image -->
-
-                <!-- begin::Card Info -->
-                <div>
-                    <!-- begin::Card Info Content -->
-                    <div class="p-3 border-b-[1px]">
-                        <!-- begin::Card Info Title -->
-                        <div class="mt-1">
-                            <h3 class="text-xl font-semibold">
-                                <a
-                                    >Bán nhanh nhiều biệt thự - Shophouse
-                                    vinhomes, vị trí đẹp
-                                </a>
-                            </h3>
+                        <div
+                            class="col-span-4 row-span-2 bg-emerald-300 image-container"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
                         </div>
-                        <!-- end::Card Info Title -->
+                        <div
+                            class="col-span-2 row-span-1 bg-emerald-500 image-container"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                        <div class="row-span-1 bg-emerald-600 image-container">
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                        <div class="row-span-1 bg-emerald-300 image-container">
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                    </div>
+                    <!-- end::Card Image -->
 
-                        <!-- begin::Card Info -->
-                        <div class="flex">
-                            <!-- begin::Card Info Config -->
-                            <div class="flex align-items-center">
-                                <span class="text-sm text-gray-500 me-1">
-                                    17,5 tỷ
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    126 m&sup2
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    138 triệu/m&sup2
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    4 phòng ngủ
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    4 WC
-                                </span>
-                                <MinusOutlined />
+                    <!-- begin::Card Info -->
+                    <div>
+                        <!-- begin::Card Info Content -->
+                        <div class="p-3 border-b-[1px]">
+                            <!-- begin::Card Info Title -->
+                            <div class="mt-1">
+                                <h3 class="text-xl font-semibold">
+                                    <a
+                                        >Bán nhanh nhiều biệt thự - Shophouse
+                                        vinhomes, vị trí đẹp
+                                    </a>
+                                </h3>
                             </div>
-                            <!-- end::Card Info Config -->
+                            <!-- end::Card Info Title -->
 
-                            <!-- begin::Card Info Location -->
-                            <div>
-                                <span class="text-sm text-gray-500 mx-1">
-                                    Quận 9, Hồ Chí Minh
-                                </span>
-                            </div>
-                            <!-- end::Card Info Location -->
-                        </div>
-                        <!-- end::Card Info -->
-
-                        <!-- begin::Card Info Description -->
-                        <div class="mt-2">
-                            *Chuyên bán biệt thự, nhà phố và tất cả các sản phẩm
-                            trong dự án Vinhomes Grand Park - Quận 9 - Thành phố
-                            Thủ Đức
-                        </div>
-                        <!-- end::Card Info Description -->
-                    </div>
-                    <!-- end::Card Info Content -->
-
-                    <!-- begin::Card Contact -->
-                    <div class="p-3 flex justify-between">
-                        <!-- begin::Card Published Info -->
-                        <div class="flex align-items-center">
-                            <a-avatar
-                                size="medium"
-                                class="me-2"
-                                :style="{
-                                    backgroundColor: '#f50',
-                                    verticalAlign: 'middle',
-                                }"
-                            >
-                                B
-                            </a-avatar>
-                            <div class="flex flex-col">
-                                <div>Nguyễn Văn Bách</div>
-                                <div>2 giờ trước</div>
-                            </div>
-                        </div>
-                        <!-- end::Card Published Info -->
-
-                        <!-- begin::Card Contact Button -->
-                        <div>
-                            <a-button type="primary " class="bg-gray-500">
+                            <!-- begin::Card Info -->
+                            <div class="flex">
+                                <!-- begin::Card Info Config -->
                                 <div class="flex align-items-center">
-                                    <div>0986853388</div>
-                                    <MinusOutlined class="mx-1" />
-                                    <div>Sao chép</div>
+                                    <span class="text-sm text-gray-500 me-1">
+                                        17,5 tỷ
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        126 m&sup2
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        138 triệu/m&sup2
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        4 phòng ngủ
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        4 WC
+                                    </span>
+                                    <MinusOutlined />
                                 </div>
-                            </a-button>
+                                <!-- end::Card Info Config -->
+
+                                <!-- begin::Card Info Location -->
+                                <div>
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        Quận 9, Hồ Chí Minh
+                                    </span>
+                                </div>
+                                <!-- end::Card Info Location -->
+                            </div>
+                            <!-- end::Card Info -->
+
+                            <!-- begin::Card Info Description -->
+                            <div class="mt-2">
+                                *Chuyên bán biệt thự, nhà phố và tất cả các sản
+                                phẩm trong dự án Vinhomes Grand Park - Quận 9 -
+                                Thành phố Thủ Đức
+                            </div>
+                            <!-- end::Card Info Description -->
                         </div>
-                        <!-- end::Card Contact Button -->
-                    </div>
-                    <!-- end::Card Contact -->
-                </div>
-                <!-- end::Card Info -->
-            </div>
-            <!-- end::Content Item -->
+                        <!-- end::Card Info Content -->
 
-            <!-- begin::Content Item -->
-            <div class="flex flex-col border-1 mb-4">
-                <!-- begin::Card Image -->
-                <div class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]">
-                    <div
-                        class="col-span-4 row-span-2 bg-emerald-300 image-container"
-                    >
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div
-                        class="col-span-2 row-span-1 bg-emerald-500 image-container"
-                    >
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div class="row-span-1 bg-emerald-600 image-container">
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                    <div class="row-span-1 bg-emerald-300 image-container">
-                        <img
-                            src="../../../assets/images/land/land1.png"
-                            class="flex object-fit-cover w-full h-full"
-                        />
-                    </div>
-                </div>
-                <!-- end::Card Image -->
-
-                <!-- begin::Card Info -->
-                <div>
-                    <!-- begin::Card Info Content -->
-                    <div class="p-3 border-b-[1px]">
-                        <!-- begin::Card Info Title -->
-                        <div class="mt-1">
-                            <h3 class="text-xl font-semibold">
-                                <a
-                                    >Bán nhanh nhiều biệt thự - Shophouse
-                                    vinhomes, vị trí đẹp
-                                </a>
-                            </h3>
-                        </div>
-                        <!-- end::Card Info Title -->
-
-                        <!-- begin::Card Info -->
-                        <div class="flex">
-                            <!-- begin::Card Info Config -->
+                        <!-- begin::Card Contact -->
+                        <div class="p-3 flex justify-between">
+                            <!-- begin::Card Published Info -->
                             <div class="flex align-items-center">
-                                <span class="text-sm text-gray-500 me-1">
-                                    17,5 tỷ
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    126 m&sup2
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    138 triệu/m&sup2
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    4 phòng ngủ
-                                </span>
-                                <MinusOutlined />
-                                <span class="text-sm text-gray-500 mx-1">
-                                    4 WC
-                                </span>
-                                <MinusOutlined />
-                            </div>
-                            <!-- end::Card Info Config -->
-
-                            <!-- begin::Card Info Location -->
-                            <div>
-                                <span class="text-sm text-gray-500 mx-1">
-                                    Quận 9, Hồ Chí Minh
-                                </span>
-                            </div>
-                            <!-- end::Card Info Location -->
-                        </div>
-                        <!-- end::Card Info -->
-
-                        <!-- begin::Card Info Description -->
-                        <div class="mt-2">
-                            *Chuyên bán biệt thự, nhà phố và tất cả các sản phẩm
-                            trong dự án Vinhomes Grand Park - Quận 9 - Thành phố
-                            Thủ Đức
-                        </div>
-                        <!-- end::Card Info Description -->
-                    </div>
-                    <!-- end::Card Info Content -->
-
-                    <!-- begin::Card Contact -->
-                    <div class="p-3 flex justify-between">
-                        <!-- begin::Card Published Info -->
-                        <div class="flex align-items-center">
-                            <a-avatar
-                                size="medium"
-                                class="me-2"
-                                :style="{
-                                    backgroundColor: '#f50',
-                                    verticalAlign: 'middle',
-                                }"
-                            >
-                                B
-                            </a-avatar>
-                            <div class="flex flex-col">
-                                <div>Nguyễn Văn Bách</div>
-                                <div>2 giờ trước</div>
-                            </div>
-                        </div>
-                        <!-- end::Card Published Info -->
-
-                        <!-- begin::Card Contact Button -->
-                        <div>
-                            <a-button type="primary " class="bg-gray-500">
-                                <div class="flex align-items-center">
-                                    <div>0986853388</div>
-                                    <MinusOutlined class="mx-1" />
-                                    <div>Sao chép</div>
+                                <a-avatar
+                                    size="medium"
+                                    class="me-2"
+                                    :style="{
+                                        backgroundColor: '#f50',
+                                        verticalAlign: 'middle',
+                                    }"
+                                >
+                                    B
+                                </a-avatar>
+                                <div class="flex flex-col">
+                                    <div>Nguyễn Văn Bách</div>
+                                    <div>2 giờ trước</div>
                                 </div>
-                            </a-button>
+                            </div>
+                            <!-- end::Card Published Info -->
+
+                            <!-- begin::Card Contact Button -->
+                            <div>
+                                <a-button type="primary " class="bg-gray-500">
+                                    <div class="flex align-items-center">
+                                        <div>0986853388</div>
+                                        <MinusOutlined class="mx-1" />
+                                        <div>Sao chép</div>
+                                    </div>
+                                </a-button>
+                            </div>
+                            <!-- end::Card Contact Button -->
                         </div>
-                        <!-- end::Card Contact Button -->
+                        <!-- end::Card Contact -->
                     </div>
-                    <!-- end::Card Contact -->
+                    <!-- end::Card Info -->
                 </div>
-                <!-- end::Card Info -->
-            </div>
-            <!-- end::Content Item -->
+                <!-- end::Content Item -->
+            </router-link>
+
+            <router-link to="/user/news-detail">
+                <!-- begin::Content Item -->
+                <div class="flex flex-col border-1 mb-4">
+                    <!-- begin::Card Image -->
+                    <div
+                        class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]"
+                    >
+                        <div
+                            class="col-span-4 row-span-2 bg-emerald-300 image-container"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                        <div
+                            class="col-span-2 row-span-1 bg-emerald-500 image-container"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                        <div class="row-span-1 bg-emerald-600 image-container">
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                        <div class="row-span-1 bg-emerald-300 image-container">
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="flex object-fit-cover w-full h-full"
+                            />
+                        </div>
+                    </div>
+                    <!-- end::Card Image -->
+
+                    <!-- begin::Card Info -->
+                    <div>
+                        <!-- begin::Card Info Content -->
+                        <div class="p-3 border-b-[1px]">
+                            <!-- begin::Card Info Title -->
+                            <div class="mt-1">
+                                <h3 class="text-xl font-semibold">
+                                    <a
+                                        >Bán nhanh nhiều biệt thự - Shophouse
+                                        vinhomes, vị trí đẹp
+                                    </a>
+                                </h3>
+                            </div>
+                            <!-- end::Card Info Title -->
+
+                            <!-- begin::Card Info -->
+                            <div class="flex">
+                                <!-- begin::Card Info Config -->
+                                <div class="flex align-items-center">
+                                    <span class="text-sm text-gray-500 me-1">
+                                        17,5 tỷ
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        126 m&sup2
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        138 triệu/m&sup2
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        4 phòng ngủ
+                                    </span>
+                                    <MinusOutlined />
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        4 WC
+                                    </span>
+                                    <MinusOutlined />
+                                </div>
+                                <!-- end::Card Info Config -->
+
+                                <!-- begin::Card Info Location -->
+                                <div>
+                                    <span class="text-sm text-gray-500 mx-1">
+                                        Quận 9, Hồ Chí Minh
+                                    </span>
+                                </div>
+                                <!-- end::Card Info Location -->
+                            </div>
+                            <!-- end::Card Info -->
+
+                            <!-- begin::Card Info Description -->
+                            <div class="mt-2">
+                                *Chuyên bán biệt thự, nhà phố và tất cả các sản
+                                phẩm trong dự án Vinhomes Grand Park - Quận 9 -
+                                Thành phố Thủ Đức
+                            </div>
+                            <!-- end::Card Info Description -->
+                        </div>
+                        <!-- end::Card Info Content -->
+
+                        <!-- begin::Card Contact -->
+                        <div class="p-3 flex justify-between">
+                            <!-- begin::Card Published Info -->
+                            <div class="flex align-items-center">
+                                <a-avatar
+                                    size="medium"
+                                    class="me-2"
+                                    :style="{
+                                        backgroundColor: '#f50',
+                                        verticalAlign: 'middle',
+                                    }"
+                                >
+                                    B
+                                </a-avatar>
+                                <div class="flex flex-col">
+                                    <div>Nguyễn Văn Bách</div>
+                                    <div>2 giờ trước</div>
+                                </div>
+                            </div>
+                            <!-- end::Card Published Info -->
+
+                            <!-- begin::Card Contact Button -->
+                            <div>
+                                <a-button type="primary " class="bg-gray-500">
+                                    <div class="flex align-items-center">
+                                        <div>0986853388</div>
+                                        <MinusOutlined class="mx-1" />
+                                        <div>Sao chép</div>
+                                    </div>
+                                </a-button>
+                            </div>
+                            <!-- end::Card Contact Button -->
+                        </div>
+                        <!-- end::Card Contact -->
+                    </div>
+                    <!-- end::Card Info -->
+                </div>
+                <!-- end::Content Item -->
+            </router-link>
         </div>
         <!-- end::Main Content -->
 
@@ -327,7 +335,7 @@
     <!-- end::Primary Content -->
 
     <!-- begin::Sidebar -->
-    <div class="flex flex-col d-none d-lg-flex col-lg-2 mt-[-80px]">
+    <div class="flex flex-col d-none d-lg-flex col-lg-2">
         <!-- begin::Sidebar Box -->
         <div class="p-3 mb-3 border-1 sidebar-box">
             <!-- begin::Sidebar Box Title -->

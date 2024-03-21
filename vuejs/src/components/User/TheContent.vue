@@ -2,6 +2,7 @@
     <!-- begin::Content -->
     <div class="bg-slate-100">
         <!-- begin::Content Container -->
+        <ThePageHeader class="n:mt-[180px] xl:mt-[145px]" />
         <div class="app-container">
             <!-- begin::Content Wrapper -->
             <div class="flex">
@@ -15,6 +16,12 @@
 </template>
 
 <script>
-export default {};
+import ThePageHeader from "../ThePageHeader.vue";
+
+export default {
+    components: {
+        ThePageHeader,
+    },
+};
 </script>
 <style scoped></style>

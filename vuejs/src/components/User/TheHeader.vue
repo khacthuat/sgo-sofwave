@@ -3,7 +3,7 @@
     <div class="app-header flex justify-content-center align-items-center">
         <!-- begin::Header Container -->
         <div
-            class="app-container container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-300"
+            class="app-container container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-200"
             style="height: 80px"
         >
             <!-- begin::Header Wrapper -->
@@ -13,16 +13,16 @@
                     <div
                         class="app-header-logo flex align-items-center justify-content-center gap-2 me-lg-5"
                     >
-                        <!-- begin::Sidebar Toggle -->
-                        <!-- end::Sidebar Toggle -->
-
-                        <!-- begin::Logo Image -->
-                        <img
-                            src="../../assets/logo/logo.png"
-                            alt="Logo"
-                            class="app-header-logo-image"
-                            style="height: 50px"
-                        />
+                        <router-link to="/"
+                            ><!-- begin::Logo Image -->
+                            <img
+                                src="../../assets/logo/logo.png"
+                                alt="Logo"
+                                class="app-header-logo-image"
+                                style="height: 50px"
+                            />
+                            <!-- end::Logo Image --></router-link
+                        >
                     </div>
                     <!-- end::Logo -->
 
@@ -95,7 +95,9 @@
                                     </div>
                                 </a-dropdown>
                             </div>
-                            <a-button class=""> Đăng tin </a-button>
+                            <router-link to="/user/news-form">
+                                <a-button class=""> Đăng tin </a-button>
+                            </router-link>
                         </div>
                         <!-- end::Control Menu Item -->
                     </div>

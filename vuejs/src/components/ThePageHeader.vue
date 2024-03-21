@@ -1,11 +1,9 @@
 <template>
     <div class="toolbar">
         <!-- begin::Toolbar Container -->
-        <div class="app-container container-fluid d-flex align-items-stretch">
+        <div class="app-container container-fluid">
             <!-- begin::Toolbar Wrapper -->
-            <div
-                class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100"
-            >
+            <div class="app-toolbar-wrapper">
                 <!-- begin::Page Title -->
                 <div class="page-title">
                     <a-page-header
