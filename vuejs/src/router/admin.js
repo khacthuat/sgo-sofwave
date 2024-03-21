@@ -1,9 +1,5 @@
 const admin = [
-    {
-        path: "/",
-        redirect: "/admin/users"
 
-    },
     {
         path: "/admin",
         component: () => import("../layouts/admin.vue"),

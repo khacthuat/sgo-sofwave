@@ -1,7 +1,7 @@
 const user = [
     {
         path: "/",
-        component: () => import("../layouts/user.vue"),
+        redirect: "/user/news"
 
     },
     {
@@ -9,24 +9,15 @@ const user = [
         component: () => import("../layouts/user.vue"),
         children: [
             {
-                path: "users",
-                name: "users",
-                component: () => import("../views/admin/employee/EmployeeList.vue"),
-            },
-            {
                 path: "news",
-                name: "user-news",
-                component: () => import("../views/admin/news/NewsList.vue"),
+                name: "news-list",
+                component: () => import("../views/user/news/NewsList.vue"),
             },
+
             {
                 path: "news-detail",
-                name: "user-news-detail",
-                component: () => import("../views/admin/news/NewsDetail.vue"),
-            },
-            {
-                path: "news-statistic",
-                name: "admin-news-statistic",
-                component: () => import("../views/admin/news/NewsBrowse.vue"),
+                name: "news-detail",
+                component: () => import("../views/user/news/NewsDetail.vue"),
             },
 
         ],

@@ -2,7 +2,7 @@
     <!-- begin::Search Bar -->
     <div class="">
         <!-- begin::Search Bar Container-->
-        <div class="app-container">
+        <div class="app-container fixed-top mt-[80px] z-10 bg-slate-300">
             <!-- begin::Search Bar Wrapper -->
             <div class="flex flex-wrap align-items-center mt-2 border-t-[1px]">
                 <!-- begin::Search Bar Item Wrapper -->
@@ -39,11 +39,12 @@
                             </div>
                         </div>
                         <a-modal
-                            class="top-36"
+                            class="top-52"
                             v-model:open="modal1Visible"
                             @ok="setModal1Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
+                            zIndex="1050"
                         >
                             <a-select
                                 v-model:value="value1"
@@ -122,7 +123,8 @@
                             @ok="setModal2Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-36"
+                            class="top-52"
+                            zIndex="1050"
                         >
                             <div class="flex mt-5">
                                 <a-input-number
@@ -226,7 +228,8 @@
                             @ok="setModal3Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-36"
+                            class="top-52"
+                            zIndex="1050"
                         >
                             <div class="flex mt-5">
                                 <a-input-number
@@ -323,7 +326,8 @@
                             @ok="setModal4Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-36"
+                            class="top-52"
+                            zIndex="1050"
                         >
                             <div class="mt-5">
                                 <div class="flex flex-col">

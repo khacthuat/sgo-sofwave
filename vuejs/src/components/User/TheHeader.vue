@@ -1,12 +1,10 @@
 <template>
     <!-- begin::Header -->
-    <div
-        class="app-header flex justify-content-center align-items-center"
-        style="height: 80px"
-    >
+    <div class="app-header flex justify-content-center align-items-center">
         <!-- begin::Header Container -->
         <div
-            class="app-container container-fluid flex align-items-stretch justify-content-between"
+            class="app-container container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-300"
+            style="height: 80px"
         >
             <!-- begin::Header Wrapper -->
             <div class="flex align-items-center justify-content-between w-100">

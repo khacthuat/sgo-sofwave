@@ -4,8 +4,8 @@
             <TheHeader />
             <TheSearchBar />
 
-            <ThePageHeader />
-            <a-layout-content :style="contentStyle">Content</a-layout-content>
+            <ThePageHeader class="mt-[180px]" />
+            <TheContent />
             <a-layout-footer :style="footerStyle">Footer</a-layout-footer>
         </a-layout>
     </div>
@@ -44,12 +44,14 @@ const footerStyle = {
 import TheHeader from "../components/User/TheHeader.vue";
 import TheSearchBar from "../components/User/TheSearchBar.vue";
 import ThePageHeader from "../components/ThePageHeader.vue";
+import TheContent from "../components/User/TheContent.vue";
 
 export default {
     components: {
         TheHeader,
         TheSearchBar,
         ThePageHeader,
+        TheContent,
     },
 };
 </script>
