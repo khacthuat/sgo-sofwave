@@ -51,10 +51,69 @@
                         <div
                             class="app-control-menu-item flex align-items-center"
                         >
-                            <a-button
-                                class="flex justify-center align-items-center me-4"
-                                ><NotificationOutlined
-                            /></a-button>
+                            <a-popover
+                                placement="bottomRight"
+                                trigger="click"
+                                class="flex"
+                            >
+                                <template #content>
+                                    <div class="min-h-[440px] w-[580px]">
+                                        <div
+                                            class="flex align-items-center mt-5 cursor-pointer"
+                                        >
+                                            <div class="type me-3">
+                                                <UserOutlined
+                                                    :style="{
+                                                        fontSize: '24px',
+                                                    }"
+                                                />
+                                            </div>
+                                            <div class="flex flex-col content">
+                                                <div class="detail">
+                                                    Đăng ký tham dự miễn phí Báo
+                                                    cáo thị trường BĐS Quý
+                                                    1/2024
+                                                </div>
+                                                <div class="day">
+                                                    20/10/2024
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex align-items-center mt-3 cursor-pointer"
+                                        >
+                                            <div class="type me-3">
+                                                <ClockCircleOutlined
+                                                    :style="{
+                                                        fontSize: '24px',
+                                                    }"
+                                                />
+                                            </div>
+                                            <div class="flex flex-col content">
+                                                <div class="detail">
+                                                    Số điện thoại 0373388843 đã
+                                                    được thêm vào danh sách liên
+                                                    lạc của bạn. Xem chi tiết
+                                                    tại đây.
+                                                </div>
+                                                <div class="day">
+                                                    20/10/2024
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template #title>
+                                    <h2>Thông báo</h2>
+                                </template>
+                                <a-button
+                                    class="flex justify-center align-items-center me-4"
+                                >
+                                    <NotificationOutlined />
+                                </a-button>
+                            </a-popover>
+
                             <div class="flex align-items-center me-4">
                                 <a-dropdown :placement="'bottomRight'">
                                     <template #overlay>
@@ -114,7 +173,12 @@
 
 <script setup>
 import { h, ref } from "vue";
-import { NotificationOutlined, DownOutlined } from "@ant-design/icons-vue";
+import {
+    NotificationOutlined,
+    DownOutlined,
+    UserOutlined,
+    ClockCircleOutlined,
+} from "@ant-design/icons-vue";
 const current1 = ref(["sub1"]);
 const items1 = ref([
     {
