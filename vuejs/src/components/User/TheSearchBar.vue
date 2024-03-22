@@ -2,7 +2,7 @@
     <!-- begin::Search Bar -->
     <div class="">
         <!-- begin::Search Bar Container-->
-        <div class="app-container fixed-top mt-[80px] z-10 bg-slate-200">
+        <div class="app-container fixed-top mt-[64px] z-10 bg-slate-200">
             <!-- begin::Search Bar Wrapper -->
             <div class="flex flex-wrap align-items-center mt-2 border-t-[1px]">
                 <!-- begin::Search Bar Item Wrapper -->
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <a-modal
-                            class="top-52 modal"
+                            class="top-1/5 modal"
                             v-model:open="modal1Visible"
                             @ok="setModal1Visible(false)"
                             :okText="'Tìm kiếm'"
@@ -53,21 +53,15 @@
                                 placeholder="Tỉnh/Thành"
                                 class="w-100 mt-5"
                                 :options="options"
-                                :filter-option="filterOption"
-                                @focus="handleFocus"
-                                @blur="handleBlur"
-                                @change="handleChange"
+                                @change="handleChangeProvince"
                             >
                             </a-select>
                             <a-select
+                                v-model:value="value5"
                                 mode="multiple"
                                 class="w-100 mt-3"
                                 placeholder="Quận/Huyện"
-                                :options="
-                                    [...Array(25)].map((_, i) => ({
-                                        value: (i + 10).toString(36) + (i + 1),
-                                    }))
-                                "
+                                :options="options1"
                                 @change="handleChange"
                             >
                             </a-select>
@@ -75,11 +69,7 @@
                                 mode="multiple"
                                 class="w-100 mt-3"
                                 placeholder="Phường/Xã"
-                                :options="
-                                    [...Array(25)].map((_, i) => ({
-                                        value: (i + 10).toString(36) + (i + 1),
-                                    }))
-                                "
+                                :options="options2"
                                 @change="handleChange"
                             >
                             </a-select>
@@ -124,7 +114,7 @@
                             @ok="setModal2Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-52"
+                            class="top-1/5"
                             zIndex="1050"
                         >
                             <div class="flex mt-5">
@@ -229,7 +219,7 @@
                             @ok="setModal3Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-52"
+                            class="top-1/5"
                             zIndex="1050"
                         >
                             <div class="flex mt-5">
@@ -327,7 +317,7 @@
                             @ok="setModal4Visible(false)"
                             :okText="'Tìm kiếm'"
                             :cancelText="'Hủy'"
-                            class="top-52"
+                            class="top-1/5"
                             zIndex="1050"
                         >
                             <div class="mt-5">
@@ -482,7 +472,7 @@
 </template>
 
 <script setup>
-import { h, ref, computed } from "vue";
+import { h, ref, computed, onMounted, watch } from "vue";
 import {
     DownOutlined,
     PlusOutlined,
@@ -490,7 +480,6 @@ import {
     ReloadOutlined,
     ArrowRightOutlined,
 } from "@ant-design/icons-vue";
-
 const value2 = ref([0, 60000]);
 const value3 = ref([0, 500]);
 const computedRangePrice = computed(() => {
@@ -539,39 +528,109 @@ const setModal4Visible = (open) => {
     modal4Visible.value = open;
 };
 
-const handleChange = (value) => {
-    console.log(`selected ${value}`);
-};
-
-const options = ref([
-    {
-        value: "HaNoi",
-        label: "Hà Nội",
-    },
-    {
-        value: "HoChiMinh",
-        label: "Hồ Chí Minh",
-    },
-    {
-        value: "BinhDuong",
-        label: "Bình Dương",
-    },
-]);
-
-const handleBlur = () => {
-    console.log("blur");
-};
-const handleFocus = () => {
-    console.log("focus");
-};
-const filterOption = (input, option) => {
-    return option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-};
 const value = ref(undefined);
+
+// Khai báo biến và refs
+
+const value1 = ref(null);
+const value5 = ref(null);
+const options = ref([]);
+const options1 = ref([]);
+const options2 = ref([]);
+
+const handleChangeProvince = (value) => {
+    console.log(value);
+};
+
+const fetchProvinceData = async () => {
+    try {
+        const res = await axios.get("https://vapi.vnappmob.com/api/province");
+        options.value = res.data.results.map((province) => ({
+            value: province.province_id,
+            label: province.province_name,
+        }));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const fetchDistrictData = async () => {
+    try {
+        const res = await axios.get(
+            `https://vapi.vnappmob.com/api/province/district/` + value1.value
+        );
+
+        options1.value = res.data.results.map((district) => ({
+            value: district.district_id,
+            label: district.district_name,
+        }));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const fetchWardData = async () => {
+    try {
+        const res = await axios.get(
+            `https://vapi.vnappmob.com/api/province/ward/` + value5.value
+        );
+
+        options2.value = res.data.results.map((ward) => ({
+            value: ward.ward_id,
+            label: ward.ward_name,
+        }));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+watch(value1, (newValue, oldValue) => {
+    fetchDistrictData();
+});
+watch(value5, (newValue, oldValue) => {
+    fetchWardData();
+});
+
+fetchProvinceData();
+fetchDistrictData();
 </script>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+    created() {},
+
+    beforeMount() {
+        //Có thể truy cập data, event, method ở đây
+        //Chưa có DOM
+        //Chỉ chạy 1 lần
+    },
+    mounted() {},
+    beforeUpdate() {
+        //thay đổi style -> update dữ liệu -> render lại DOM
+        //*Nên dùng để update dữ liệu vào DOM */
+    },
+    updated() {
+        //update dữ liệu -> thay đổi state -> render lại DOM
+        //Cũng có thể dùng để update dữ liệu vào DOM
+    },
+    beforeUnmount() {
+        //Chưa bị hủy
+    },
+    unmounted() {
+        //Đã bị hủy, không thể truy cập data, event, method ở đây
+        //Ít khi dùng
+    },
+
+    methods: {},
+
+    data() {
+        return {
+            provinceList: [],
+        };
+    },
+};
 </script>
 <style>
 .custom-checkbox {

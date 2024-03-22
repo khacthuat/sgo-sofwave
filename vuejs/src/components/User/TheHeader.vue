@@ -3,8 +3,7 @@
     <div class="app-header flex justify-content-center align-items-center">
         <!-- begin::Header Container -->
         <div
-            class="app-container container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-200"
-            style="height: 80px"
+            class="app-container h-16 container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-200"
         >
             <!-- begin::Header Wrapper -->
             <div class="flex align-items-center justify-content-between w-100">
@@ -57,7 +56,7 @@
                                 class="flex"
                             >
                                 <template #content>
-                                    <div class="min-h-[440px] w-[580px]">
+                                    <div class="min-h-[360px] w-[500px]">
                                         <div
                                             class="flex align-items-center mt-5 cursor-pointer"
                                         >
@@ -107,14 +106,16 @@
                                 <template #title>
                                     <h2>Thông báo</h2>
                                 </template>
-                                <a-button
-                                    class="flex justify-center align-items-center me-4"
-                                >
-                                    <NotificationOutlined />
-                                </a-button>
+                                <a-badge count="5">
+                                    <a-button
+                                        class="flex justify-center align-items-center"
+                                    >
+                                        <NotificationOutlined />
+                                    </a-button>
+                                </a-badge>
                             </a-popover>
 
-                            <div class="flex align-items-center me-4">
+                            <div class="flex align-items-center mx-2">
                                 <a-dropdown :placement="'bottomRight'">
                                     <template #overlay>
                                         <a-menu class="mt-2">
@@ -133,7 +134,7 @@
                                         </a-menu>
                                     </template>
                                     <div
-                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer"
+                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer mx-4"
                                     >
                                         <a-avatar
                                             size="large"
@@ -148,7 +149,7 @@
                                         <div class="d-none d-xl-block">
                                             Nguyễn Văn Bách
                                         </div>
-                                        <div class="mx-2">
+                                        <div class="ml-2">
                                             <DownOutlined />
                                         </div>
                                     </div>

@@ -2,7 +2,7 @@
     <!-- begin::Content -->
     <div class="bg-slate-100">
         <!-- begin::Content Container -->
-        <ThePageHeader class="n:mt-[180px] xl:mt-[145px]" />
+        <ThePageHeader class="n:mt-[150px] xl:mt-[128px]" />
         <div class="app-container">
             <!-- begin::Content Wrapper -->
             <div class="flex">

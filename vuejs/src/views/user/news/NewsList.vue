@@ -2,7 +2,9 @@
     <!-- begin::Primary Content -->
     <div class="flex flex-col col-12 col-lg-10 lg:pr-[30px]">
         <!-- begin::Content Navbar -->
-        <div class="flex align-content-center justify-between w-100 my-3">
+        <div
+            class="flex align-content-center justify-between my-3 w-full lg:w-4/5 ml-auto"
+        >
             <!-- begin::Total land -->
             <div v-text="totalLand"></div>
             <!-- end::Total land -->
@@ -37,7 +39,7 @@
         <!-- end::Content Navbar -->
 
         <!-- begin::Main Content -->
-        <div class="">
+        <div class="w-full lg:w-4/5 ml-auto">
             <router-link to="/user/news-detail">
                 <!-- begin::Content Item -->
                 <div class="flex flex-col border-1 mb-4">
