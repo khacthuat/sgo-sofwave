@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <!-- begin::Card Header -->
-        <div class="card-header d-flex justify-content-between flex-wrap pt-4">
+        <div class="card-header flex justify-between flex-wrap pt-4">
             <!-- begin::Card Title -->
             <div class="card-title">
                 <a-input-search
@@ -424,4 +424,4 @@ export default {
     },
 };
 </script>
-<style lang=""></style>
+<style></style>

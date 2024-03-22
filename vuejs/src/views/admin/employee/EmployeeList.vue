@@ -15,7 +15,7 @@
 
             <!-- begin::Card Toolbar -->
             <div class="card-toolbar my-1">
-                <div class="d-flex justify-content-end flex-wrap">
+                <div class="flex justify-end flex-wrap">
                     <!-- begin::Filter -->
                     <a-button
                         class="me-3"

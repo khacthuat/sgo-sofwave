@@ -816,10 +816,4 @@ const handleButtonClick = (e) => {
 <script>
 export default {};
 </script>
-<style>
-@media (min-width: 992px) {
-    .w-lg-300px {
-        width: 300px !important;
-    }
-}
-</style>
+<style></style>

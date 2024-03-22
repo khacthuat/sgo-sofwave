@@ -4,23 +4,8 @@
     </div>
 </template>
 
-
 <script>
-import TheMenu from './components/TheMenu.vue';
-
-export default {
-    components: {
-        TheMenu,
-    }
-}
-
+export default {};
 </script>
 
-<style>
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-</style>
+<style></style>

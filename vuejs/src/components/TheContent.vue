@@ -5,7 +5,7 @@
         <ThePageHeader class="" />
         <div class="app-container">
             <!-- begin::Content Wrapper -->
-            <div class="flex">
+            <div class="">
                 <router-view></router-view>
             </div>
             <!-- end::Content Wrapper -->
