@@ -3,7 +3,8 @@
     <div class="app-header flex justify-content-center align-items-center">
         <!-- begin::Header Container -->
         <div
-            class="app-container h-16 container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-slate-200"
+            class="app-container container-fluid flex align-items-stretch justify-content-between fixed-top z-10 bg-primary-white-color"
+            style="height: 80px"
         >
             <!-- begin::Header Wrapper -->
             <div class="flex align-items-center justify-content-between w-100">
@@ -56,7 +57,7 @@
                                 class="flex"
                             >
                                 <template #content>
-                                    <div class="min-h-[360px] w-[500px]">
+                                    <div class="min-h-[440px] w-[580px]">
                                         <div
                                             class="flex align-items-center mt-5 cursor-pointer"
                                         >
@@ -115,7 +116,7 @@
                                 </a-badge>
                             </a-popover>
 
-                            <div class="flex align-items-center mx-2">
+                            <div class="flex align-items-center mx-4">
                                 <a-dropdown :placement="'bottomRight'">
                                     <template #overlay>
                                         <a-menu class="mt-2">
@@ -134,22 +135,24 @@
                                         </a-menu>
                                     </template>
                                     <div
-                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer mx-4"
+                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer"
                                     >
                                         <a-avatar
                                             size="large"
                                             class="me-2"
                                             :style="{
-                                                backgroundColor: '#f50',
+                                                backgroundColor: '#ffeceb',
                                                 verticalAlign: 'middle',
                                             }"
                                         >
-                                            Bách
+                                            <span class="text-selected-color">
+                                                Bách
+                                            </span>
                                         </a-avatar>
                                         <div class="d-none d-xl-block">
                                             Nguyễn Văn Bách
                                         </div>
-                                        <div class="ml-2">
+                                        <div class="mx-2">
                                             <DownOutlined />
                                         </div>
                                     </div>

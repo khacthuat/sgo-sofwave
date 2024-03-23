@@ -1,17 +1,16 @@
 <template>
     <div class="toolbar">
         <!-- begin::Toolbar Container -->
-        <div class="app-container container-fluid">
+        <div class="">
             <!-- begin::Toolbar Wrapper -->
             <div class="app-toolbar-wrapper">
                 <!-- begin::Page Title -->
                 <div class="page-title">
                     <a-page-header
-                        style="border: 1px solid rgb(235, 237, 240)"
                         title="Người dùng"
                         :breadcrumb="{ routes }"
                         sub-title=""
-                        class="px-0"
+                        class="px-0 border-y-[1px]"
                     />
                 </div>
                 <!-- end::Page Title -->

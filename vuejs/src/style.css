@@ -9,6 +9,30 @@
 }
 
 
+.ant-input[type="text"]:focus {
+    border: 1.5px solid #555;
+}
+
+.ant-input[type="text"]:hover {
+    border: 1.5px solid #555;
+}
+
+.ant-input[type="text"] {
+    outline: none;
+}
+
+.ant-btn[type="button"]:focus{
+    border: 1.5px solid #555;
+    color: black;
+}
+.ant-btn[type="button"]:hover{
+    border: 1.5px solid #555;
+    color: black;
+
+}
+
+
+
 /* app-container css */
 @media (min-width: 992px) {
     .app-container {
@@ -23,6 +47,7 @@
         gap: 2.5rem !important;
     } */
 }
+
 
 
 

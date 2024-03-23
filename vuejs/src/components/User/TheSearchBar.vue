@@ -2,9 +2,11 @@
     <!-- begin::Search Bar -->
     <div class="">
         <!-- begin::Search Bar Container-->
-        <div class="app-container fixed-top mt-[64px] z-10 bg-slate-200">
+        <div
+            class="app-container fixed-top mt-[80px] z-10 bg-primary-white-color"
+        >
             <!-- begin::Search Bar Wrapper -->
-            <div class="flex flex-wrap align-items-center mt-2 border-t-[1px]">
+            <div class="flex flex-wrap align-items-center border-t-[1px]">
                 <!-- begin::Search Bar Item Wrapper -->
                 <div class="search-box col-12 col-xl-4 xl:pe-3">
                     <a-input-search
@@ -21,7 +23,7 @@
                     <!-- begin::Filter Item -->
                     <div class="filter-item col-4 col-xl-4 h-100">
                         <div
-                            class="flex flex-col justify-center h-100 border-y-0 border-x-[1px] px-3 rounded-none cursor-pointer hover:bg-slate-500"
+                            class="flex flex-col justify-center h-100 border-y-0 border-l-[1px] px-3 cursor-pointer hover:bg-button-hover-color"
                             @click.prevent
                             @click="setModal1Visible(true)"
                         >
@@ -54,11 +56,11 @@
                                 class="w-100 mt-5"
                                 :options="options"
                                 @change="handleChangeProvince"
+                                allowClear="true"
                             >
                             </a-select>
                             <a-select
                                 v-model:value="value5"
-                                mode="multiple"
                                 class="w-100 mt-3"
                                 placeholder="Quận/Huyện"
                                 :options="options1"
@@ -66,7 +68,6 @@
                             >
                             </a-select>
                             <a-select
-                                mode="multiple"
                                 class="w-100 mt-3"
                                 placeholder="Phường/Xã"
                                 :options="options2"
@@ -92,7 +93,7 @@
                     <!-- begin::Filter Item -->
                     <div class="filter-item col-4 col-sm-3 col-xl-3 h-100">
                         <div
-                            class="flex flex-col justify-center h-100 border-y-0 border-x-[1px] px-3 rounded-none cursor-pointer hover:bg-slate-500"
+                            class="flex flex-col justify-center h-100 border-y-0 border-l-[1px] px-3 rounded-none cursor-pointer hover:bg-button-hover-color"
                             @click.prevent
                             @click="setModal2Visible(true)"
                         >
@@ -150,43 +151,43 @@
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >Dưới 500 triệu</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >500 - 800 triệu</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >800 triệu - 1 tỷ</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >1 - 2 tỷ</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >2 - 3 tỷ</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >3 - 5 tỷ</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >Thương lượng</a-button
                                 >
                             </div>
@@ -197,7 +198,7 @@
                     <!-- begin::Filter Item -->
                     <div class="filter-item col-4 col-sm-3 col-xl-3 h-100">
                         <div
-                            class="flex flex-col justify-center h-100 border-y-0 border-x-[1px] px-3 rounded-none cursor-pointer hover:bg-slate-500"
+                            class="flex flex-col justify-center h-100 border-y-0 border-l-[1px] px-3 rounded-none cursor-pointer hover:bg-button-hover-color"
                             @click.prevent
                             @click="setModal3Visible(true)"
                         >
@@ -255,43 +256,43 @@
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >Dưới 30 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >30 - 50 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >50 - 80 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >80 - 100 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >100 - 150 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >150 - 200 m&sup2</a-button
                                 >
                             </div>
                             <div>
                                 <a-button
-                                    class="flex align-items-center border-0 hover:bg-slate-500 w-100 py-2"
+                                    class="flex align-items-center border-0 hover:bg-button-hover-color w-100 py-2"
                                     >Trên 500 m&sup2</a-button
                                 >
                             </div>
@@ -300,17 +301,20 @@
                     <!-- end::Filter Item -->
 
                     <!-- begin::Filter Item -->
-                    <div
-                        class="filter-item d-none d-sm-block col-sm-1 col-xl-1 h-100"
-                    >
-                        <div
-                            class="flex justify-center align-items-center w-100 h-100 border-y-0 border-x-[1px] rounded-none cursor-pointer hover:bg-slate-500"
-                            @click.prevent
-                            @click="setModal4Visible(true)"
-                        >
-                            <FilterOutlined />
-                            <div class="ml-3 d-none d-xxl-block">Lọc thêm</div>
-                        </div>
+                    <div class="filter-item d-none d-sm-block col-sm-1 h-100">
+                        <a-tooltip placement="bottom">
+                            <template #title>
+                                <span>Lọc thêm</span>
+                            </template>
+                            <div
+                                class="flex justify-center align-items-center w-100 h-100 border-y-0 border-l-[1px] rounded-none cursor-pointer hover:bg-button-hover-color"
+                                @click.prevent
+                                @click="setModal4Visible(true)"
+                            >
+                                <FilterOutlined />
+                                <div class="ml-3 d-none d-xxl-block">Lọc</div>
+                            </div>
+                        </a-tooltip>
 
                         <a-modal
                             v-model:open="modal4Visible"
@@ -450,15 +454,17 @@
                     <!-- end::Filter Item -->
 
                     <!-- begin::Filter Item -->
-                    <div
-                        class="filter-item d-none d-sm-block col-sm-1 col-xl-1 h-100"
-                    >
-                        <div
-                            class="flex justify-center align-items-center w-100 h-100 border-y-0 border-x-[1px] rounded-none cursor-pointer hover:bg-slate-500"
-                        >
-                            <ReloadOutlined />
-                            <div class="ml-3 d-none d-xxl-block">Đặt lại</div>
-                        </div>
+                    <div class="filter-item d-none d-sm-block col-sm-1 h-100">
+                        <a-tooltip placement="bottom">
+                            <template #title>
+                                <span>Đặt lại</span>
+                            </template>
+                            <div
+                                class="flex justify-center align-items-center w-100 h-100 border-y-0 border-l-[1px] rounded-none cursor-pointer hover:bg-button-hover-color"
+                            >
+                                <ReloadOutlined />
+                            </div>
+                        </a-tooltip>
                     </div>
                     <!-- end::Filter Item -->
                 </div>
@@ -586,6 +592,7 @@ const fetchWardData = async () => {
 
 watch(value1, (newValue, oldValue) => {
     fetchDistrictData();
+    value5.value = null;
 });
 watch(value5, (newValue, oldValue) => {
     fetchWardData();
@@ -664,5 +671,20 @@ export default {
     background-color: #ffeceb;
     color: #74150f;
     height: 40px;
+}
+
+.ant-modal-footer .ant-btn-primary {
+    background-color: #e03c31 !important;
+    color: #ffffff;
+}
+
+.ant-modal-footer .ant-btn-primary:hover {
+    background-color: #f98077 !important;
+    color: #ffffff;
+}
+
+.ant-modal-footer .ant-btn-default {
+    background-color: transparent !important;
+    color: black;
 }
 </style>
