@@ -9,6 +9,7 @@
 }
 
 
+
 .ant-input[type="text"]:focus {
     border: 1.5px solid #555;
 }
@@ -32,6 +33,80 @@
 }
 
 
+/* Button Background color */
+
+.ant-btn-primary,
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+    background-color: #1dbabf !important;
+}
+
+
+/* Footer Modal Button color */
+.ant-modal-footer .ant-btn-primary {
+    background-color: #e03c31 !important;
+    color: #ffffff;
+}
+
+.ant-modal-footer .ant-btn-primary:hover {
+    background-color: #f98077 !important;
+    color: #ffffff;
+}
+
+.ant-modal-footer .ant-btn-default {
+    background-color: transparent !important;
+    color: black;
+}
+
+/* a tag  */
+a, a:hover, a:focus{
+    color: black;
+}
+
+/* sidebar box */
+.sidebar-box-item {
+    margin-bottom: 12px;
+    font-weight: normal;
+}
+
+/* header filter item */
+.filter-item {
+    height: 100%;
+}
+
+.filter-item .filter-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid #F2F2F2;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.filter-item .filter-item-content:hover {
+    background-color: #F2F2F2;
+
+}
+/* flex align-items-center border-0 hover:bg-button-hover-color w-100 py-3 filter-list-item */
+.filter-list-item {
+    display: flex;
+    align-items: center;
+    border: none;
+    width: 100%;
+    padding: 0 12px;
+}
+
+.filter-list-item:hover {
+    background-color: #F2F2F2;
+    border: 0 !important;
+}
+
+/* set z-index header under modal  */
+.fixed-top {
+    z-index: 999 !important;
+}
+
 
 /* app-container css */
 @media (min-width: 992px) {
@@ -40,12 +115,7 @@
         padding-right: 30px !important;
     }
 
-    /* .me-lg-10 {
-        margin-right: 2.5rem !important;
-    }
-    .gap-lg-10 {
-        gap: 2.5rem !important;
-    } */
+
 }
 
 

@@ -89,10 +89,10 @@
                             <!-- begin::Card Info Title -->
                             <div class="mt-1">
                                 <h3 class="text-xl font-semibold">
-                                    <a
-                                        >Bán nhanh nhiều biệt thự - Shophouse
+                                    <span class="line-clamp-2">
+                                        Bán nhanh nhiều biệt thự - Shophouse
                                         vinhomes, vị trí đẹp
-                                    </a>
+                                    </span>
                                 </h3>
                             </div>
                             <!-- end::Card Info Title -->
@@ -130,7 +130,7 @@
                             <!-- end::Card Info -->
 
                             <!-- begin::Card Info Description -->
-                            <div class="mt-2">
+                            <div class="mt-2 line-clamp-2">
                                 *Chuyên bán biệt thự, nhà phố và tất cả các sản
                                 phẩm trong dự án Vinhomes Grand Park - Quận 9 -
                                 Thành phố Thủ Đức
@@ -162,7 +162,10 @@
 
                             <!-- begin::Card Contact Button -->
                             <div>
-                                <a-button type="primary " class="bg-gray-500">
+                                <a-button
+                                    type="primary "
+                                    class="bg-phone-color"
+                                >
                                     <div class="flex align-items-center">
                                         <div>0986853388</div>
                                         <MinusOutlined class="mx-1" />
@@ -224,10 +227,10 @@
                             <!-- begin::Card Info Title -->
                             <div class="mt-1">
                                 <h3 class="text-xl font-semibold">
-                                    <a
-                                        >Bán nhanh nhiều biệt thự - Shophouse
+                                    <span class="line-clamp-2">
+                                        Bán nhanh nhiều biệt thự - Shophouse
                                         vinhomes, vị trí đẹp
-                                    </a>
+                                    </span>
                                 </h3>
                             </div>
                             <!-- end::Card Info Title -->
@@ -235,27 +238,22 @@
                             <!-- begin::Card Info -->
                             <div class="flex">
                                 <!-- begin::Card Info Config -->
-                                <div class="flex align-items-center">
-                                    <span class="text-sm text-gray-500 me-1">
+                                <div class="flex align-items-center space-x-5">
+                                    <span class="text-sm text-gray-500">
                                         17,5 tỷ
                                     </span>
-                                    <MinusOutlined />
-                                    <span class="text-sm text-gray-500 mx-1">
+                                    <span class="text-sm text-gray-500">
                                         126 m&sup2
                                     </span>
-                                    <MinusOutlined />
-                                    <span class="text-sm text-gray-500 mx-1">
+                                    <span class="text-sm text-gray-500">
                                         138 triệu/m&sup2
                                     </span>
-                                    <MinusOutlined />
-                                    <span class="text-sm text-gray-500 mx-1">
+                                    <span class="text-sm text-gray-500">
                                         4 phòng ngủ
                                     </span>
-                                    <MinusOutlined />
-                                    <span class="text-sm text-gray-500 mx-1">
+                                    <span class="text-sm text-gray-500">
                                         4 WC
                                     </span>
-                                    <MinusOutlined />
                                 </div>
                                 <!-- end::Card Info Config -->
 
@@ -270,7 +268,7 @@
                             <!-- end::Card Info -->
 
                             <!-- begin::Card Info Description -->
-                            <div class="mt-2">
+                            <div class="mt-2 line-clamp-2">
                                 *Chuyên bán biệt thự, nhà phố và tất cả các sản
                                 phẩm trong dự án Vinhomes Grand Park - Quận 9 -
                                 Thành phố Thủ Đức
@@ -302,7 +300,10 @@
 
                             <!-- begin::Card Contact Button -->
                             <div>
-                                <a-button type="primary " class="bg-gray-500">
+                                <a-button
+                                    type="primary "
+                                    class="bg-phone-color"
+                                >
                                     <div class="flex align-items-center">
                                         <div>0986853388</div>
                                         <MinusOutlined class="mx-1" />

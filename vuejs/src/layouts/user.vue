@@ -116,7 +116,7 @@ export default {
 }
 
 .card {
-    border: 1px solid gray;
+    border: 1px solid #f2f2f2;
 }
 
 .card .card-body {
