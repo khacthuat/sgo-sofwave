@@ -1,10 +1,10 @@
 <template>
-    <div id="header__container" class="position-relative" style="height: 64px">
+    <div id="header-container" class="position-relative" style="height: 64px">
         <a-layout-header
-            id="header__component"
+            id="header-component"
             class="flex align-items-center justify-between px-2 px-lg-4 col-12"
         >
-            <div class="d-none d-lg-flex col-lg-4 input__container">
+            <div class="d-none d-lg-flex col-lg-4 input-container">
                 <a-input-search
                     v-model:value="value"
                     placeholder="input search text"
@@ -15,23 +15,23 @@
                 />
             </div>
             <div
-                class="icon__container col-12 col-lg-4 flex align-items-center justify-end"
+                class="icon-container col-12 col-lg-4 flex align-items-center justify-end"
                 style="font-size: 20px"
             >
                 <div
-                    class="list__icon d-flex align-items-center mx-1 mx-lg-4"
+                    class="list-icon d-flex align-items-center mx-1 mx-lg-4"
                     style="height: 40px"
                 >
                     <div
-                        class="list__icon--item d-flex align-items-center justify-center"
+                        class="list-icon-item d-flex align-items-center justify-center"
                     >
                         <BulbOutlined />
                     </div>
                     <div
-                        class="list__icon--item d-flex align-items-center justify-center"
+                        class="list-icon-item d-flex align-items-center justify-center"
                     >
                         <a-badge :count="109">
-                            <a-avatar style="background-color: #f2f2f2">
+                            <a-avatar style="background-color: transparent">
                                 <NotificationOutlined />
                             </a-avatar>
                         </a-badge>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div
-                    class="icon__user flex align-items-center"
+                    class="icon-user flex align-items-center"
                     style="height: 40px"
                 >
                     <a-avatar :size="40">
@@ -82,19 +82,15 @@ export default defineComponent({
 </script>
 
 <style scope>
-#header__component {
-    background-color: gray;
-    color: #fff;
+#header-component {
+    background: #ffffff;
 }
 
-.list__icon--item {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+.list-icon-item {
     margin-right: 12px;
 }
 
-.list__icon--item:hover {
-    background-color: black;
+.list-icon-item:hover {
+    background-color: #f2f2f2;
 }
 </style>

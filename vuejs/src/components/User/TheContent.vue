@@ -2,7 +2,7 @@
     <!-- begin::Content -->
     <div class="bg-slate-50">
         <!-- begin::Content Container -->
-        <div class="app-container n:mt-[168px] xl:mt-[138px]">
+        <div class="app-container pt-[128px]">
             <!-- begin::Content Wrapper -->
             <div class="flex">
                 <router-view></router-view>

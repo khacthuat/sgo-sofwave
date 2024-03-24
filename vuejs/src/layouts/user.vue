@@ -1,17 +1,22 @@
 <template lang="">
-    <div>
+    <a-layout>
         <a-layout>
-            <div>
+            <a-layout-header>
                 <TheHeader />
-                <TheSearchBar />
-            </div>
-
-            <TheContent />
-            <a-layout-footer class="mt-5" :style="footerStyle"
-                >Footer</a-layout-footer
-            >
+            </a-layout-header>
         </a-layout>
-    </div>
+
+        <TheSearchBar />
+        <a-layout>
+            <a-layout-content>
+                <TheContent />
+            </a-layout-content>
+        </a-layout>
+
+        <a-layout-footer class="mt-5" :style="footerStyle"
+            >Footer</a-layout-footer
+        >
+    </a-layout>
     <!-- begin::Support -->
     <div class="support">
         <a-float-button-group
@@ -47,27 +52,12 @@
 </template>
 
 <script setup>
-const headerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    height: 64,
-    paddingInline: 50,
-    lineHeight: "64px",
-    backgroundColor: "#7dbcea",
-};
-const contentStyle = {
-    textAlign: "center",
-    minHeight: 120,
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#108ee9",
-};
-const siderStyle = {
-    textAlign: "center",
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#3ba0e9",
-};
+import {
+    CustomerServiceOutlined,
+    CommentOutlined,
+    ArrowUpOutlined,
+} from "@ant-design/icons-vue";
+
 const footerStyle = {
     textAlign: "center",
     color: "#fff",
@@ -80,13 +70,6 @@ import TheHeader from "../components/User/TheHeader.vue";
 import TheSearchBar from "../components/User/TheSearchBar.vue";
 import ThePageHeader from "../components/ThePageHeader.vue";
 import TheContent from "../components/User/TheContent.vue";
-
-import {
-    ArrowUpOutlined,
-    CustomerServiceOutlined,
-    CommentOutlined,
-    DownOutlined,
-} from "@ant-design/icons-vue";
 
 export default {
     components: {

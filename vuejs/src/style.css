@@ -88,7 +88,6 @@ a, a:hover, a:focus{
     background-color: #F2F2F2;
 
 }
-/* flex align-items-center border-0 hover:bg-button-hover-color w-100 py-3 filter-list-item */
 .filter-list-item {
     display: flex;
     align-items: center;
@@ -108,9 +107,9 @@ a, a:hover, a:focus{
 }
 
 /* card css */
-
 .card {
     border: 1px solid #f2f2f2;
+    padding: 2rem 0;
 }
 
 /* card image css */
@@ -138,14 +137,12 @@ a, a:hover, a:focus{
 }
 
 /* app-container css */
-@media (min-width: 992px) {
     .app-container {
         padding-left: 30px !important;
         padding-right: 30px !important;
     }
 
 
-}
 
 
 

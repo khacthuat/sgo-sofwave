@@ -4,14 +4,14 @@
         @click.prevent
         @click="setModalPriceRangeVisible(true)"
     >
-        <div class="flex text-black">
+        <div class="flex">
             <div>Mức giá</div>
             <div class="ml-2 flex align-items-center">
                 <DownOutlined />
             </div>
         </div>
 
-        <div class="list-search-selected w-100 text-black flex mt-1">
+        <div class="list-search-selected w-100 flex mt-2">
             <div v-text="computedRangePrice"></div>
         </div>
     </div>

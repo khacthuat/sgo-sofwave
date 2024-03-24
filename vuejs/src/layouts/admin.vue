@@ -4,7 +4,9 @@
             <TheSider />
 
             <a-layout>
-                <TheHeader />
+                <a-layout-header>
+                    <TheHeader />
+                </a-layout-header>
                 <!-- begin::Content Wrapper -->
                 <div
                     class="px-2 px-lg-4"
@@ -70,7 +72,7 @@ const footerStyle = {
 
 <script>
 import TheSider from "../components/TheSider.vue";
-import TheHeader from "../components/TheHeader.vue";
+import TheHeader from "../components/User/TheHeader.vue";
 import TheContent from "../components/TheContent.vue";
 
 export default {

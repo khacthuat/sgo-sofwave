@@ -15,7 +15,7 @@
 
             <!-- begin::Card Toolbar -->
             <div class="card-toolbar">
-                <div class="d-flex justify-content-end">
+                <div class="flex justify-end">
                     <!-- begin::Filter -->
                     <a-dropdown :trigger="click">
                         <template #overlay>
@@ -34,7 +34,7 @@
                                 </a-menu-item>
                             </a-menu>
                         </template>
-                        <a-button class="me-3" :size="size">
+                        <a-button class="me-3">
                             <template #icon>
                                 <FilterOutlined />
                             </template>
@@ -45,7 +45,7 @@
                     <!-- end::Filter -->
 
                     <!-- begin::Export -->
-                    <a-button class="" :size="size" @click="showModalExport">
+                    <a-button @click="showModalExport">
                         <template #icon>
                             <ExportOutlined />
                         </template>
@@ -135,21 +135,13 @@
 <script setup>
 import {
     ExclamationCircleOutlined,
-    ArrowUpOutlined,
-    CustomerServiceOutlined,
-    CommentOutlined,
     FilterOutlined,
     ExportOutlined,
-    DownOutlined,
 } from "@ant-design/icons-vue";
 import { createVNode } from "vue";
 import { Modal, message } from "ant-design-vue";
 
-// radio value
-const radioValue = ref("online");
-
 // modal export
-
 const openModalExport = ref(false);
 const showModalExport = () => {
     openModalExport.value = true;
@@ -157,27 +149,6 @@ const showModalExport = () => {
 const handleOkModalExport = (e) => {
     console.log(e);
     openModalExport.value = false;
-};
-
-// modal add new
-
-const openModalAddNew = ref(false);
-const showModalAddNew = () => {
-    openModalAddNew.value = true;
-};
-const handleOkModalAddNew = (e) => {
-    console.log(e);
-    openModalAddNew.value = false;
-};
-
-// modal edit
-const openModalEdit = ref(false);
-const showModalEdit = () => {
-    openModalEdit.value = true;
-};
-const handleOkModalEdit = (e) => {
-    console.log(e);
-    openModalEdit.value = false;
 };
 
 // alert message

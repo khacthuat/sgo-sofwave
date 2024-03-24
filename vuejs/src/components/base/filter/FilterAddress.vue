@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="list-search-selected w-100 text-black flex mt-1">
+        <div class="list-search-selected w-100 text-black flex mt-2">
             Toàn quốc
         </div>
     </div>

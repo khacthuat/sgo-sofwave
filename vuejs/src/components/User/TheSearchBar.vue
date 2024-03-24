@@ -1,9 +1,9 @@
 <template>
     <!-- begin::Search Bar -->
-    <div class="">
+    <div class="h-[64px]">
         <!-- begin::Search Bar Container-->
         <div
-            class="app-container fixed-top mt-[80px] z-10 bg-primary-white-color"
+            class="app-container fixed-top min-h-[64px] mt-[64px] bg-primary-white-color"
         >
             <!-- begin::Search Bar Wrapper -->
             <div class="flex flex-wrap align-items-center border-t-[1px]">
