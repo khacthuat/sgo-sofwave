@@ -88,6 +88,8 @@ a, a:hover, a:focus{
     background-color: #F2F2F2;
 
 }
+
+/* sidebar filter */
 .filter-list-item {
     display: flex;
     align-items: center;
@@ -97,7 +99,7 @@ a, a:hover, a:focus{
 }
 
 .filter-list-item:hover {
-    background-color: #F2F2F2;
+    background-color: #F2F2F2 ;
     border: 0 !important;
 }
 

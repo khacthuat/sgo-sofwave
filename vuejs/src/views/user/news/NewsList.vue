@@ -337,115 +337,7 @@
     <!-- end::Primary Content -->
 
     <!-- begin::Sidebar -->
-    <div class="flex flex-col d-none d-lg-flex col-lg-2">
-        <!-- begin::Sidebar Box -->
-        <div class="p-3 mb-3 border-1 sidebar-box">
-            <!-- begin::Sidebar Box Title -->
-            <div class="mb-3">
-                <h2>Lọc theo khoảng giá</h2>
-            </div>
-            <!-- end::Sidebar Box Title -->
-
-            <!-- begin::Sidebar Box Content -->
-            <div class="sidebar-box-content">
-                <h3 class="sidebar-box-item">
-                    <a>Dưới 500 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>500 - 800 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>800 triệu - 1 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>1 - 2 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>2 - 3 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>3 - 5 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>5 - 7 tỷ</a>
-                </h3>
-            </div>
-            <!-- end::Sidebar Box Content -->
-        </div>
-        <!-- end::Sidebar Box -->
-
-        <!-- begin::Sidebar Box -->
-        <div class="p-3 mb-3 border-1 sidebar-box">
-            <!-- begin::Sidebar Box Title -->
-            <div class="mb-3">
-                <h2>Lọc theo khoảng giá</h2>
-            </div>
-            <!-- end::Sidebar Box Title -->
-
-            <!-- begin::Sidebar Box Content -->
-            <div class="sidebar-box-content">
-                <h3 class="sidebar-box-item">
-                    <a>Dưới 500 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>500 - 800 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>800 triệu - 1 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>1 - 2 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>2 - 3 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>3 - 5 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>5 - 7 tỷ</a>
-                </h3>
-            </div>
-            <!-- end::Sidebar Box Content -->
-        </div>
-        <!-- end::Sidebar Box -->
-
-        <!-- begin::Sidebar Box -->
-        <div class="p-3 border-1 sidebar-box">
-            <!-- begin::Sidebar Box Title -->
-            <div class="mb-3">
-                <h2>Lọc theo khoảng giá</h2>
-            </div>
-            <!-- end::Sidebar Box Title -->
-
-            <!-- begin::Sidebar Box Content -->
-            <div class="sidebar-box-content">
-                <h3 class="sidebar-box-item">
-                    <a>Dưới 500 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>500 - 800 triệu</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>800 triệu - 1 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>1 - 2 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>2 - 3 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>3 - 5 tỷ</a>
-                </h3>
-                <h3 class="sidebar-box-item">
-                    <a>5 - 7 tỷ</a>
-                </h3>
-            </div>
-            <!-- end::Sidebar Box Content -->
-        </div>
-        <!-- end::Sidebar Box -->
-    </div>
+    <SidebarFilter />
     <!-- end::Sidebar -->
 </template>
 
@@ -460,10 +352,12 @@ var normal = "Thông thường";
 
 <script>
 import ThePageHeader from "../../../components/ThePageHeader.vue";
+import SidebarFilter from "../../../components/base/sidebar/SidebarFilter.vue";
 
 export default {
     components: {
         ThePageHeader,
+        SidebarFilter,
     },
 };
 </script>
