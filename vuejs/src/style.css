@@ -107,6 +107,35 @@ a, a:hover, a:focus{
     z-index: 999 !important;
 }
 
+/* card css */
+
+.card {
+    border: 1px solid #f2f2f2;
+}
+
+/* card image css */
+.image-input .image-input-wrapper {
+    border-radius: 0.75rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.image-input {
+    position: relative;
+    display: inline-block;
+    border-radius: 0.75rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* form */
+.form-label {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: gray;
+}
 
 /* app-container css */
 @media (min-width: 992px) {

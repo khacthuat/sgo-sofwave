@@ -97,48 +97,4 @@ export default {
     },
 };
 </script>
-<style>
-/* card css */
-.card .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
-    min-height: 70px;
-    padding: 0 2.25rem;
-}
-
-/* card image css */
-.image-input .image-input-wrapper {
-    border-radius: 0.75rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.card {
-    border: 1px solid #f2f2f2;
-}
-
-.card .card-body {
-    padding: 2rem 2.25rem;
-}
-.image-input {
-    position: relative;
-    display: inline-block;
-    border-radius: 0.75rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.form-label {
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: gray;
-}
-
-.app-container {
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-}
-</style>
+<style></style>

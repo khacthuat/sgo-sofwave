@@ -6,7 +6,7 @@
             id="sider-component"
             class="position-relative"
         >
-            <div class="logo" />
+            <div class="logo"></div>
             <a-menu
                 v-model:selectedKeys="selectedKeys"
                 theme="dark"
@@ -74,10 +74,6 @@
                     <a-menu-item key="15">Danh sách thương vụ</a-menu-item>
                     <a-menu-item key="16">Thống kê</a-menu-item>
                 </a-sub-menu>
-                <!-- <a-menu-item key="10">
-                    <FileOutlined />
-                    <span>File</span>
-                </a-menu-item> -->
             </a-menu>
         </a-layout-sider>
     </div>
@@ -109,22 +105,12 @@ function checkWindowSize() {
 import {
     UserOutlined,
     PieChartOutlined,
-    DesktopOutlined,
     TeamOutlined,
-    FileOutlined,
 } from "@ant-design/icons-vue";
 
-export default {
-    // mounted() {
-    //     const sidebarTrigger = document.querySelector(
-    //         ".ant-layout-sider-trigger"
-    //     );
-    //     if (sidebarTrigger) {
-    //         sidebarTrigger.classList.add("d-none", "d-sm-block");
-    //     }
-    // },
-};
+export default {};
 </script>
+
 <style scoped>
 #sider-container {
     background: #001529;

@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <!-- begin::Card Header -->
-        <div class="card-header d-flex justify-content-between flex-wrap pt-4">
+        <div class="card-header flex justify-between flex-wrap pt-4">
             <!-- begin::Card Title -->
             <div class="card-title my-1">
                 <a-input-search
@@ -289,9 +289,6 @@
 <script setup>
 import {
     ExclamationCircleOutlined,
-    ArrowUpOutlined,
-    CustomerServiceOutlined,
-    CommentOutlined,
     FilterOutlined,
     ExportOutlined,
     DownOutlined,
@@ -303,7 +300,6 @@ import { Modal, message } from "ant-design-vue";
 const radioValue = ref("online");
 
 // modal filter
-
 const openModalFilter = ref(false);
 const showModalFilter = () => {
     openModalFilter.value = true;
@@ -314,7 +310,6 @@ const handleOkModalFilter = (e) => {
 };
 
 // modal export
-
 const openModalExport = ref(false);
 const showModalExport = () => {
     openModalExport.value = true;
@@ -325,7 +320,6 @@ const handleOkModalExport = (e) => {
 };
 
 // modal add new
-
 const openModalAddNew = ref(false);
 const showModalAddNew = () => {
     openModalAddNew.value = true;
@@ -346,7 +340,6 @@ const handleOkModalEdit = (e) => {
 };
 
 // alert message
-
 const success = () => {
     message.success("Thao tác thành công");
 };

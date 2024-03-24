@@ -3,7 +3,7 @@
         <a-layout>
             <TheSider />
 
-            <a-layout style="min-height: 100vh">
+            <a-layout>
                 <TheHeader />
                 <!-- begin::Content Wrapper -->
                 <div
@@ -58,16 +58,7 @@ import {
     ArrowUpOutlined,
     CustomerServiceOutlined,
     CommentOutlined,
-    DownOutlined,
 } from "@ant-design/icons-vue";
-
-const contentStyle = {
-    textAlign: "center",
-    minHeight: 120,
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#108ee9",
-};
 
 const footerStyle = {
     textAlign: "center",
@@ -80,60 +71,15 @@ const footerStyle = {
 <script>
 import TheSider from "../components/TheSider.vue";
 import TheHeader from "../components/TheHeader.vue";
-import ThePageHeader from "../components/ThePageHeader.vue";
 import TheContent from "../components/TheContent.vue";
 
 export default {
     components: {
         TheSider,
         TheHeader,
-        ThePageHeader,
         TheContent,
     },
 };
 </script>
 
-<style>
-/* card css */
-.card .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
-    min-height: 70px;
-    padding: 0 2.25rem;
-}
-
-/* card image css */
-.image-input .image-input-wrapper {
-    border-radius: 0.75rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.card {
-    border: 1px solid gray;
-}
-
-.card .card-body {
-    padding: 2rem 2.25rem;
-}
-.image-input {
-    position: relative;
-    display: inline-block;
-    border-radius: 0.75rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.mb-7 {
-    margin-bottom: 1.75rem !important;
-}
-
-.form-label {
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: gray;
-}
-</style>
+<style></style>

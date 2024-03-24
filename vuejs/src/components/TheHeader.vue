@@ -2,8 +2,7 @@
     <div id="header__container" class="position-relative" style="height: 64px">
         <a-layout-header
             id="header__component"
-            class="d-flex align-items-center justify-content-between px-2 px-lg-4 col-12"
-            style="z-index: 1"
+            class="flex align-items-center justify-between px-2 px-lg-4 col-12"
         >
             <div class="d-none d-lg-flex col-lg-4 input__container">
                 <a-input-search
@@ -16,7 +15,7 @@
                 />
             </div>
             <div
-                class="icon__container col-12 col-lg-4 d-flex align-items-center justify-content-end"
+                class="icon__container col-12 col-lg-4 flex align-items-center justify-end"
                 style="font-size: 20px"
             >
                 <div
@@ -24,18 +23,15 @@
                     style="height: 40px"
                 >
                     <div
-                        class="list__icon--item d-flex align-items-center justify-content-center"
+                        class="list__icon--item d-flex align-items-center justify-center"
                     >
                         <BulbOutlined />
                     </div>
                     <div
-                        class="list__icon--item d-flex align-items-center justify-content-center"
+                        class="list__icon--item d-flex align-items-center justify-center"
                     >
                         <a-badge :count="109">
-                            <a-avatar
-                                size="medium"
-                                style="background-color: gray"
-                            >
+                            <a-avatar style="background-color: #f2f2f2">
                                 <NotificationOutlined />
                             </a-avatar>
                         </a-badge>
@@ -43,19 +39,10 @@
                 </div>
 
                 <div
-                    class="icon__user d-flex align-items-center"
+                    class="icon__user flex align-items-center"
                     style="height: 40px"
                 >
-                    <a-avatar
-                        :size="{
-                            xs: 40,
-                            sm: 40,
-                            md: 40,
-                            lg: 40,
-                            xl: 40,
-                            xxl: 40,
-                        }"
-                    >
+                    <a-avatar :size="40">
                         <template #icon>
                             <AntDesignOutlined />
                         </template>

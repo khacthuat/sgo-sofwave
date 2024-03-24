@@ -25,22 +25,7 @@
                         >
                     </div>
                     <!-- end::Logo -->
-
-                    <!-- begin:: Menu Wrapper -->
-                    <div class="" id="app-header-menu-wrapper">
-                        <!-- begin::Menu Item -->
-                        <!-- <div class="app-menu-item flex">
-                            <a-menu
-                                v-model:selectedKeys="current1"
-                                mode="horizontal"
-                                :items="items1"
-                                :subMenuOpenDelay="0.4"
-                            />
-                        </div> -->
-                        <!-- end::Menu Item -->
-                    </div>
                 </div>
-
                 <!-- end:: Menu Wrapper -->
 
                 <!-- begin::Control Menu -->
@@ -117,7 +102,10 @@
                             </a-popover>
 
                             <div class="flex align-items-center mx-4">
-                                <a-dropdown :placement="'bottomRight'">
+                                <a-dropdown
+                                    :placement="'bottomRight'"
+                                    trigger="click"
+                                >
                                     <template #overlay>
                                         <a-menu class="mt-2">
                                             <a-menu-item key="1">
@@ -135,7 +123,7 @@
                                         </a-menu>
                                     </template>
                                     <div
-                                        class="ant-dropdown-link flex justify-center align-items-center cursor-pointer"
+                                        class="flex justify-center align-items-center cursor-pointer"
                                     >
                                         <a-avatar
                                             size="large"
@@ -176,54 +164,12 @@
 </template>
 
 <script setup>
-import { h, ref } from "vue";
 import {
     NotificationOutlined,
     DownOutlined,
     UserOutlined,
     ClockCircleOutlined,
 } from "@ant-design/icons-vue";
-const current1 = ref(["sub1"]);
-const items1 = ref([
-    {
-        key: "sub1",
-        label: h(
-            "a",
-            {
-                href: "https://antdv.com",
-                target: "_blank",
-            },
-            "Nhà đất bán"
-        ),
-        title: "Nhà đất bán - Submenu",
-        children: [
-            {
-                label: "Bán căn hộ chung cư",
-                key: "landSell:1",
-            },
-            {
-                label: "Bán nhà riêng",
-                key: "landSell:2",
-            },
-            {
-                label: "Bán nhà biệt thự, liền kề",
-                key: "landSell:3",
-            },
-            {
-                label: "Bán nhà mặt phố",
-                key: "landSell:4",
-            },
-            {
-                label: "Bán nhà shophouse, nhà phố thương mại",
-                key: "landSell:5",
-            },
-            {
-                label: "Bán nhà đất nền dự án",
-                key: "landSell:6",
-            },
-        ],
-    },
-]);
 </script>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
     <!-- begin::Content -->
-    <div class="bg-slate-100">
+    <div class="bg-slate-50">
         <!-- begin::Content Container -->
         <ThePageHeader class="" />
         <div class="app-container">
