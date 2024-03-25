@@ -1,21 +1,17 @@
 <template>
-    <div class="card">
+    <ThePageHeader />
+    <div class="">
         <!-- begin::Card Header -->
-        <div class="card-header d-flex justify-content-between flex-wrap pt-4">
+        <div class="card-header flex justify-between flex-wrap pt-4 mb-4">
             <!-- begin::Card Title -->
             <div class="card-title">
-                <a-input-search
-                    v-model:value="value"
-                    placeholder="Tìm kiếm"
-                    style="width: 200px"
-                    @search="onSearch"
-                />
+                <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
             </div>
             <!-- end::Card Title -->
 
             <!-- begin::Card Toolbar -->
             <div class="card-toolbar">
-                <div class="d-flex justify-content-end">
+                <div class="flex justify-end">
                     <!-- begin::Filter -->
                     <a-dropdown :trigger="click">
                         <template #overlay>
@@ -41,7 +37,6 @@
                             Lọc
                         </a-button>
                     </a-dropdown>
-
                     <!-- end::Filter -->
 
                     <!-- begin::Export -->
@@ -153,16 +148,9 @@
 </template>
 
 <script setup>
-import {
-    ExclamationCircleOutlined,
-    FilterOutlined,
-    ExportOutlined,
-} from "@ant-design/icons-vue";
-import { computed, reactive, createVNode } from "vue";
-import { Modal, message } from "ant-design-vue";
-
-// radio value
-const radioValue = ref("online");
+import { FilterOutlined, ExportOutlined } from "@ant-design/icons-vue";
+import { computed, reactive } from "vue";
+import { message } from "ant-design-vue";
 
 // modal export
 
@@ -175,27 +163,6 @@ const handleOkModalExport = (e) => {
     openModalExport.value = false;
 };
 
-// modal add new
-
-const openModalAddNew = ref(false);
-const showModalAddNew = () => {
-    openModalAddNew.value = true;
-};
-const handleOkModalAddNew = (e) => {
-    console.log(e);
-    openModalAddNew.value = false;
-};
-
-// modal edit
-const openModalEdit = ref(false);
-const showModalEdit = () => {
-    openModalEdit.value = true;
-};
-const handleOkModalEdit = (e) => {
-    console.log(e);
-    openModalEdit.value = false;
-};
-
 // alert message
 
 const success = () => {
@@ -206,37 +173,6 @@ const error = () => {
 };
 const warning = () => {
     message.warning("Cảnh báo!");
-};
-
-// comfirm modal
-const showConfirmDelete = () => {
-    Modal.confirm({
-        title: "Cảnh báo",
-        icon: createVNode(ExclamationCircleOutlined),
-        content: createVNode(
-            "div",
-            {
-                style: "color:red;",
-            },
-            "Bạn chắc chắn muốn xoá người dùng này ?"
-        ),
-        okText: "Xoá",
-        cancelText: "Huỷ",
-        onOk() {
-            success();
-        },
-        onCancel() {},
-        class: "test",
-    });
-};
-
-const labelCol = {
-    style: {
-        width: "150px",
-    },
-};
-const wrapperCol = {
-    span: 14,
 };
 
 // table

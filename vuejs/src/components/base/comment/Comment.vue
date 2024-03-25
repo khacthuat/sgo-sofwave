@@ -10,13 +10,14 @@
         >
             <template #renderItem="{ item }">
                 <a-list-item key="item.title">
-                    <template #extra>
+                    <!-- Hình ảnh của comment -->
+                    <!-- <template #extra>
                         <img
                             width="272"
                             alt="logo"
                             src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                         />
-                    </template>
+                    </template> -->
                     <a-list-item-meta :description="item.description">
                         <template #title>
                             <a :href="item.href">{{ item.title }}</a>

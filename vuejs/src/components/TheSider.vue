@@ -14,15 +14,14 @@
                 theme="light"
                 mode="inline"
                 triggerSubMenuAction="click"
-                class="position-fixed max-w-[200px]"
+                class="position-fixed z-2 max-w-[200px] h-100"
             >
                 <a-menu-item
                     class="trigger mb-3 border-b-[1px]"
                     @click="() => (collapsed = !collapsed)"
                 >
                     <div class="flex align-items-center">
-                        <MenuUnfoldOutlined v-if="collapsed" />
-                        <MenuFoldOutlined v-else />
+                        <MenuFoldOutlined />
                         <span class="">Menu</span>
                     </div>
                 </a-menu-item>

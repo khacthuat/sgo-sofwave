@@ -31,14 +31,17 @@
                 <div class="app-header-control-menu">
                     <!-- begin::Control Menu Item -->
                     <div class="app-control-menu-item">
-                        <div class="flex align-items-center" v-if="!login">
+                        <div
+                            class="flex align-items-center space-x-4"
+                            v-if="login"
+                        >
                             <a-popover
                                 placement="bottomRight"
                                 trigger="click"
                                 class="flex"
                             >
                                 <template #content>
-                                    <div class="min-h-[440px] w-[580px]">
+                                    <div class="max-h-[440px] max-w-[580px]">
                                         <div
                                             class="flex align-items-center mt-5 cursor-pointer"
                                         >
@@ -97,7 +100,7 @@
                                 </a-badge>
                             </a-popover>
 
-                            <div class="mx-4 border-x-[1px] px-4">
+                            <div class="n:px-2 md:px-4 border-x-[1px]">
                                 <a-dropdown
                                     :placement="'bottomRight'"
                                     trigger="click"
@@ -149,14 +152,167 @@
                         <div class="flex" v-else>
                             <div class="flex mx-4 border-x-[1px]">
                                 <div class="px-4 border-r-[1px]">
-                                    <a-button class="border-0">
+                                    <a-button
+                                        class="border-0"
+                                        @click="setModalLoginVisible"
+                                    >
                                         Đăng nhập
                                     </a-button>
+
+                                    <a-modal
+                                        class="top-[20%]"
+                                        v-model:open="modalLoginVisible"
+                                        title="Đăng nhập để tiếp tục"
+                                    >
+                                        <template #footer> </template>
+                                        <a-form
+                                            :model="formState"
+                                            name="normal_login"
+                                            class="login-form ml-auto mr-auto mt-4"
+                                            @finish="onFinish"
+                                            @finishFailed="onFinishFailed"
+                                        >
+                                            <a-form-item
+                                                name="username"
+                                                :rules="[
+                                                    {
+                                                        required: true,
+                                                        message:
+                                                            'Hãy nhập tên đăng nhập!',
+                                                    },
+                                                ]"
+                                            >
+                                                <a-input
+                                                    v-model:value="
+                                                        formState.username
+                                                    "
+                                                    placeholder="Số điện thoại hoặc email"
+                                                >
+                                                    <template #prefix>
+                                                        <UserOutlined
+                                                            class="site-form-item-icon"
+                                                        />
+                                                    </template>
+                                                </a-input>
+                                            </a-form-item>
+
+                                            <a-form-item
+                                                name="password"
+                                                :rules="[
+                                                    {
+                                                        required: true,
+                                                        message:
+                                                            'Hãy nhập mật khẩu!',
+                                                    },
+                                                ]"
+                                            >
+                                                <a-input-password
+                                                    v-model:value="
+                                                        formState.password
+                                                    "
+                                                    placeholder="Mật khẩu"
+                                                >
+                                                    <template #prefix>
+                                                        <LockOutlined
+                                                            class="site-form-item-icon"
+                                                        />
+                                                    </template>
+                                                </a-input-password>
+                                            </a-form-item>
+
+                                            <a-form-item>
+                                                <a-form-item
+                                                    name="remember"
+                                                    no-style
+                                                >
+                                                    <a-checkbox
+                                                        v-model:checked="
+                                                            formState.remember
+                                                        "
+                                                        >Ghi nhớ tài
+                                                        khoản</a-checkbox
+                                                    >
+                                                </a-form-item>
+                                                <a
+                                                    class="login-form-forgot"
+                                                    href=""
+                                                    >Quên mật khẩu</a
+                                                >
+                                            </a-form-item>
+
+                                            <a-form-item>
+                                                <a-button
+                                                    :disabled="disabled"
+                                                    type="primary"
+                                                    html-type="submit"
+                                                    class="login-form-button mb-3"
+                                                >
+                                                    Đăng nhập
+                                                </a-button>
+                                                Hoặc
+                                                <a
+                                                    href=""
+                                                    class="ml-2 text-[#0891b2] hover:text-[#22d3ee]"
+                                                >
+                                                    Đăng ký ngay!</a
+                                                >
+                                            </a-form-item>
+                                        </a-form>
+                                    </a-modal>
                                 </div>
                                 <div class="px-4">
-                                    <a-button class="border-0">
+                                    <a-button
+                                        class="border-0"
+                                        @click="setModalRegisterVisible"
+                                    >
                                         Đăng ký
                                     </a-button>
+                                    <a-modal
+                                        class="top-[20%]"
+                                        v-model:open="modalRegisterVisible"
+                                        title="Đăng ký tài khoản mới"
+                                    >
+                                        <template #footer> </template>
+                                        <a-form
+                                            :model="formState"
+                                            name="normal_register"
+                                            class="register-form ml-auto mr-auto mt-4"
+                                            @finish="onFinish"
+                                            @finishFailed="onFinishFailed"
+                                        >
+                                            <a-form-item
+                                                name="username"
+                                                :rules="[
+                                                    {
+                                                        required: true,
+                                                        message:
+                                                            'Hãy nhập số diện thoại!',
+                                                    },
+                                                ]"
+                                            >
+                                                <a-input
+                                                    placeholder="Số điện thoại hoặc email"
+                                                >
+                                                    <template #prefix>
+                                                        <PhoneOutlined
+                                                            class="site-form-item-icon"
+                                                        />
+                                                    </template>
+                                                </a-input>
+                                            </a-form-item>
+
+                                            <a-form-item>
+                                                <a-button
+                                                    :disabled="disabled"
+                                                    type="primary"
+                                                    html-type="submit"
+                                                    class="register-form-button mb-3"
+                                                >
+                                                    Tiếp tục
+                                                </a-button>
+                                            </a-form-item>
+                                        </a-form>
+                                    </a-modal>
                                 </div>
                             </div>
                             <router-link to="/user/news-form">
@@ -181,10 +337,59 @@ import {
     DownOutlined,
     UserOutlined,
     ClockCircleOutlined,
+    LockOutlined,
+    PhoneOutlined,
 } from "@ant-design/icons-vue";
+import { ref } from "vue";
+
+// login
+import { reactive, computed } from "vue";
+const formState = reactive({
+    username: "",
+    password: "",
+    remember: true,
+});
+
+const onFinish = (values) => {
+    console.log("Success:", values);
+};
+const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+};
+const disabled = computed(() => {
+    return !(formState.username && formState.password);
+});
+
+// modal
+const modalLoginVisible = ref(false);
+const setModalLoginVisible = () => {
+    modalLoginVisible.value = true;
+};
+const modalRegisterVisible = ref(false);
+const setModalRegisterVisible = () => {
+    modalRegisterVisible.value = true;
+};
 </script>
 
 <script>
 export default {};
 </script>
-<style></style>
+<style>
+.login-form {
+    max-width: 300px;
+}
+.login-form-forgot {
+    float: right;
+}
+.login-form-button {
+    width: 100%;
+}
+
+.register-form {
+    max-width: 300px;
+}
+
+.register-form-button {
+    width: 100%;
+}
+</style>

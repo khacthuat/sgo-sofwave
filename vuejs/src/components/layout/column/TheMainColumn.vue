@@ -9,7 +9,7 @@
                 >
                     <!-- begin::Image avatar -->
                     <div
-                        class="image-input-wrapper w-40 h-40"
+                        class="image-input-wrapper w-72 h-72"
                         style="
                             background-image: url(https://contents.mediadecathlon.com/p2606919/k$a531927e5c71c12f4d3edac227199f78/jogflow-5001-men-s-running-shoes-white-blue-red.jpg?format=auto&quality=40&f=800x800);
                         "
@@ -25,7 +25,7 @@
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                         >
                             <a-button
-                                class="flex justify-center align-items-center cursor-pointer bg-primary-white-color position-absolute top-[-7%] right-[-7%] rounded-full w-[25px] h-[25px]"
+                                class="flex justify-center align-items-center cursor-pointer bg-primary-white-color position-absolute top-[-4%] right-[-4%] rounded-full w-[25px] h-[25px]"
                             >
                                 <UploadOutlined />
                             </a-button>

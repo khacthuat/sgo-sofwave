@@ -8,7 +8,6 @@
     <a-select
         v-model:value="valueSelected"
         :options="options"
-        @focus="focus"
         class="mb-2 w-100 flex justify-between align-items-center"
     ></a-select>
     <!-- end::Select -->

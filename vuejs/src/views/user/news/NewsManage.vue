@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center w-4/5 ml-auto mr-auto">
+    <div class="flex flex-col justify-center n:w-full lg:w-4/5 ml-auto mr-auto">
         <div class="">
             <ThePageHeader
                 title="Quản lý tin đăng"
@@ -31,7 +31,7 @@
                         <template #icon>
                             <FilterOutlined />
                         </template>
-                        <span>Lọc</span>
+                        <span class="d-none d-md-block">Lọc</span>
                     </a-button>
                     <a-modal
                         v-model:open="openModalFilter"
@@ -69,14 +69,14 @@
 
                     <!-- begin::Export -->
                     <a-button
-                        class="me-0 me-sm-3 mb-3 mb-lg-0 flex align-items-center justify-center"
+                        class="me-3 flex align-items-center justify-center"
                         :size="size"
                         @click="showModalExport"
                     >
                         <template #icon>
                             <ExportOutlined />
                         </template>
-                        <span>Xuất file</span>
+                        <span class="d-none d-md-block">Xuất file</span>
                     </a-button>
                     <a-modal
                         v-model:open="openModalExport"
@@ -161,46 +161,147 @@
         <!-- begin::Main Content -->
         <div class="">
             <a-tabs v-model:activeKey="activeKey">
-                <a-tab-pane key="1">
+                <a-tab-pane key="1" class="space-y-5">
                     <template #tab> Tất cả ({{ totalLand }}) </template>
                     <!-- begin::News Items -->
-                    <div class="flex border-[1px]">
-                        <div class="col-3 p-3">
-                            <div>
-                                <img
-                                    src="../../../assets/images/land/land1.png"
-                                    class="flex object-fit-cover w-full h-full"
-                                />
-                            </div>
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
                         </div>
-                        <div class="col-9">
+                        <div class="col-sm-9">
                             <Card title="Bán nhanh biệt thự">
                                 <template #content>
-                                    <span class="text-sm"
-                                        >Bán nhà mặt phố Hồ Chí Minh</span
-                                    >
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
+                                </template>
+                            </Card>
+                        </div>
+                    </div>
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
+                        </div>
+                        <div class="col-sm-9">
+                            <Card title="Bán nhanh biệt thự">
+                                <template #content>
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
+                                </template>
+                            </Card>
+                        </div>
+                    </div>
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
+                        </div>
+                        <div class="col-sm-9">
+                            <Card title="Bán nhanh biệt thự">
+                                <template #content>
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
                                 </template>
                             </Card>
                         </div>
                     </div>
                     <!-- end::News Items -->
                 </a-tab-pane>
-                <a-tab-pane key="2" force-render>
+                <a-tab-pane key="2" force-render class="space-y-5">
                     <template #tab>
                         Đang hiển thị ({{ totalLand - 10 }})
                     </template>
-                    Content of Tab Pane 2
+                    <!-- begin::News Items -->
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
+                        </div>
+                        <div class="col-sm-9">
+                            <Card title="Bán nhanh biệt thự">
+                                <template #content>
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
+                                </template>
+                            </Card>
+                        </div>
+                    </div>
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
+                        </div>
+                        <div class="col-sm-9">
+                            <Card title="Bán nhanh biệt thự">
+                                <template #content>
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
+                                </template>
+                            </Card>
+                        </div>
+                    </div>
+                    <div class="flex n:flex-col sm:flex-row border-[1px]">
+                        <div
+                            class="flex align-items-center justify-center col-sm-3"
+                        >
+                            <img
+                                src="../../../assets/images/land/land1.png"
+                                class="object-fit-cover n:w-5/6"
+                            />
+                        </div>
+                        <div class="col-sm-9">
+                            <Card title="Bán nhanh biệt thự">
+                                <template #content>
+                                    <span class="text-sm">
+                                        Bán nhà mặt phố Hồ Chí Minh
+                                    </span>
+                                    <CardInfor type="manage" />
+                                </template>
+                            </Card>
+                        </div>
+                    </div>
+                    <!-- end::News Items -->
                 </a-tab-pane>
-                <a-tab-pane key="3">
+                <a-tab-pane key="3" class="space-y-5">
                     <template #tab> Chờ duyệt ({{ totalLand - 10 }}) </template>
-                    Content of Tab Pane 3
                 </a-tab-pane>
             </a-tabs>
         </div>
         <!-- end::Main Content -->
 
         <!-- begin::Pagination -->
-        <div class="mb-5 ml-auto mr-auto">
+        <div class="my-5 ml-auto mr-auto">
             <a-pagination
                 v-model:current="current"
                 :total="8000"
@@ -213,18 +314,176 @@
 </template>
 
 <script setup>
-import { MinusOutlined } from "@ant-design/icons-vue";
+import { FilterOutlined, ExportOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
 
 const current = ref(2);
 var totalLand = 30;
-var normal = "Thông thường";
+// radio value
+const radioValue = ref("online");
+
+// modal filter
+const openModalFilter = ref(false);
+const showModalFilter = () => {
+    openModalFilter.value = true;
+};
+const handleOkModalFilter = (e) => {
+    console.log(e);
+    openModalFilter.value = false;
+};
+
+// modal export
+const openModalExport = ref(false);
+const showModalExport = () => {
+    openModalExport.value = true;
+};
+const handleOkModalExport = (e) => {
+    console.log(e);
+    openModalExport.value = false;
+};
+
+// modal add new
+const openModalAddNew = ref(false);
+const showModalAddNew = () => {
+    openModalAddNew.value = true;
+};
+const handleOkModalAddNew = (e) => {
+    console.log(e);
+    openModalAddNew.value = false;
+};
+
+// alert message
+const success = () => {
+    message.success("Thao tác thành công");
+};
+const error = () => {
+    message.error("Thao tác thất bại");
+};
+const warning = () => {
+    message.warning("Cảnh báo!");
+};
+
+// comfirm modal
+const showConfirmDelete = () => {
+    Modal.confirm({
+        title: "Cảnh báo",
+        icon: createVNode(ExclamationCircleOutlined),
+        content: createVNode(
+            "div",
+            {
+                style: "color:red;",
+            },
+            "Bạn chắc chắn muốn xoá người dùng này ?"
+        ),
+        okText: "Xoá",
+        cancelText: "Huỷ",
+        onOk() {
+            success();
+        },
+        onCancel() {},
+        class: "test",
+    });
+};
+
+const labelCol = {
+    style: {
+        width: "150px",
+    },
+};
+const wrapperCol = {
+    span: 14,
+};
+
+// table
+const columns = [
+    {
+        title: "STT",
+        width: 50,
+        dataIndex: "number",
+        key: "1",
+    },
+    {
+        title: "Tên",
+        width: 100,
+        dataIndex: "name",
+        key: "2",
+    },
+    {
+        title: "Email",
+        dataIndex: "email",
+        key: "3",
+        width: 150,
+    },
+    {
+        title: "Ngày tham gia",
+        dataIndex: "created_at",
+        key: "4",
+        width: 150,
+    },
+    {
+        title: "Ngày cập nhật",
+        dataIndex: "updated_at",
+        key: "5",
+        width: 150,
+    },
+    {
+        title: "Chức vụ",
+        dataIndex: "role",
+        key: "6",
+        width: 150,
+    },
+    {
+        title: "Trạng thái",
+        dataIndex: "status",
+        key: "7",
+        width: 150,
+    },
+    {
+        title: "Số tin đã đăng",
+        dataIndex: "activity",
+        key: "8",
+        width: 150,
+    },
+    {
+        title: "Action",
+        key: "operation",
+        width: 120,
+    },
+];
+
+const data = [];
+for (let i = 0; i < 102; i++) {
+    if (i % 2 == 0) {
+        data.push({
+            number: i,
+            name: `Edrward ${i}`,
+            email: "admin@gmail.com",
+            created_at: "2021-10-10 10:10:10",
+            updated_at: "2021-10-10 10:10:10",
+            role: "admin",
+            status: "online",
+            activity: "120",
+        });
+    } else {
+        data.push({
+            number: i,
+            name: `Edrward ${i}`,
+            email: "admin@gmail.com",
+            created_at: "2021-10-10 10:10:10",
+            updated_at: "2021-10-10 10:10:10",
+            role: "user",
+            status: "offline",
+            activity: "120",
+        });
+    }
+}
 </script>
 
 <script>
-import { ref, h, defineComponent, reactive } from "vue";
+import { ref } from "vue";
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 import Card from "../../../components/base/card/Card.vue";
+import CardInfor from "../../../components/base/card/CardInfor.vue";
 
 export default {
     components: {

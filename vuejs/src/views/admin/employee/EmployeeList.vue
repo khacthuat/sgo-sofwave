@@ -1,4 +1,6 @@
 <template>
+    <ThePageHeader />
+
     <div class="">
         <!-- begin::Card Header -->
         <div class="card-header flex justify-between flex-wrap pt-4">
@@ -296,7 +298,7 @@ import {
     DownOutlined,
 } from "@ant-design/icons-vue";
 import { createVNode } from "vue";
-import { Modal, message } from "ant-design-vue";
+import { message } from "ant-design-vue";
 
 // radio value
 const radioValue = ref("online");
@@ -466,15 +468,11 @@ for (let i = 0; i < 102; i++) {
         });
     }
 }
-
-// dropdown
-const handleMenuClick = (e) => {
-    console.log("click", e);
-};
 </script>
 
 <script>
 import { ref, h, defineComponent, reactive } from "vue";
+import { UserOutlined, TeamOutlined } from "@ant-design/icons-vue";
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 
 export default {

@@ -55,10 +55,6 @@ import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons-vue";
 const baseUrl =
     "https://raw.githubusercontent.com/vueComponent/ant-design-vue/main/components/carousel/demo/";
 
-const current = ref(2);
-var totalLand = "Hiện có 1000 bất động sản";
-var normal = "Thông thường";
-
 const getImgUrl = (i) => {
     return `${baseUrl}abstract0${i + 1}.jpg`;
 };

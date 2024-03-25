@@ -4,12 +4,7 @@
         <div class="card-header flex justify-between flex-wrap pt-4">
             <!-- begin::Card Title -->
             <div class="card-title">
-                <a-input-search
-                    v-model:value="value"
-                    placeholder="Tìm kiếm"
-                    style="width: 200px"
-                    @search="onSearch"
-                />
+                <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
             </div>
             <!-- end::Card Title -->
 
@@ -134,12 +129,11 @@
 
 <script setup>
 import {
-    ExclamationCircleOutlined,
     FilterOutlined,
     ExportOutlined,
+    UserOutlined,
 } from "@ant-design/icons-vue";
-import { createVNode } from "vue";
-import { Modal, message } from "ant-design-vue";
+import { message } from "ant-design-vue";
 
 // modal export
 const openModalExport = ref(false);
@@ -161,28 +155,6 @@ const error = () => {
 };
 const warning = () => {
     message.warning("Cảnh báo!");
-};
-
-// comfirm modal
-const showConfirmDelete = () => {
-    Modal.confirm({
-        title: "Cảnh báo",
-        icon: createVNode(ExclamationCircleOutlined),
-        content: createVNode(
-            "div",
-            {
-                style: "color:red;",
-            },
-            "Bạn chắc chắn muốn xoá người dùng này ?"
-        ),
-        okText: "Xoá",
-        cancelText: "Huỷ",
-        onOk() {
-            success();
-        },
-        onCancel() {},
-        class: "test",
-    });
 };
 
 const labelCol = {
@@ -365,24 +337,6 @@ const data = [
         detail: "Chi tiết",
     },
 ];
-const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(
-            `selectedRowKeys: ${selectedRowKeys}`,
-            "selectedRows: ",
-            selectedRows
-        );
-    },
-    getCheckboxProps: (record) => ({
-        disabled: record.name === "Disabled User",
-        // Column configuration not to be checked
-        name: record.name,
-    }),
-};
-// dropdown
-const handleMenuClick = (e) => {
-    console.log("click", e);
-};
 </script>
 
 <script>
