@@ -2,7 +2,7 @@
     <!-- begin::Content -->
     <div class="bg-slate-50">
         <!-- begin::Content Container -->
-        <ThePageHeader class="" />
+        <ThePageHeader class="app-container" />
         <div class="app-container">
             <!-- begin::Content Wrapper -->
             <div class="">

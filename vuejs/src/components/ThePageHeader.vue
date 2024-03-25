@@ -5,7 +5,7 @@
             <!-- begin::Page Title -->
             <div class="page-title">
                 <a-page-header
-                    title="Người dùng"
+                    :title="title"
                     :breadcrumb="{ routes }"
                     sub-title=""
                     class="px-0 border-y-[1px]"
@@ -18,6 +18,17 @@
 </template>
 
 <script setup>
+const props = defineProps(
+    {
+        title: String,
+        default: "Page Title",
+    },
+    {
+        breadcrumb: String,
+        default: "Breadcrumb",
+    }
+);
+
 const routes = [
     {
         path: "index",
@@ -25,7 +36,7 @@ const routes = [
     },
     {
         path: "first",
-        breadcrumbName: "Người dùng",
+        breadcrumbName: props.breadcrumb,
     },
 ];
 </script>

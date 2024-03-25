@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="">
         <!-- begin::Card Header -->
         <div class="card-header flex justify-between flex-wrap pt-4">
             <!-- begin::Card Title -->
@@ -18,14 +18,14 @@
                 <div class="flex justify-end flex-wrap">
                     <!-- begin::Filter -->
                     <a-button
-                        class="me-3"
+                        class="me-3 flex align-items-center justify-center"
                         :size="size"
                         @click="showModalFilter"
                     >
                         <template #icon>
                             <FilterOutlined />
                         </template>
-                        Lọc
+                        <span>Lọc</span>
                     </a-button>
                     <a-modal
                         v-model:open="openModalFilter"
@@ -63,14 +63,14 @@
 
                     <!-- begin::Export -->
                     <a-button
-                        class="me-0 me-sm-3 mb-3 mb-lg-0"
+                        class="me-0 me-sm-3 mb-3 mb-lg-0 flex align-items-center justify-center"
                         :size="size"
                         @click="showModalExport"
                     >
                         <template #icon>
                             <ExportOutlined />
                         </template>
-                        Xuất file
+                        <span>Xuất file</span>
                     </a-button>
                     <a-modal
                         v-model:open="openModalExport"
@@ -276,7 +276,9 @@
                             >
                         </template>
                         <template v-else>
-                            {{ record[column.dataIndex] }}
+                            <div class="">
+                                {{ record[column.dataIndex] }}
+                            </div>
                         </template>
                     </template>
                 </a-table>

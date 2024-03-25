@@ -8,39 +8,39 @@
     box-sizing: border-box;
 }
 
-
-
 .ant-input[type="text"]:focus {
-    border: 1.5px solid #555;
+    outline: 1px solid #555;
 }
 
 .ant-input[type="text"]:hover {
-    border: 1.5px solid #555;
+    outline: 1px solid #555;
 }
 
 .ant-input[type="text"] {
     outline: none;
 }
 
-.ant-btn[type="button"]:focus{
-    border: 1.5px solid #555;
+.ant-btn[type="button"]:focus {
+    outline: 1px solid #555;
     color: black;
 }
-.ant-btn[type="button"]:hover{
-    border: 1.5px solid #555;
+.ant-btn[type="button"]:hover {
+    outline: 1px solid #555;
     color: black;
-
 }
-
 
 /* Button Background color */
 
-.ant-btn-primary,
-.ant-btn-primary:hover,
-.ant-btn-primary:focus {
+.ant-btn-primary {
     background-color: #1dbabf !important;
+    color: #ffffff !important;
 }
 
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+    background-color: #7cdee2 !important;
+    color: black !important;
+}
 
 /* Footer Modal Button color */
 .ant-modal-footer .ant-btn-primary {
@@ -59,7 +59,9 @@
 }
 
 /* a tag  */
-a, a:hover, a:focus{
+a,
+a:hover,
+a:focus {
     color: black;
 }
 
@@ -79,14 +81,13 @@ a, a:hover, a:focus{
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    border-left: 1px solid #F2F2F2;
+    border-left: 1px solid #f2f2f2;
     padding: 0 12px;
     cursor: pointer;
 }
 
 .filter-item .filter-item-content:hover {
-    background-color: #F2F2F2;
-
+    background-color: #f2f2f2;
 }
 
 /* sidebar filter */
@@ -99,7 +100,7 @@ a, a:hover, a:focus{
 }
 
 .filter-list-item:hover {
-    background-color: #F2F2F2 ;
+    background-color: #f2f2f2;
     border: 0 !important;
 }
 
@@ -121,7 +122,6 @@ a, a:hover, a:focus{
     background-size: cover;
 }
 
-
 .image-input {
     position: relative;
     display: inline-block;
@@ -139,13 +139,7 @@ a, a:hover, a:focus{
 }
 
 /* app-container css */
-    .app-container {
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-    }
-
-
-
-
-
-
+.app-container {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}

@@ -1,8 +1,7 @@
 const user = [
     {
         path: "/",
-        redirect: "/user/news"
-
+        redirect: "/user/news",
     },
     {
         path: "/user",
@@ -24,8 +23,11 @@ const user = [
                 name: "news-form",
                 component: () => import("../views/admin/news/NewsDetail.vue"),
             },
-
-
+            {
+                path: "news-manage",
+                name: "news-manage",
+                component: () => import("../views/user/news/NewsManage.vue"),
+            },
         ],
     },
 ];

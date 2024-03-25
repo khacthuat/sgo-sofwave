@@ -1,11 +1,11 @@
 <template>
     <!-- begin::Primary Content -->
     <div class="flex flex-col col-12 col-lg-10 lg:pr-[30px]">
-        <!-- begin::Content Navbar -->
         <div class="w-full lg:w-4/5 ml-auto">
             <ThePageHeader />
         </div>
 
+        <!-- begin::Content Navbar -->
         <div
             class="flex align-content-center justify-between my-3 w-full lg:w-4/5 ml-auto"
         >
@@ -98,7 +98,7 @@
                             <!-- end::Card Info Title -->
 
                             <!-- begin::Card Info -->
-                            <div class="flex">
+                            <div class="flex flex-col">
                                 <!-- begin::Card Info Config -->
                                 <div class="flex align-items-center space-x-5">
                                     <span class="text-sm text-gray-500">
@@ -120,8 +120,8 @@
                                 <!-- end::Card Info Config -->
 
                                 <!-- begin::Card Info Location -->
-                                <div>
-                                    <span class="text-sm text-gray-500 mx-1">
+                                <div class="mt-2">
+                                    <span class="text-sm text-gray-500">
                                         Quận 9, Hồ Chí Minh
                                     </span>
                                 </div>
@@ -144,7 +144,6 @@
                             <!-- begin::Card Published Info -->
                             <div class="flex align-items-center">
                                 <a-avatar
-                                    size="medium"
                                     class="me-2"
                                     :style="{
                                         backgroundColor: '#f50',
@@ -236,35 +235,7 @@
                             <!-- end::Card Info Title -->
 
                             <!-- begin::Card Info -->
-                            <div class="flex">
-                                <!-- begin::Card Info Config -->
-                                <div class="flex align-items-center space-x-5">
-                                    <span class="text-sm text-gray-500">
-                                        17,5 tỷ
-                                    </span>
-                                    <span class="text-sm text-gray-500">
-                                        126 m&sup2
-                                    </span>
-                                    <span class="text-sm text-gray-500">
-                                        138 triệu/m&sup2
-                                    </span>
-                                    <span class="text-sm text-gray-500">
-                                        4 phòng ngủ
-                                    </span>
-                                    <span class="text-sm text-gray-500">
-                                        4 WC
-                                    </span>
-                                </div>
-                                <!-- end::Card Info Config -->
-
-                                <!-- begin::Card Info Location -->
-                                <div>
-                                    <span class="text-sm text-gray-500 mx-1">
-                                        Quận 9, Hồ Chí Minh
-                                    </span>
-                                </div>
-                                <!-- end::Card Info Location -->
-                            </div>
+                            <CardInfo />
                             <!-- end::Card Info -->
 
                             <!-- begin::Card Info Description -->
@@ -331,7 +302,6 @@
             >
             </a-pagination>
         </div>
-
         <!-- end::Pagination -->
     </div>
     <!-- end::Primary Content -->
@@ -353,11 +323,13 @@ var normal = "Thông thường";
 <script>
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 import SidebarFilter from "../../../components/base/sidebar/SidebarFilter.vue";
+import CardInfo from "../../../components/base/card/CardInfo.vue";
 
 export default {
     components: {
         ThePageHeader,
         SidebarFilter,
+        CardInfo,
     },
 };
 </script>
