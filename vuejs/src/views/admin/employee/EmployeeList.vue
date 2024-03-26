@@ -302,6 +302,7 @@ import {
 } from "@ant-design/icons-vue";
 import { createVNode } from "vue";
 import messageAnt from "../../../scripts/message";
+import listUsersAPI from "../../../api/users/index";
 
 // radio value
 const radioValue = ref("online");
@@ -370,12 +371,6 @@ const showConfirmDelete = () => {
 // table
 const columns = [
     {
-        title: "STT",
-        width: 50,
-        dataIndex: "number",
-        key: "1",
-    },
-    {
         title: "Tên",
         width: 100,
         dataIndex: "name",
@@ -425,10 +420,14 @@ const columns = [
 ];
 
 const data = [];
+const fetchUsers = async () => {
+    const response = await listUsersAPI();
+    console.log(response);
+};
+
 for (let i = 0; i < 102; i++) {
     if (i % 2 == 0) {
         data.push({
-            number: i,
             name: `Edrward ${i}`,
             email: "admin@gmail.com",
             created_at: "2021-10-10 10:10:10",
@@ -439,7 +438,6 @@ for (let i = 0; i < 102; i++) {
         });
     } else {
         data.push({
-            number: i,
             name: `Edrward ${i}`,
             email: "admin@gmail.com",
             created_at: "2021-10-10 10:10:10",

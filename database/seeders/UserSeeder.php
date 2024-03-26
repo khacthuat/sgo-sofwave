@@ -21,22 +21,22 @@ class UserSeeder extends Seeder
             'name' => 'Văn Bách',
             'email' => 'youngbach@gmail.com',
             'password' => Hash::make('admin'),
-            'role_id' => 1
+            'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Huy Nguyễn',
             'email' => 'huynguyen@gmail.com',
             'password' => Hash::make('admin'),
-            'role_id' => 2
+            'role' => 'employee'
+
         ]);
 
         User::create([
             'name' => 'Thế Hải',
             'email' => 'thehai@gmail.com',
             'password' => Hash::make('admin'),
-            'role_id' => 3
+            'role' => 'sale'
         ]);
-
     }
 }

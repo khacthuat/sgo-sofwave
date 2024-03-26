@@ -19,18 +19,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
-    public function sale()
-    {
-        return $this->hasMany(Sale::class, 'user_id', 'id');
-    }
 
     public function comment()
     {
@@ -41,6 +35,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class, 'user_id', 'id');
     }
-
-
 }

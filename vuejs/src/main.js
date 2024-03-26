@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import axios from "axios";
 import App from "./App.vue";
 
 import "./style.css";
@@ -8,6 +9,9 @@ import "bootstrap/dist/css/bootstrap-utilities.min.css";
 
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/reset.css";
+
+
+window.axios = axios;
 
 router.beforeEach((to, from, next) => {
   window.scrollTo(0, 0);
