@@ -2,7 +2,7 @@
     <ThePageHeader />
     <div class="">
         <!-- begin::Card Header -->
-        <div class="card-header flex justify-between flex-wrap pt-4 mb-4">
+        <div class="card-header flex justify-between flex-wrap py-4">
             <!-- begin::Card Title -->
             <div class="card-title">
                 <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
@@ -52,7 +52,7 @@
                         @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="success"
+                        :onOk="() => messageAnt.success()"
                     >
                         <a-form
                             :label-col="labelCol"
@@ -150,7 +150,7 @@
 <script setup>
 import { FilterOutlined, ExportOutlined } from "@ant-design/icons-vue";
 import { computed, reactive } from "vue";
-import { message } from "ant-design-vue";
+import messageAnt from "../../../scripts/message";
 
 // modal export
 
@@ -159,20 +159,7 @@ const showModalExport = () => {
     openModalExport.value = true;
 };
 const handleOkModalExport = (e) => {
-    console.log(e);
     openModalExport.value = false;
-};
-
-// alert message
-
-const success = () => {
-    message.success("Thao tác thành công");
-};
-const error = () => {
-    message.error("Thao tác thất bại");
-};
-const warning = () => {
-    message.warning("Cảnh báo!");
 };
 
 // table

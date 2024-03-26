@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <!-- begin::Card Header -->
-        <div class="card-header flex justify-between flex-wrap pt-4">
+        <div class="card-header flex justify-between flex-wrap py-4">
             <!-- begin::Card Title -->
             <div class="card-title">
                 <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
@@ -52,7 +52,7 @@
                         @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="success"
+                        :onOk="() => messageAnt.success()"
                     >
                         <a-form
                             :label-col="labelCol"
@@ -133,7 +133,8 @@ import {
     ExportOutlined,
     UserOutlined,
 } from "@ant-design/icons-vue";
-import { message } from "ant-design-vue";
+import { ref } from "vue";
+import messageAnt from "../../../scripts/message";
 
 // modal export
 const openModalExport = ref(false);
@@ -141,20 +142,7 @@ const showModalExport = () => {
     openModalExport.value = true;
 };
 const handleOkModalExport = (e) => {
-    console.log(e);
     openModalExport.value = false;
-};
-
-// alert message
-
-const success = () => {
-    message.success("Thao tác thành công");
-};
-const error = () => {
-    message.error("Thao tác thất bại");
-};
-const warning = () => {
-    message.warning("Cảnh báo!");
 };
 
 const labelCol = {
@@ -340,7 +328,6 @@ const data = [
 </script>
 
 <script>
-import { ref } from "vue";
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 
 export default {

@@ -3,7 +3,7 @@
 
     <div class="">
         <!-- begin::Card Header -->
-        <div class="card-header flex justify-between flex-wrap pt-4">
+        <div class="card-header flex justify-between flex-wrap py-4">
             <!-- begin::Card Title -->
             <div class="card-title my-1">
                 <a-input-search
@@ -35,7 +35,7 @@
                         @ok="handleOkModalFilter"
                         cancelText="Reset"
                         okText="Áp dụng"
-                        :onOk="success"
+                        :onOk="() => messageAnt.success()"
                     >
                         <a-form
                             :label-col="labelCol"
@@ -80,7 +80,7 @@
                         @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="success"
+                        :onOk="() => messageAnt.success()"
                     >
                         <a-form
                             :label-col="labelCol"
@@ -122,7 +122,7 @@
                         @ok="handleOkModalAddNew"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="success"
+                        :onOk="() => messageAnt.success()"
                     >
                         <a-form
                             :label-col="labelCol"
@@ -187,7 +187,10 @@
                                                     cancelText="Huỷ"
                                                     okText="Lưu"
                                                     @ok="handleOkModalEdit"
-                                                    :onOk="success"
+                                                    :onOk="
+                                                        () =>
+                                                            messageAnt.success()
+                                                    "
                                                 >
                                                     <a-form
                                                         :label-col="labelCol"
@@ -298,7 +301,7 @@ import {
     DownOutlined,
 } from "@ant-design/icons-vue";
 import { createVNode } from "vue";
-import { message } from "ant-design-vue";
+import messageAnt from "../../../scripts/message";
 
 // radio value
 const radioValue = ref("online");
@@ -309,7 +312,6 @@ const showModalFilter = () => {
     openModalFilter.value = true;
 };
 const handleOkModalFilter = (e) => {
-    console.log(e);
     openModalFilter.value = false;
 };
 
@@ -343,17 +345,6 @@ const handleOkModalEdit = (e) => {
     openModalEdit.value = false;
 };
 
-// alert message
-const success = () => {
-    message.success("Thao tác thành công");
-};
-const error = () => {
-    message.error("Thao tác thất bại");
-};
-const warning = () => {
-    message.warning("Cảnh báo!");
-};
-
 // comfirm modal
 const showConfirmDelete = () => {
     Modal.confirm({
@@ -369,20 +360,11 @@ const showConfirmDelete = () => {
         okText: "Xoá",
         cancelText: "Huỷ",
         onOk() {
-            success();
+            () => messageAnt.success();
         },
         onCancel() {},
         class: "test",
     });
-};
-
-const labelCol = {
-    style: {
-        width: "150px",
-    },
-};
-const wrapperCol = {
-    span: 14,
 };
 
 // table

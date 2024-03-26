@@ -42,10 +42,10 @@
         <!-- end::Content Navbar -->
 
         <!-- begin::Main Content -->
-        <div class="w-full lg:w-4/5 ml-auto">
-            <router-link to="/user/news-detail">
-                <!-- begin::Content Item -->
-                <div class="flex flex-col border-1 mb-4">
+        <div class="w-full lg:w-4/5 ml-auto space-y-10">
+            <!-- begin::Content Item -->
+            <div class="flex flex-col border-1">
+                <router-link to="/user/news-detail">
                     <!-- begin::Card Image -->
                     <div
                         class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]"
@@ -113,57 +113,52 @@
                             <!-- end::Card Info Description -->
                         </div>
                         <!-- end::Card Info Content -->
-
-                        <!-- begin::Card Contact -->
-                        <div class="p-3 flex justify-between">
-                            <!-- begin::Card Published Info -->
-                            <div class="flex align-items-center">
-                                <a-avatar
-                                    size="medium"
-                                    class="me-2"
-                                    :style="{
-                                        backgroundColor: '#f50',
-                                        verticalAlign: 'middle',
-                                    }"
-                                >
-                                    B
-                                </a-avatar>
-                                <div class="flex flex-col">
-                                    <div>Nguyễn Văn Bách</div>
-                                    <div>2 giờ trước</div>
-                                </div>
-                            </div>
-                            <!-- end::Card Published Info -->
-
-                            <!-- begin::Card Contact Button -->
-                            <div>
-                                <a-button
-                                    type="primary "
-                                    class="bg-phone-color"
-                                >
-                                    <div class="flex align-items-center">
-                                        <div>0986853388</div>
-                                        <MinusOutlined
-                                            class="mx-1 d-none d-md-block"
-                                        />
-                                        <div class="d-none d-md-block">
-                                            Sao chép
-                                        </div>
-                                    </div>
-                                </a-button>
-                            </div>
-                            <!-- end::Card Contact Button -->
-                        </div>
-                        <!-- end::Card Contact -->
                     </div>
                     <!-- end::Card Info -->
-                </div>
-                <!-- end::Content Item -->
-            </router-link>
+                </router-link>
 
-            <router-link to="/user/news-detail">
-                <!-- begin::Content Item -->
-                <div class="flex flex-col border-1 mb-4">
+                <!-- begin::Card Contact -->
+                <div class="p-3 flex justify-between">
+                    <!-- begin::Card Published Info -->
+                    <div class="flex align-items-center">
+                        <a-avatar
+                            size="medium"
+                            class="me-2"
+                            :style="{
+                                backgroundColor: '#f50',
+                                verticalAlign: 'middle',
+                            }"
+                        >
+                            B
+                        </a-avatar>
+                        <div class="flex flex-col">
+                            <div>Nguyễn Văn Bách</div>
+                            <div>2 giờ trước</div>
+                        </div>
+                    </div>
+                    <!-- end::Card Published Info -->
+
+                    <!-- begin::Card Contact Button -->
+                    <div>
+                        <a-button type="primary " class="bg-phone-color">
+                            <div class="flex align-items-center">
+                                <div @click="copyText(phoneNumber)">
+                                    {{ phoneNumber }}
+                                </div>
+                                <MinusOutlined class="mx-1 d-none d-md-block" />
+                                <div class="d-none d-md-block">Sao chép</div>
+                            </div>
+                        </a-button>
+                    </div>
+                    <!-- end::Card Contact Button -->
+                </div>
+                <!-- end::Card Contact -->
+            </div>
+            <!-- end::Content Item -->
+
+            <!-- begin::Content Item -->
+            <div class="flex flex-col border-1">
+                <router-link to="/user/news-detail">
                     <!-- begin::Card Image -->
                     <div
                         class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]"
@@ -231,53 +226,48 @@
                             <!-- end::Card Info Description -->
                         </div>
                         <!-- end::Card Info Content -->
-
-                        <!-- begin::Card Contact -->
-                        <div class="p-3 flex justify-between">
-                            <!-- begin::Card Published Info -->
-                            <div class="flex align-items-center">
-                                <a-avatar
-                                    size="medium"
-                                    class="me-2"
-                                    :style="{
-                                        backgroundColor: '#f50',
-                                        verticalAlign: 'middle',
-                                    }"
-                                >
-                                    B
-                                </a-avatar>
-                                <div class="flex flex-col">
-                                    <div>Nguyễn Văn Bách</div>
-                                    <div>2 giờ trước</div>
-                                </div>
-                            </div>
-                            <!-- end::Card Published Info -->
-
-                            <!-- begin::Card Contact Button -->
-                            <div>
-                                <a-button
-                                    type="primary "
-                                    class="bg-phone-color"
-                                >
-                                    <div class="flex align-items-center">
-                                        <div>0986853388</div>
-                                        <MinusOutlined
-                                            class="mx-1 d-none d-md-block"
-                                        />
-                                        <div class="d-none d-md-block">
-                                            Sao chép
-                                        </div>
-                                    </div>
-                                </a-button>
-                            </div>
-                            <!-- end::Card Contact Button -->
-                        </div>
-                        <!-- end::Card Contact -->
                     </div>
                     <!-- end::Card Info -->
+                </router-link>
+
+                <!-- begin::Card Contact -->
+                <div class="p-3 flex justify-between">
+                    <!-- begin::Card Published Info -->
+                    <div class="flex align-items-center">
+                        <a-avatar
+                            size="medium"
+                            class="me-2"
+                            :style="{
+                                backgroundColor: '#f50',
+                                verticalAlign: 'middle',
+                            }"
+                        >
+                            B
+                        </a-avatar>
+                        <div class="flex flex-col">
+                            <div>Nguyễn Văn Bách</div>
+                            <div>2 giờ trước</div>
+                        </div>
+                    </div>
+                    <!-- end::Card Published Info -->
+
+                    <!-- begin::Card Contact Button -->
+                    <div>
+                        <a-button type="primary " class="bg-phone-color">
+                            <div class="flex align-items-center">
+                                <div @click="copyText(phoneNumber)">
+                                    {{ phoneNumber }}
+                                </div>
+                                <MinusOutlined class="mx-1 d-none d-md-block" />
+                                <div class="d-none d-md-block">Sao chép</div>
+                            </div>
+                        </a-button>
+                    </div>
+                    <!-- end::Card Contact Button -->
                 </div>
-                <!-- end::Content Item -->
-            </router-link>
+                <!-- end::Card Contact -->
+            </div>
+            <!-- end::Content Item -->
         </div>
         <!-- end::Main Content -->
 
@@ -302,10 +292,12 @@
 <script setup>
 import { MinusOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
+import copyText from "../../../scripts/copyText";
 
 const current = ref(2);
 var totalLand = "Hiện có 1000 bất động sản";
 var normal = "Thông thường";
+var phoneNumber = "0986853388";
 </script>
 
 <script>
