@@ -48,7 +48,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons-vue";
 
 // begin: carousel
