@@ -11,7 +11,6 @@
             <!-- begin::Card Title -->
             <div class="card-title my-1">
                 <a-input-search
-                    v-model:value="value"
                     placeholder="Tìm kiếm"
                     style="width: 200px"
                     @search="onSearch"
@@ -25,7 +24,6 @@
                     <!-- begin::Filter -->
                     <a-button
                         class="me-3 flex align-items-center justify-center"
-                        :size="size"
                         @click="showModalFilter"
                     >
                         <template #icon>
@@ -36,17 +34,16 @@
                     <a-modal
                         v-model:open="openModalFilter"
                         title="Basic Modal"
-                        @ok="handleOkModalFilter"
                         cancelText="Reset"
                         okText="Áp dụng"
-                        :onOk="() => messageAnt.success()"
+                        :onOk="
+                            () => {
+                                handleOkModalFilter();
+                                messageAnt.success();
+                            }
+                        "
                     >
-                        <a-form
-                            :label-col="labelCol"
-                            :wrapper-col="wrapperCol"
-                            layout="horizontal"
-                            style="max-width: 600px"
-                        >
+                        <a-form layout="horizontal" style="max-width: 600px">
                             <a-form-item label="Chức vụ">
                                 <a-select>
                                     <a-select-option value="user"
@@ -70,7 +67,6 @@
                     <!-- begin::Export -->
                     <a-button
                         class="me-3 flex align-items-center justify-center"
-                        :size="size"
                         @click="showModalExport"
                     >
                         <template #icon>
@@ -81,17 +77,16 @@
                     <a-modal
                         v-model:open="openModalExport"
                         title="Xuất file"
-                        @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="() => messageAnt.success()"
+                        :onOk="
+                            () => {
+                                handleOkModalExport();
+                                messageAnt.success();
+                            }
+                        "
                     >
-                        <a-form
-                            :label-col="labelCol"
-                            :wrapper-col="wrapperCol"
-                            layout="horizontal"
-                            style="max-width: 600px"
-                        >
+                        <a-form layout="horizontal" style="max-width: 600px">
                             <a-form-item label="Loại file">
                                 <a-select>
                                     <a-select-option value="excel"
@@ -113,27 +108,22 @@
                     <!-- end::Export -->
 
                     <!-- begin::Add New -->
-                    <a-button
-                        type="primary"
-                        @click="showModalAddNew"
-                        :size="size"
-                    >
+                    <a-button type="primary" @click="showModalAddNew">
                         Thêm mới
                     </a-button>
                     <a-modal
                         v-model:open="openModalAddNew"
                         title="Xuất file"
-                        @ok="handleOkModalAddNew"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="() => messageAnt.success()"
+                        :onOk="
+                            () => {
+                                handleOkModalAddNew();
+                                messageAnt.success();
+                            }
+                        "
                     >
-                        <a-form
-                            :label-col="labelCol"
-                            :wrapper-col="wrapperCol"
-                            layout="horizontal"
-                            style="max-width: 600px"
-                        >
+                        <a-form layout="horizontal" style="max-width: 600px">
                             <a-form-item label="Tên">
                                 <a-input />
                             </a-form-item>
@@ -377,15 +367,6 @@ const showConfirmDelete = () => {
     });
 };
 
-const labelCol = {
-    style: {
-        width: "150px",
-    },
-};
-const wrapperCol = {
-    span: 14,
-};
-
 // table
 const columns = [
     {
@@ -472,7 +453,6 @@ for (let i = 0; i < 102; i++) {
 </script>
 
 <script>
-import { ref } from "vue";
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 import Card from "../../../components/base/card/Card.vue";
 import CardInfor from "../../../components/base/card/CardInfor.vue";

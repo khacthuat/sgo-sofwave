@@ -15,7 +15,7 @@
                     <!-- begin::Filter -->
                     <a-dropdown :trigger="click">
                         <template #overlay>
-                            <a-menu @click="handleMenuClick">
+                            <a-menu>
                                 <a-menu-item key="1">
                                     <UserOutlined />
                                     Trạng thái
@@ -30,7 +30,7 @@
                                 </a-menu-item>
                             </a-menu>
                         </template>
-                        <a-button class="me-3" :size="size">
+                        <a-button class="me-3">
                             <template #icon>
                                 <FilterOutlined />
                             </template>
@@ -40,7 +40,7 @@
                     <!-- end::Filter -->
 
                     <!-- begin::Export -->
-                    <a-button class="" :size="size" @click="showModalExport">
+                    <a-button class="" @click="showModalExport">
                         <template #icon>
                             <ExportOutlined />
                         </template>
@@ -49,17 +49,16 @@
                     <a-modal
                         v-model:open="openModalExport"
                         title="Xuất file"
-                        @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="() => messageAnt.success()"
+                        :onOk="
+                            () => {
+                                handleOkModalExport();
+                                messageAnt.success();
+                            }
+                        "
                     >
-                        <a-form
-                            :label-col="labelCol"
-                            :wrapper-col="wrapperCol"
-                            layout="horizontal"
-                            style="max-width: 600px"
-                        >
+                        <a-form layout="horizontal" style="max-width: 600px">
                             <a-form-item label="Loại file">
                                 <a-select>
                                     <a-select-option value="excel"
@@ -229,10 +228,6 @@ const start = () => {
 const onSelectChange = (selectedRowKeys) => {
     console.log("selectedRowKeys changed: ", selectedRowKeys);
     state.selectedRowKeys = selectedRowKeys;
-};
-// dropdown
-const handleMenuClick = (e) => {
-    console.log("click", e);
 };
 </script>
 

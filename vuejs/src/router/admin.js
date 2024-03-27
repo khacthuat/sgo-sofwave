@@ -1,5 +1,4 @@
 const admin = [
-
     {
         path: "/admin",
         component: () => import("../layouts/admin.vue"),
@@ -7,7 +6,7 @@ const admin = [
             {
                 path: "users",
                 name: "admin-users",
-                component: () => import("../views/admin/employee/EmployeeList.vue"),
+                component: () => import("../views/admin/user/UserList.vue"),
             },
             {
                 path: "news",
@@ -24,7 +23,6 @@ const admin = [
                 name: "admin-news-statistic",
                 component: () => import("../views/admin/news/NewsBrowse.vue"),
             },
-
         ],
     },
 ];

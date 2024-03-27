@@ -53,7 +53,7 @@
                                 <template #title>
                                     <span>Báo cáo</span>
                                 </template>
-                                <a-button class="border-0 hover:bg-slate-200"
+                                <a-button class="border-0"
                                     ><WarningOutlined
                                         :style="{ fontSize: '24px' }"
                                 /></a-button>
@@ -62,7 +62,7 @@
                                 <template #title>
                                     <span>Lưu tin</span>
                                 </template>
-                                <a-button class="border-0 hover:bg-slate-200"
+                                <a-button class="border-0"
                                     ><HeartOutlined
                                         :style="{ fontSize: '24px' }"
                                 /></a-button>
@@ -73,7 +73,7 @@
                                     <span>Sao chép ảnh</span>
                                 </template>
                                 <a-button
-                                    class="border-0 hover:bg-slate-200"
+                                    class="border-0"
                                     @click="copyImgToClipboard"
                                     ><CopyOutlined
                                         :style="{ fontSize: '24px' }"
@@ -196,21 +196,14 @@
 
 <script setup>
 import {
-    MinusOutlined,
     HeartOutlined,
     WarningOutlined,
     ShareAltOutlined,
     CopyOutlined,
-    BorderOutlined,
-    StarOutlined,
-    LikeOutlined,
-    MessageOutlined,
 } from "@ant-design/icons-vue";
-import { ref } from "vue";
 </script>
 
 <script>
-import Clipboard from "clipboard";
 import ThePageHeader from "../../../components/ThePageHeader.vue";
 import Carousel from "../../../components/base/carousel/Carousel.vue";
 import Comment from "../../../components/base/comment/Comment.vue";
@@ -224,45 +217,11 @@ export default {
         SidebarFilter,
     },
 
-    methods: {
-        async copyImgToClipboard() {
-            try {
-                const imageUrls = [
-                    `https://www.js-craft.io/_public-files/img-cat.png`,
-                    `https://www.js-craft.io/_public-files/img-dog.png`,
-                ];
-
-                for (const imageUrl of imageUrls) {
-                    const response = await fetch(imageUrl);
-
-                    if (!response.ok) {
-                        // Handle failed fetch for individual image
-                        console.warn(`Failed to fetch image: ${imageUrl}`);
-                        continue; // Skip to next image if fetch fails
-                    }
-
-                    const blob = await response.blob();
-                    const clipboardItem = new ClipboardItem({
-                        "image/png": blob,
-                    });
-
-                    await navigator.clipboard.write([clipboardItem]);
-                }
-
-                console.log("Images copied to clipboard!");
-            } catch (error) {
-                console.error("Failed to copy images:", error);
-            }
-        },
-    },
+    methods: {},
 };
 </script>
 
 <style scoped>
-.ant-pagination .ant-pagination-options {
-    display: none !important;
-}
-
 :deep(.slick-arrow.custom-slick-arrow) {
     width: 25px;
     height: 25px;

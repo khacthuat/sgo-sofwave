@@ -16,12 +16,10 @@
             <!-- begin::Filter -->
             <div>
                 <a-select
-                    ref="select"
                     v-model:value="normal"
                     :placeholder="normal"
                     class="n:w-auto lg:w-56"
                     placehoder="Sắp xếp"
-                    @change="handleChange"
                 >
                     <a-select-option value="normal"
                         >Thông thường</a-select-option
@@ -122,7 +120,6 @@
                     <!-- begin::Card Published Info -->
                     <div class="flex align-items-center">
                         <a-avatar
-                            size="medium"
                             class="me-2"
                             :style="{
                                 backgroundColor: '#f50',
@@ -140,7 +137,7 @@
 
                     <!-- begin::Card Contact Button -->
                     <div>
-                        <a-button type="primary " class="bg-phone-color">
+                        <a-button type="primary ">
                             <div class="flex align-items-center">
                                 <div @click="copyText(phoneNumber)">
                                     {{ phoneNumber }}
@@ -235,7 +232,6 @@
                     <!-- begin::Card Published Info -->
                     <div class="flex align-items-center">
                         <a-avatar
-                            size="medium"
                             class="me-2"
                             :style="{
                                 backgroundColor: '#f50',
@@ -294,7 +290,7 @@ import { MinusOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import copyText from "../../../scripts/copyText";
 
-const current = ref(2);
+const current = ref(1);
 var totalLand = "Hiện có 1000 bất động sản";
 var normal = "Thông thường";
 var phoneNumber = "0986853388";

@@ -12,9 +12,9 @@
             <div class="card-toolbar">
                 <div class="flex justify-end">
                     <!-- begin::Filter -->
-                    <a-dropdown :trigger="click">
+                    <a-dropdown trigger="click">
                         <template #overlay>
-                            <a-menu @click="handleMenuClick">
+                            <a-menu>
                                 <a-menu-item key="1">
                                     <UserOutlined />
                                     Trạng thái
@@ -22,10 +22,6 @@
                                 <a-menu-item key="2">
                                     <UserOutlined />
                                     Ngày đăng
-                                </a-menu-item>
-                                <a-menu-item key="3">
-                                    <UserOutlined />
-                                    3rd item
                                 </a-menu-item>
                             </a-menu>
                         </template>
@@ -49,17 +45,16 @@
                     <a-modal
                         v-model:open="openModalExport"
                         title="Xuất file"
-                        @ok="handleOkModalExport"
                         cancelText="Huỷ"
                         okText="Xuất file"
-                        :onOk="() => messageAnt.success()"
+                        :onOk="
+                            () => {
+                                handleOkModalExport();
+                                messageAnt.success();
+                            }
+                        "
                     >
-                        <a-form
-                            :label-col="labelCol"
-                            :wrapper-col="wrapperCol"
-                            layout="horizontal"
-                            style="max-width: 600px"
-                        >
+                        <a-form layout="horizontal" style="max-width: 600px">
                             <a-form-item label="Loại file">
                                 <a-select>
                                     <a-select-option value="excel"
@@ -143,15 +138,6 @@ const showModalExport = () => {
 };
 const handleOkModalExport = (e) => {
     openModalExport.value = false;
-};
-
-const labelCol = {
-    style: {
-        width: "150px",
-    },
-};
-const wrapperCol = {
-    span: 14,
 };
 
 // table
