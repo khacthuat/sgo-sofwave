@@ -21,14 +21,14 @@ class UserSeeder extends Seeder
             'name' => 'Văn Bách',
             'email' => 'youngbach@gmail.com',
             'password' => Hash::make('admin'),
-            'role' => 'admin'
+            'role_id' => 1
         ]);
 
         User::create([
             'name' => 'Huy Nguyễn',
             'email' => 'huynguyen@gmail.com',
             'password' => Hash::make('admin'),
-            'role' => 'employee'
+            'role_id' => 2
 
         ]);
 
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'name' => 'Thế Hải',
             'email' => 'thehai@gmail.com',
             'password' => Hash::make('admin'),
-            'role' => 'sale'
+            'role_id' => 3
         ]);
     }
 }

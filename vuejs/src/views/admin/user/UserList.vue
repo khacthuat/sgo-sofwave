@@ -6,7 +6,7 @@
     <div class="card-header flex justify-between flex-wrap py-4">
       <!-- begin::Card Title -->
       <div class="card-title my-1">
-        <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
+        <a-input-search placeholder="Tìm kiếm" style="min-width: 200px" />
       </div>
       <!-- end::Card Title -->
 
@@ -102,9 +102,12 @@
     <div class="card-body">
       <!-- begin::Table -->
       <div clas="table">
-        <a-table :columns="columns" :data-source="data" :scroll="{ x: 1500 }">
+        <a-table
+          :columns="columns"
+          v-model:data-source="data"
+          :scroll="{ x: 1500 }"
+        >
           <template #bodyCell="{ column, record }">
-            <!-- modal show up when click actions button -->
             <template v-if="column.key === 'operation'">
               <div>
                 <a-dropdown trigger="click">
@@ -116,7 +119,7 @@
                         </div>
                       </a-menu-item>
                       <a-menu-item key="2">
-                        <div @click="showConfirmDelete">Xoá</div>
+                        <div @click="showConfirmDelete(record.id)">Xoá</div>
                       </a-menu-item>
                     </a-menu>
                   </template>
@@ -129,33 +132,43 @@
             </template>
 
             <!-- tag for role user -->
-            <template v-if="column.dataIndex === 'role'">
+            <template v-if="column.dataIndex === 'role_id'">
               <a-tag
                 :color="
-                  record.role === 'admin'
+                  record.role_id === 1
                     ? '#87d068'
-                    : record.role === 'employee'
+                    : record.role_id === 2
                     ? '#2db7f5'
-                    : record.role === 'sale'
+                    : record.role_id === 3
                     ? '#8b5cf6'
                     : ''
                 "
               >
-                {{ record.role }}</a-tag
-              >
+                {{
+                  record.role_id === 1
+                    ? "admin"
+                    : record.role_id === 2
+                    ? "đầu chủ"
+                    : record.role_id === 3
+                    ? "sale"
+                    : ""
+                }}
+              </a-tag>
             </template>
-            <template v-else-if="column.dataIndex === 'status'">
+            <template v-else-if="column.dataIndex === 'is_active'">
               <a-tag
                 :bordered="false"
                 :color="
-                  record.status === 'active'
+                  record.is_active == 1
                     ? 'success'
-                    : record.status === 'inactive'
+                    : record.is_active == 0
                     ? 'error'
                     : ''
                 "
               >
-                {{ record.status }}</a-tag
+                {{
+                  record.is_active == 1 ? "hoạt động" : "không hoạt động"
+                }}</a-tag
               >
             </template>
             <template v-else>
@@ -173,6 +186,7 @@
   <UserDetail
     v-model:open="isShowDetail"
     @isShowDetail="showDetail"
+    @updateUserList="fetchUsersList"
     :title="title"
     :userSelected="userSelected"
   />
@@ -194,12 +208,13 @@ import listUsersAPI from "../../../api/users/index";
 import delteUserAPI from "../../../api/users/deleteUser";
 import formatDate from "../../../scripts/formatDate";
 import UserDetail from "./UserDetail.vue";
+import messageAnt from "../../../scripts/message";
 
 // table
 const columns = [
   {
     title: "Tên",
-    width: 100,
+    width: 200,
     dataIndex: "name",
     key: "2",
   },
@@ -223,31 +238,38 @@ const columns = [
   },
   {
     title: "Chức vụ",
-    dataIndex: "role",
+    dataIndex: "role_id",
     key: "6",
-    width: 150,
+    width: 100,
   },
   {
     title: "Trạng thái",
-    dataIndex: "status",
+    dataIndex: "is_active",
     key: "7",
-    width: 150,
+    width: 100,
   },
   {
     title: "Số tin đã đăng",
     dataIndex: "activity",
     key: "8",
-    width: 150,
+    width: 100,
   },
   {
     title: "Action",
     key: "operation",
-    width: 120,
+    width: 100,
   },
 ];
 
 const data = ref([]);
+
+/**
+ * Hàm lấy danh sách người dùng
+ * @param
+ * CreatedBy: youngbachhh (28/03/2024)
+ */
 const fetchUsersList = async () => {
+  data.value = [];
   const listUsers = await listUsersAPI();
   for (let i = 0; i < listUsers.length; i++) {
     data.value.push({
@@ -256,8 +278,8 @@ const fetchUsersList = async () => {
       email: listUsers[i].email,
       created_at: formatDate(listUsers[i].created_at),
       updated_at: formatDate(listUsers[i].updated_at),
-      role: listUsers[i].role,
-      status: listUsers[i].status,
+      role_id: listUsers[i].role_id,
+      is_active: listUsers[i].is_active,
       activity: 120,
     });
   }
@@ -268,10 +290,10 @@ fetchUsersList();
 const title = ref("");
 const isShowDetail = ref(false);
 const userSelected = ref({
-  name: "test",
-  email: "test",
-  role: "test",
-  status: "test",
+  name: "",
+  email: "",
+  role_id: "",
+  is_active: "",
 });
 
 const showDetail = (value) => {
@@ -281,8 +303,8 @@ const showModalAdd = () => {
   userSelected.value = {
     name: "",
     email: "",
-    role: "",
-    status: "",
+    role_id: "",
+    is_active: "",
   };
   isShowDetail.value = true;
   title.value = "Thêm mới";
@@ -292,24 +314,6 @@ const showModalUpdate = async (user) => {
   userSelected.value = user;
   isShowDetail.value = true;
 };
-
-// const updateData = {
-//     name: "",
-//     email: "",
-//     role: "",
-//     status: "",
-// };
-
-// const showModalUpdate = async (id) => {
-//     const user = await getUserAPI.getById(id);
-//     console.log(user);
-//     updateData.name = user.name;
-//     updateData.email = user.email;
-//     updateData.role = user.role;
-//     updateData.status = user.status;
-
-//     openModalUpdate.value = true;
-// };
 
 // radio value
 const radioValue = ref("active");
@@ -329,12 +333,11 @@ const showModalExport = () => {
   openModalExport.value = true;
 };
 const handleOkModalExport = (e) => {
-  console.log(e);
   openModalExport.value = false;
 };
 
 // comfirm modal
-const showConfirmDelete = () => {
+const showConfirmDelete = async (id) => {
   Modal.confirm({
     title: "Cảnh báo",
     icon: createVNode(ExclamationCircleOutlined),
@@ -347,16 +350,14 @@ const showConfirmDelete = () => {
     ),
     okText: "Xoá",
     cancelText: "Huỷ",
-    async onOk() {
+    onOk() {
       const fetchDeleteUser = async (id) => {
         const deleteUser = await delteUserAPI(id);
+        updateUserList();
+        messageAnt.success();
       };
-      await new Promise((resolve, reject) => {
-        setTimeout(resolve, 500);
-      });
-      messageAnt.success();
+      fetchDeleteUser(id);
     },
-
     onCancel() {},
   });
 };

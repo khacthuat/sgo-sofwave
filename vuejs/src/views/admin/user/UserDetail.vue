@@ -18,16 +18,16 @@
         <a-input v-model:value="user.email" />
       </a-form-item>
       <a-form-item label="Chọn quyền:">
-        <a-select v-model:value="user.role">
-          <a-select-option value="admin">Admin</a-select-option>
-          <a-select-option value="employee">Đầu chủ</a-select-option>
-          <a-select-option value="sale"> Sale </a-select-option>
+        <a-select ref="select" v-model:value="user.role_id">
+          <a-select-option :value="1">Admin</a-select-option>
+          <a-select-option :value="2">Đầu chủ</a-select-option>
+          <a-select-option :value="3"> Sale </a-select-option>
         </a-select>
       </a-form-item>
       <a-form-item label="Trạng thái:">
-        <a-select v-model:value="user.status">
-          <a-select-option value="active">Hoạt động</a-select-option>
-          <a-select-option value="inactive">Không hoạt động</a-select-option>
+        <a-select ref="select" v-model:value="user.is_active">
+          <a-select-option :value="1">Hoạt động</a-select-option>
+          <a-select-option :value="0">Không hoạt động</a-select-option>
         </a-select>
       </a-form-item>
     </a-form>
@@ -35,9 +35,9 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 import updateUserAPI from "../../../api/users/updateUser";
-import getUserAPI from "../../../api/users/getUser";
+import createUserAPI from "../../../api/users/createUser";
 import messageAnt from "../../../scripts/message";
 
 const props = defineProps({
@@ -45,29 +45,91 @@ const props = defineProps({
   userSelected: Object,
 });
 
-const emits = defineEmits(["isShowDetail"]);
+const emits = defineEmits(["isShowDetail", "updateUserList"]);
 
-// loading
 const loading = ref(false);
-var user = ref({});
+const user = reactive({
+  name: "",
+  email: "",
+  role_id: "",
+  is_active: "",
+});
+const errors = ref({});
 
+// Theo dõi sự thay đổi của userSelected
 watch(
   () => props.userSelected,
   (newValue, oldValue) => {
-    user.value = { ...newValue };
+    if (newValue) {
+      user.id = newValue.id;
+      user.name = newValue.name;
+      user.email = newValue.email;
+      user.role_id = newValue.role_id;
+      user.is_active = newValue.is_active;
+    }
   }
 );
 
 const handleOkModal = async () => {
   loading.value = true;
-  const fetchUpdateUser = async (id, information) => {
-    const updateUser = await updateUserAPI(id, information);
-  };
-  setTimeout(() => {
-    emits("isShowDetail", false);
+  if (user.name === "" || user.email === "") {
+    messageAnt.error("Vui lòng nhập đầy đủ thông tin");
     loading.value = false;
-    messageAnt.success();
-  }, 500);
+    return;
+  }
+
+  if (props.title === "Thêm mới") {
+    const information = {
+      name: user.name,
+      email: user.email,
+      role_id: user.role_id,
+      is_active: user.is_active,
+    };
+    /**
+     * Hàm thêm mới người dùng
+     * @param {Object} information
+     * CreatedBy: youngbachhh (28/03/2024)
+     */
+    const fetchCreateUser = async (information) => {
+      try {
+        const createUser = await createUserAPI(information);
+        emits("updateUserList");
+      } catch (error) {
+        errors.value = error.responsive.data.errors;
+      } finally {
+        emits("isShowDetail", false);
+        loading.value = false;
+      }
+    };
+    fetchCreateUser(information);
+  } else if (props.title === "Sửa") {
+    const id = user.id;
+    const information = {
+      name: user.name,
+      email: user.email,
+      role_id: user.role_id,
+      is_active: user.is_active,
+    };
+    /**
+     * Hàm cập nhật dữ liệu người dùng
+     * @param {String} id, {Object} information
+     * CreatedBy: youngbachhh (28/03/2024)
+     */
+    const fetchUpdateUser = async (id, information) => {
+      try {
+        const updateUser = await updateUserAPI(id, information);
+        emits("updateUserList");
+        messageAnt.success();
+      } catch (error) {
+        errors.value = error.responsive.data.errors;
+      } finally {
+        emits("isShowDetail", false);
+        loading.value = false;
+      }
+    };
+
+    fetchUpdateUser(id, information);
+  }
 };
 </script>
 

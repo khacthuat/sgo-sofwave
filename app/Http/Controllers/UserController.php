@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -39,6 +40,35 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+
+            ],
+            [
+                'name.required' => 'Không được bỏ trống tên',
+                'email.required' => 'Không được bỏ trống email',
+                'email.email' => 'Email không đúng định dạng',
+                'email.unique' => 'Email đã tồn tại',
+
+            ]
+        );
+
+        $user = User::create(
+            [
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'role_id' => $request['role_id'],
+                'is_active' => $request['is_active'],
+                'password' => Hash::make('123456'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]
+        );
+
+
+        return $user;
     }
 
     /**
@@ -62,6 +92,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+
+
+
     }
 
     /**
@@ -71,10 +104,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "role_id" => $request->role_id,
+            "is_active" => $request->is_active,
+            "updated_at" => date('Y-m-d H:i:s'),
+        ]);
+
+        return response()->json($user);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,5 +129,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $user->delete();
+        return response()->json(['message' => 'Xóa thành công'], 200);
     }
 }

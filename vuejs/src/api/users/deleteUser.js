@@ -1,9 +1,11 @@
+import apiURL from "../constants";
+
 const deleteUserAPI = async (id) => {
     try {
-        const response = await axios.delete(`/users/${id}`);
+        const response = await axios.delete(`${apiURL.baseURL}/users/${id}`);
         return response.data;
     } catch (error) {
-        throw new Error(error);
+        console.log(error);
     }
 };
 
