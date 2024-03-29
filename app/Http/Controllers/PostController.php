@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
-class NewsController extends Controller
+class PostController extends Controller
 {
+    //
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +16,8 @@ class NewsController extends Controller
     public function index()
     {
         //
+        $posts = Post::with(['user', 'status'])->get();
+        return response()->json($posts);
     }
 
     /**
@@ -41,21 +44,23 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(Post $post)
     {
         //
+        $post = Post::with(['user', 'status'])->find($post->id);
+        return response()->json($post);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(Post $post)
     {
         //
     }
@@ -64,22 +69,27 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, Post $post)
     {
         //
+
+        $post->update($request->all());
+        return response()->json($post);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy(Post $post)
     {
         //
+        $post->delete();
+        return response()->json(['message' => 'Xóa thành công'], 200);
     }
 }

@@ -78,8 +78,7 @@ const fetchProvincesData = async () => {
     const res = await addressAPI.getProvinces();
 
     provincesList.value = res.map((province) => ({
-      id: province.province_id,
-      value: province.province_name,
+      value: province.province_id,
       label: province.province_name,
     }));
   } catch (error) {
@@ -89,11 +88,10 @@ const fetchProvincesData = async () => {
 
 const fetchDistrictsData = async () => {
   try {
-    const res = await addressAPI.getDistrictsByProvinceId(province.id);
+    const res = await addressAPI.getDistrictsByProvinceId(province.value);
 
     districtsList.value = res.map((district) => ({
-      id: district.district_id,
-      value: district.district_name,
+      value: district.district_id,
       label: district.district_name,
     }));
   } catch (error) {
@@ -103,11 +101,10 @@ const fetchDistrictsData = async () => {
 
 const fetchWardsData = async () => {
   try {
-    const res = await addressAPI.getWardsByDistrictId(district.id);
+    const res = await addressAPI.getWardsByDistrictId(district.value);
 
     wardsList.value = res.map((ward) => ({
-      id: ward.ward_id,
-      value: ward.ward_name,
+      value: ward.ward_id,
       label: ward.ward_name,
     }));
   } catch (error) {
@@ -128,7 +125,7 @@ fetchDistrictsData();
 fetchWardsData();
 
 const filterOption = (input, option) => {
-  return option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+  return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 };
 </script>
 

@@ -1,31 +1,38 @@
 <template>
-    <div class="w-100">
-        <ThePageHeader />
-        <!-- begin::Form -->
-        <div class="flex flex-col lg:flex-row w-100">
-            <!-- begin::Main Column -->
-            <div
-                class="flex flex-col col-12 col-lg-4 gap-3 gap-lg-5"
-                style="background-color: white"
-            >
-                <TheMainColumn />
-            </div>
-            <!-- end::Main Column -->
+  <div class="w-100">
+    <ThePageHeader />
+    <!-- begin::Form -->
+    <div class="flex flex-col lg:flex-row w-100">
+      <!-- begin::Main Column -->
+      <div
+        class="flex flex-col col-12 col-lg-4 gap-3 gap-lg-5"
+        style="background-color: white"
+      >
+        <TheMainColumn />
+      </div>
+      <!-- end::Main Column -->
 
-            <!-- begin::Detail Column -->
-            <div
-                class="flex flex-col col-12 col-lg-8 gap-7 gap-lg-10 pl-5"
-                style="background-color: white"
-            >
-                <TheDetailColumn />
-            </div>
-            <!-- end::Detail Column -->
-        </div>
-        <!-- end::Form -->
+      <!-- begin::Detail Column -->
+      <div
+        class="flex flex-col col-12 col-lg-8 gap-7 gap-lg-10 pl-5"
+        style="background-color: white"
+      >
+        <TheDetailColumn />
+      </div>
+      <!-- end::Detail Column -->
     </div>
+    <!-- end::Form -->
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+
+const route = useRoute();
+const postId = route.params.id;
+console.log(postId);
+</script>
 
 <script>
 import ThePageHeader from "../../../components/ThePageHeader.vue";
@@ -37,15 +44,15 @@ import TheMainColumn from "../../../components/layout/column/TheMainColumn.vue";
 import TheDetailColumn from "../../../components/layout/column/TheDetailColumn.vue";
 
 export default {
-    components: {
-        ThePageHeader,
-        Comment,
-        InputBasic,
-        InputSelect,
-        Card,
-        TheMainColumn,
-        TheDetailColumn,
-    },
+  components: {
+    ThePageHeader,
+    Comment,
+    InputBasic,
+    InputSelect,
+    Card,
+    TheMainColumn,
+    TheDetailColumn,
+  },
 };
 </script>
 <style></style>

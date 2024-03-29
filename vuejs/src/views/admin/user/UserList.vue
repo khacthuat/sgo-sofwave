@@ -37,15 +37,16 @@
           >
             <a-form layout="horizontal" style="max-width: 600px">
               <a-form-item label="Chức vụ">
-                <a-select>
-                  <a-select-option value="user">User</a-select-option>
-                  <a-select-option value="admin">Admin</a-select-option>
+                <a-select v-model:value="roleFilter">
+                  <a-select-option value="1">Admin</a-select-option>
+                  <a-select-option value="2">Đầu chủ</a-select-option>
+                  <a-select-option value="3">Sale</a-select-option>
                 </a-select>
               </a-form-item>
               <a-form-item label="Trạng thái">
-                <a-radio-group v-model:value="radioValue">
-                  <a-radio value="active">Hoạt động</a-radio>
-                  <a-radio value="inactive">Không hoạt động</a-radio>
+                <a-radio-group v-model:value="activeFilter">
+                  <a-radio value="1">Hoạt động</a-radio>
+                  <a-radio value="0">Không hoạt động</a-radio>
                 </a-radio-group>
               </a-form-item>
             </a-form>
@@ -78,8 +79,8 @@
               <a-form-item label="Loại file">
                 <a-select>
                   <a-select-option value="excel">Excel</a-select-option>
-                  <a-select-option value="admin">PDF</a-select-option>
-                  <a-select-option value="admin">Zip</a-select-option>
+                  <a-select-option value="pdf">PDF</a-select-option>
+                  <a-select-option value="zip">Zip</a-select-option>
                 </a-select>
               </a-form-item>
               <a-form-item label="Khoảng thời gian">
@@ -271,18 +272,20 @@ const data = ref([]);
 const fetchUsersList = async () => {
   data.value = [];
   const listUsers = await listUsersAPI();
-  for (let i = 0; i < listUsers.length; i++) {
-    data.value.push({
-      id: listUsers[i].id,
-      name: listUsers[i].name,
-      email: listUsers[i].email,
-      created_at: formatDate(listUsers[i].created_at),
-      updated_at: formatDate(listUsers[i].updated_at),
-      role_id: listUsers[i].role_id,
-      is_active: listUsers[i].is_active,
+  const users = [];
+  for (const user of listUsers) {
+    users.push({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      created_at: formatDate(user.created_at),
+      updated_at: formatDate(user.updated_at),
+      role_id: user.role_id,
+      is_active: user.is_active,
       activity: 120,
     });
   }
+  data.value = users;
 };
 fetchUsersList();
 
@@ -316,7 +319,8 @@ const showModalUpdate = async (user) => {
 };
 
 // radio value
-const radioValue = ref("active");
+const activeFilter = ref("1");
+const roleFilter = ref("1");
 
 // modal filter
 const openModalFilter = ref(false);

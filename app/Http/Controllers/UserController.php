@@ -116,7 +116,7 @@ class UserController extends Controller
             "updated_at" => date('Y-m-d H:i:s'),
         ]);
 
-        return response()->json($user);
+        return response()->json(['message' => 'Cập nhật thành công'], 200);
     }
 
 

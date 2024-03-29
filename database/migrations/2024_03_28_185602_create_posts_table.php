@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->integer('area');
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->integer('unit');
             $table->boolean('sold_status')->default(false);
             $table->foreignId('status_id')->constrained('status');

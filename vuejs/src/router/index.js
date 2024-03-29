@@ -1,15 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import admin from './admin.js'
-import user from './user.js'
+import { createRouter, createWebHistory } from "vue-router";
+import admin from "./admin.js";
+import user from "./user.js";
 
 const routes = [
     ...admin,
-    ...user
-]
+    ...user,
+    {
+        path: "/post/create",
+        name: "post.create",
+    },
+];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
-})
+    routes,
+});
 
 export default router;
