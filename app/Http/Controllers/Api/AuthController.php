@@ -3,28 +3,49 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //
-    public function login(Request $request){
-        // $credentials = $request->only('email', 'password');
-        // if (auth()->attempt($credentials)) {
-        //     $token = auth()->user()->createToken('authToken')->plainTextToken;
-        //     return response()->json(['token' => $token], 200);
-        // } else {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+    /**
+     * Hàm đăng nhập
+     * @param Request $request
+     * CreatedBy: youngbachhh (31/03/2024)
+     */
+    public function login(Request $request)
+    {
+
+        $success = Auth::attempt($request->only('email', 'password'));
+
+        if (!$success) {
+            return response()->json(['message' => 'Thông tin đăng nhập không đúng!'], 401);
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        $token = $user->createToken($request->email);
+
+        $user->token = $token->plainTextToken;
+
+        return response()->json($user, 200);
     }
 
-    public function logout(Request $request){
-        // auth()->user()->tokens()->delete();
-        // return response()->json(['message' => 'Logged out'], 200);
+    /**
+     * Hàm đăng xuất
+     * @param Request $request
+     * CreatedBy: youngbachhh (31/03/2024)
+     */
+    public function logout(Request $request)
+    {
+        // Chỉ xóa token hiện tại
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Đăng xuất thành công'], 200);
     }
 
-    public function me(Request $request){
+    public function me(Request $request)
+    {
         return response()->json($request->user(), 200);
     }
 }
-

@@ -11,7 +11,7 @@
           <div
             class="image-input-wrapper w-72 h-72"
             style="
-              background-image: url(https://contents.mediadecathlon.com/p2606919/k$a531927e5c71c12f4d3edac227199f78/jogflow-5001-men-s-running-shoes-white-blue-red.jpg?format=auto&quality=40&f=800x800);
+              background-image: url(https://file4.batdongsan.com.vn/resize/1275x717/2024/03/31/20240331092400-d913_wm.jpg);
             "
           ></div>
           <!-- end::Image avatar -->

@@ -31,7 +31,7 @@
         <div class="app-header-control-menu">
           <!-- begin::Control Menu Item -->
           <div class="app-control-menu-item">
-            <div class="flex align-items-center space-x-4" v-if="!login">
+            <div class="flex align-items-center space-x-4" v-if="store.token">
               <a-popover placement="bottomRight" trigger="click" class="flex">
                 <template #content>
                   <div class="max-h-[440px] max-w-[580px]">
@@ -89,7 +89,9 @@
                       <a-menu-item key="3">
                         Thay đổi thông tin các nhân
                       </a-menu-item>
-                      <a-menu-item key="4"> Đăng xuất </a-menu-item>
+                      <a-menu-item key="4" @click="onLogout">
+                        Đăng xuất
+                      </a-menu-item>
                     </a-menu>
                   </template>
                   <div
@@ -189,6 +191,7 @@
                           type="primary"
                           html-type="submit"
                           class="login-form-button mb-3"
+                          @click="onLogin"
                         >
                           Đăng nhập
                         </a-button>
@@ -275,10 +278,14 @@ import {
   LockOutlined,
   PhoneOutlined,
 } from "@ant-design/icons-vue";
-import { ref } from "vue";
+import { ref, reactive, computed } from "vue";
+import auth from "../../stores/auth";
+import login from "../../api/auth/login";
+import logout from "../../api/auth/logout";
+
+const store = auth();
 
 // login
-import { reactive, computed } from "vue";
 const formState = reactive({
   username: "",
   password: "",
@@ -286,11 +293,18 @@ const formState = reactive({
 });
 
 const onFinish = (values) => {
-  console.log("Success:", values);
+  modalLoginVisible.value = false;
 };
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
+const onLogin = async () => {
+  const user = await login(formState.username, formState.password);
+  if (!user) return;
+  store.login(user.token, user);
 };
+const onLogout = async () => {
+  const userLogout = await logout(localStorage.getItem("token"));
+  store.logout();
+};
+const onFinishFailed = (errorInfo) => {};
 const disabled = computed(() => {
   return !(formState.username && formState.password);
 });

@@ -11,6 +11,10 @@ const routes = [
     },
 ];
 
+function isAuthenticated() {
+    return localStorage.getItem("token");
+}
+
 const router = createRouter({
     history: createWebHistory(),
     routes,
