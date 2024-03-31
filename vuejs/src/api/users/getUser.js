@@ -9,6 +9,18 @@ const getUserAPI = {
             console.error(error);
         }
     },
+    getByToken: async (token) => {
+        try {
+            const response = await axios.get(`${apiURL.baseURL}/user`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
 };
 
 export default getUserAPI;

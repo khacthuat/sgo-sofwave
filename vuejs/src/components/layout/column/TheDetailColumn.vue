@@ -9,7 +9,7 @@
             <template #content>
               <!-- begin::Input Group -->
               <div class="mb-3">
-                <div class="form-label">``Địa điểm``</div>
+                <div class="form-label">Địa điểm</div>
                 <a-select
                   class="w-100"
                   placeholder="Tỉnh/Thành"
@@ -211,15 +211,10 @@ const post = reactive({
   user_id: "",
 });
 
-const province = ref({
-  value: "01",
-});
-
-const district = ref({
-  value: "271",
-});
+const province = ref(null);
+const district = ref(null);
 const ward = ref(null);
-``;
+
 if (route.params.id) {
   // Hàm lấy thông tin bài viết theo id
   const fetchPostById = async (id) => {

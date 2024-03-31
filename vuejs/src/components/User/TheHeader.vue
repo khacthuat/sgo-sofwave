@@ -282,8 +282,16 @@ import { ref, reactive, computed } from "vue";
 import auth from "../../stores/auth";
 import login from "../../api/auth/login";
 import logout from "../../api/auth/logout";
+import getUserAPI from "../../api/users/getUser";
 
 const store = auth();
+
+if (localStorage.getItem("token")) {
+  store.login(
+    localStorage.getItem("token"),
+    getUserAPI.getByToken(localStorage.getItem("token"))
+  );
+}
 
 // login
 const formState = reactive({
@@ -302,7 +310,7 @@ const onLogin = async () => {
 };
 const onLogout = async () => {
   const userLogout = await logout(localStorage.getItem("token"));
-  store.logout();
+  store.logout(localStorage.getItem("token"));
 };
 const onFinishFailed = (errorInfo) => {};
 const disabled = computed(() => {
