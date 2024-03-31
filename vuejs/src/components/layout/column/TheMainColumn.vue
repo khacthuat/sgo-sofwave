@@ -40,7 +40,7 @@
   <!-- begin::Status -->
   <Card title="Trạng thái">
     <template #content>
-      <InputSelect :options="status" :valueSelected="statusValue" />
+      <InputSelect :valueSelected="post.sold_status" :options="status" />
     </template>
   </Card>
   <!-- end::Status -->
@@ -53,7 +53,7 @@
         <a-statistic title="Lượt xem tháng hiện tại:" :value="112" />
       </a-col>
       <a-col class="col-12">
-        <a-statistic title="Tổng lượt xem:" :value="11283" />
+        <a-statistic title="Tổng lượt xem:" :value="1000" />
       </a-col>
       <!-- end::Statistic views -->
     </template>
@@ -62,18 +62,44 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { UploadOutlined } from "@ant-design/icons-vue";
+import { useRoute } from "vue-router";
+import getPostAPI from "../../../api/posts/getDetails";
 
-const statusValue = ref("sold");
+const route = useRoute();
+const post = reactive({
+  title: "",
+  description: "",
+  area: "",
+  price: "",
+  unit: "",
+  sold_status: "",
+  status_id: "",
+  user_id: "",
+});
+if (route.params.id) {
+  const fetchPostById = async (id) => {
+    const getPost = await getPostAPI.getById(id);
+    post.title = getPost.title;
+    post.description = getPost.description;
+    post.area = getPost.area.toString();
+    post.price = getPost.price.toString();
+    post.unit = getPost.unit.toString();
+    post.sold_status = getPost.sold_status.toString();
+    post.status_id = getPost.status_id.toString();
+    post.user_id = getPost.user_id.toString();
+  };
+  fetchPostById(route.params.id);
+}
 
 const status = ref([
   {
-    value: "sold",
+    value: "1",
     label: "Đã bán",
   },
   {
-    value: "unsold",
+    value: "0",
     label: "Chưa bán",
   },
 ]);

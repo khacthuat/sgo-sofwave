@@ -10,7 +10,8 @@
       <div class="logo"></div>
 
       <a-menu
-        v-model:selectedKeys="selectedKeys"
+        v-model:selectedKeys="siderSelectedKeys"
+        v-model:openKeys="siderOpenKeys"
         theme="light"
         mode="inline"
         triggerSubMenuAction="click"
@@ -40,7 +41,7 @@
             </div>
           </template>
           <a-menu-item key="2">
-            <router-link to="/admin/news-detail"> </router-link>
+            <router-link :to="{ name: 'add-news' }"> </router-link>
             Bài viết mới</a-menu-item
           >
           <a-menu-item key="3"
@@ -91,9 +92,12 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useSider } from "../stores/useSider";
+const store = useSider();
+const siderSelectedKeys = ref(store.siderSelectedKeys);
+const siderOpenKeys = ref(store.siderOpenKeys);
 
 const collapsed = ref(false);
-const selectedKeys = ref(["1"]);
 
 onMounted(() => {
   checkWindowSize(); // Kiểm tra kích thước màn hình khi component được mounted
@@ -115,7 +119,6 @@ import {
   UserOutlined,
   PieChartOutlined,
   TeamOutlined,
-  MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons-vue";
 

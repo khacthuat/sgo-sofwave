@@ -8,13 +8,47 @@
           <Card title="Thông tin cơ bản">
             <template #content>
               <!-- begin::Input Group -->
-              <InputBasic title="Địa điểm" placeholder="Chọn địa điểm" />
+              <div class="mb-3">
+                <div class="form-label">``Địa điểm``</div>
+                <a-select
+                  class="w-100"
+                  placeholder="Tỉnh/Thành"
+                  v-model:value="province"
+                  show-search
+                  allowClear
+                  :options="provincesList"
+                  :filter-option="filterOption"
+                >
+                </a-select>
+                <a-select
+                  class="w-100 mt-3"
+                  placeholder="Quận/Huyện"
+                  v-model:value="district"
+                  show-search
+                  allowClear
+                  :options="districtsList"
+                  :filter-option="filterOption"
+                >
+                </a-select>
+                <a-select
+                  class="w-100 mt-3"
+                  placeholder="Phường/Xã"
+                  v-model:value="ward"
+                  show-search
+                  allowClear
+                  :options="wardsList"
+                  :filter-option="filterOption"
+                >
+                </a-select>
+              </div>
+
               <!-- end::Input Group -->
 
               <!-- begin::Input Group -->
               <InputBasic
                 title="Địa chỉ hiển thị trên tin đăng"
                 placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ`...`"
+                :value="post.address_detail"
               />
               <!-- end::Input Group -->
             </template>
@@ -25,11 +59,19 @@
           <Card title="Thông tin bài viết">
             <template #content>
               <!-- begin::Input Group -->
-              <InputBasic title="Tiêu đề" placeholder="Nhập tiêu đề bài viết" />
+              <InputBasic
+                title="Tiêu đề"
+                placeholder="Nhập tiêu đề bài viết"
+                :value="post.title"
+              />
               <!-- end::Input Group -->
 
               <!-- begin::Input Group -->
-              <InputArea title="Mô tả" placeholder="Nhập mô tả bài viết" />
+              <InputArea
+                title="Mô tả"
+                placeholder="Nhập mô tả bài viết"
+                :value="post.description"
+              />
               <!-- end::Input Group -->
             </template>
           </Card>
@@ -42,6 +84,7 @@
               <InputBasic
                 title="Diện tích"
                 placeholder="Nhập diện tích, VD 80"
+                :value="post.area"
               />
               <!-- end::Input Group -->
 
@@ -52,6 +95,7 @@
                   <InputBasic
                     title="Mức giá"
                     placeholder="Nhập giá, VD 12000000"
+                    v-model:value="post.price"
                   />
                   <!-- end::Input -->
                 </div>
@@ -59,7 +103,7 @@
                   <InputSelect
                     title="Đơn vị"
                     :options="units"
-                    :valueSelected="unitValue"
+                    :valueSelected="post.unit"
                   />
 
                   <!-- end::Select -->
@@ -146,23 +190,127 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { reactive, ref, watch } from "vue";
 import { InboxOutlined } from "@ant-design/icons-vue";
+import { useRoute } from "vue-router";
+import getPostAPI from "../../../api/posts/getDetails";
+import addressAPI from "../../../api/address.js";
 
-const unitValue = ref("vnd");
+const route = useRoute();
+
+const post = reactive({
+  title: "",
+  description: "",
+  address: "",
+  address_detail: "",
+  area: "",
+  price: "",
+  unit: "",
+  sold_status: "",
+  status_id: "",
+  user_id: "",
+});
+
+const province = ref({
+  value: "01",
+});
+
+const district = ref({
+  value: "271",
+});
+const ward = ref(null);
+``;
+if (route.params.id) {
+  // Hàm lấy thông tin bài viết theo id
+  const fetchPostById = async (id) => {
+    const getPost = await getPostAPI.getById(id);
+    post.title = getPost.title;
+    post.description = getPost.description;
+    post.address = getPost.address;
+    post.address_detail = getPost.address_detail;
+    post.area = getPost.area.toString();
+    post.price = getPost.price.toString();
+    post.unit = getPost.unit.toString();
+    post.sold_status = getPost.sold_status.toString();
+    post.status_id = getPost.status_id.toString();
+    post.user_id = getPost.user_id.toString();
+  };
+  fetchPostById(route.params.id);
+}
+
+const provincesList = ref([]);
+const districtsList = ref([]);
+const wardsList = ref([]);
+
+const fetchProvincesData = async () => {
+  try {
+    const res = await addressAPI.getProvinces();
+
+    provincesList.value = res.map((province) => ({
+      value: province.province_id,
+      label: province.province_name,
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchDistrictsData = async (id) => {
+  try {
+    const res = await addressAPI.getDistrictsByProvinceId(id);
+
+    districtsList.value = res.map((district) => ({
+      value: district.district_id,
+      label: district.district_name,
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchWardsData = async () => {
+  try {
+    const res = await addressAPI.getWardsByDistrictId(district.value);
+
+    wardsList.value = res.map((ward) => ({
+      value: ward.ward_id,
+      label: ward.ward_name,
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+watch(province, (newValue, oldValue) => {
+  fetchDistrictsData(province.value);
+  district.value = null;
+});
+watch(district, (newValue, oldValue) => {
+  fetchWardsData(district.value);
+  ward.value = null;
+});
+
+fetchProvincesData();
+fetchDistrictsData(province.value);
+fetchWardsData(district.value);
+
+const filterOption = (input, option) => {
+  return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+};
+
 const phoneValue = ref("phone1");
 
 const units = ref([
   {
-    value: "vnd",
+    value: "1",
     label: "VND",
   },
   {
-    value: "price",
+    value: "2",
     label: "Giá/m2",
   },
   {
-    value: "deal",
+    value: "3",
     label: "Thỏa thuận",
   },
 ]);

@@ -142,6 +142,12 @@ import {
 } from "@ant-design/icons-vue";
 import { computed, reactive } from "vue";
 import messageAnt from "../../../scripts/message";
+import { useSider } from "../../../stores/useSider";
+
+const store = useSider();
+
+// store.onSiderOpenKeys(["sub1"]);
+// store.onSiderSelectedKeys(["4"]);
 
 // modal export
 
@@ -218,7 +224,6 @@ const start = () => {
   }, 1000);
 };
 const onSelectChange = (selectedRowKeys) => {
-  console.log("selectedRowKeys changed: ", selectedRowKeys);
   state.selectedRowKeys = selectedRowKeys;
 };
 </script>

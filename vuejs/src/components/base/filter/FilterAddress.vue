@@ -118,6 +118,7 @@ watch(province, (newValue, oldValue) => {
 });
 watch(district, (newValue, oldValue) => {
   fetchWardsData();
+  ward.value = null;
 });
 
 fetchProvincesData();

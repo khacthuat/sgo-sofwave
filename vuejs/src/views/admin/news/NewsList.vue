@@ -86,12 +86,11 @@
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'detail'">
             <div>
-              <a-button
-                type="link"
-                style="color: red"
-                :href="`/admin/news-detail?id=${record.id}`"
-                >Chi tiết</a-button
+              <router-link
+                :to="{ name: 'admin-news-detail', params: { id: record.id } }"
               >
+                <a-button type="" style="color: red">Chi tiết</a-button>
+              </router-link>
             </div>
           </template>
           <template v-else-if="column.dataIndex === 'username'">
@@ -158,6 +157,11 @@ import { ref } from "vue";
 import messageAnt from "../../../scripts/message";
 import formatDate from "../../../scripts/formatDate";
 import listPostsAPI from "../../../api/posts/index";
+import { useSider } from "../../../stores/useSider";
+
+// const store = useSider();
+// store.onSiderOpenKeys(["sub1"]);
+// store.onSiderSelectedKeys(["3"]);
 
 // modal export
 const openModalExport = ref(false);
@@ -181,6 +185,7 @@ const columns = [
   {
     title: "Địa chỉ",
     dataIndex: "address",
+    width: 250,
   },
   {
     title: "Ngày đăng",
@@ -228,7 +233,7 @@ const fetchPostsList = async () => {
       id: post.id,
       username: post.user.name,
       title: post.title,
-      address: "Nam Từ Liêm, Hà Nội",
+      address: post.address,
       created_at: formatDate(post.created_at),
       updated_at: formatDate(post.updated_at),
       view: 1000,

@@ -26,12 +26,11 @@
 </template>
 
 <script setup>
-import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { useSider } from "../../../stores/useSider";
 
-const route = useRoute();
-const postId = route.params.id;
-console.log(postId);
+const store = useSider();
+store.onSiderOpenKeys(["sub1"]);
+store.onSiderSelectedKeys(["2"]);
 </script>
 
 <script>

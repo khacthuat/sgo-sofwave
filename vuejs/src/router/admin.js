@@ -14,7 +14,12 @@ const admin = [
                 component: () => import("../views/admin/news/NewsList.vue"),
             },
             {
-                path: "news-detail",
+                path: "add/news",
+                name: "add-news",
+                component: () => import("../views/admin/news/NewsDetail.vue"),
+            },
+            {
+                path: "news-detail/:id",
                 name: "admin-news-detail",
                 component: () => import("../views/admin/news/NewsDetail.vue"),
             },

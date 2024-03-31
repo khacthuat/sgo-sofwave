@@ -211,6 +211,12 @@ import formatDate from "../../../scripts/formatDate";
 import UserDetail from "./UserDetail.vue";
 import messageAnt from "../../../scripts/message";
 
+import { useSider } from "../../../stores/useSider";
+
+// const store = useSider();
+// store.onSiderOpenKeys(["sub1"]);
+// store.onSiderSelectedKeys(["1"]);
+
 // table
 const columns = [
   {

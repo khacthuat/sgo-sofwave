@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('address');
+            $table->string('address_detail');
             $table->integer('area');
             $table->bigInteger('price');
             $table->integer('unit');

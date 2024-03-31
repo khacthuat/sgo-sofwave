@@ -1,31 +1,39 @@
 <template>
-    <!-- begin::Label -->
-    <div class="form-label">{{ title }}</div>
-    <!-- end::Label -->
+  <!-- begin::Label -->
+  <div class="form-label">{{ title }}</div>
+  <!-- end::Label -->
 
-    <!-- begin::Select -->
-    <!-- begin::Select -->
-    <a-select
-        v-model:value="valueSelected"
-        :options="options"
-        class="mb-2 w-100 flex justify-between align-items-center"
-    ></a-select>
-    <!-- end::Select -->
+  <!-- begin::Select -->
+  <!-- begin::Select -->
+  <a-select
+    v-model:value="valueSelect"
+    :options="options"
+    class="mb-2 w-100 flex justify-between align-items-center"
+  ></a-select>
+  <!-- end::Select -->
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
-    options: Array,
-    valueSelected: String,
-    title: String,
+  title: String,
+  valueSelected: String,
+  options: Array,
 });
 
-const valueSelected = ref(props.valueSelected);
+const valueSelect = ref(props.valueSelected);
+
+watch(
+  () => props.valueSelected,
+  (newValue, oldValue) => {
+    if (newValue) {
+      valueSelect.value = newValue;
+    }
+  }
+);
 </script>
 
 <script>
-export default {};
 </script>
 <style></style>
