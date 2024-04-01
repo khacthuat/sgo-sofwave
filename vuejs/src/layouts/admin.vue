@@ -14,48 +14,10 @@
         <a-layout-footer :style="footerStyle">Footer</a-layout-footer>
       </a-layout>
     </a-layout>
-    <!-- begin::Support -->
-    <div class="support">
-      <a-float-button-group
-        trigger="click"
-        type="primary"
-        :style="{
-          right: '6px',
-          bottom: '40vh',
-        }"
-      >
-        <template #icon>
-          <CustomerServiceOutlined />
-        </template>
-        <a-float-button />
-        <a-float-button>
-          <template #icon>
-            <CommentOutlined />
-          </template>
-        </a-float-button>
-      </a-float-button-group>
-    </div>
-    <!-- end::Support -->
-
-    <!-- begin::Back to top -->
-    <div class="back-to-top">
-      <a-back-top :style="{ right: '6px' }">
-        <template #icon>
-          <ArrowUpOutlined />
-        </template>
-      </a-back-top>
-    </div>
-    <!-- end::Back to top -->
   </div>
 </template>
 
 <script setup>
-import {
-  ArrowUpOutlined,
-  CustomerServiceOutlined,
-  CommentOutlined,
-} from "@ant-design/icons-vue";
-
 const footerStyle = {
   textAlign: "center",
   minHeight: 64,

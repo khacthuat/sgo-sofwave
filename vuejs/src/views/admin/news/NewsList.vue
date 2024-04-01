@@ -1,6 +1,8 @@
 <template>
+  <ThePageHeader />
   <div class="card">
     <!-- begin::Card Header -->
+
     <div class="card-header flex justify-between flex-wrap py-4">
       <!-- begin::Card Title -->
       <div class="card-title">
@@ -117,8 +119,6 @@
                     ? 'success'
                     : record.status === 'unpublished'
                     ? 'error'
-                    : record.status === 'pending'
-                    ? 'processing'
                     : ''
                 "
               >
@@ -127,8 +127,6 @@
                     ? "công khai"
                     : record.status == "unpublished"
                     ? "không công khai"
-                    : record.status === "pending"
-                    ? "chờ duyệt"
                     : ""
                 }}
               </a-tag>
@@ -217,7 +215,7 @@ const columns = [
 const data = ref([]);
 
 /**
- * Hàm lấy danh sách bài viết
+ * Hàm lấy danh sách bài viết đã duyệt
  * @param
  * CreatedBy: youngbachhh (29/03/2024)
  */
@@ -225,7 +223,7 @@ const data = ref([]);
 const fetchPostsList = async () => {
   data.value = [];
 
-  const listPosts = await listPostsAPI();
+  const listPosts = await listPostsAPI.getPostNotPending();
   const posts = [];
 
   for (const post of listPosts) {
@@ -258,3 +256,6 @@ export default {
 };
 </script>
 <style></style>
+
+
+

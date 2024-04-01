@@ -6,8 +6,8 @@
       class="app-container flex align-items-stretch justify-between fixed-top z-10 bg-primary-white-color"
     >
       <!-- begin::Header Wrapper -->
-      <div class="flex justify-between w-100">
-        <div class="flex flex-grow-1">
+      <div class="flex sm:justify-between w-100">
+        <div class="flex d-sm-flex">
           <!-- begin::Logo -->
           <div
             class="app-header-logo flex align-items-center justify-center gap-2 me-lg-5"
@@ -31,7 +31,9 @@
         <div class="app-header-control-menu">
           <!-- begin::Control Menu Item -->
           <div class="app-control-menu-item">
+            <!-- begin::Authenticated -->
             <div class="flex align-items-center space-x-4" v-if="store.token">
+              <!-- begin::Notification -->
               <a-popover placement="bottomRight" trigger="click" class="flex">
                 <template #content>
                   <div class="max-h-[440px] max-w-[580px]">
@@ -79,7 +81,9 @@
                   </a-button>
                 </a-badge>
               </a-popover>
+              <!-- end::Notification -->
 
+              <!-- begin::User Feature -->
               <div class="n:px-2 md:px-4 border-x-[1px]">
                 <a-dropdown :placement="'bottomRight'" trigger="click">
                   <template #overlay>
@@ -105,22 +109,32 @@
                         verticalAlign: 'middle',
                       }"
                     >
-                      <span class="text-selected-color"> Bách </span>
+                      <span class="text-selected-color">
+                        {{ store.user.name[0] }}
+                      </span>
                     </a-avatar>
-                    <div class="d-none d-xl-block">Nguyễn Văn Bách</div>
+                    <div class="d-none d-sm-block">{{ store.user.name }}</div>
                     <div class="mx-2">
                       <DownOutlined />
                     </div>
                   </div>
                 </a-dropdown>
               </div>
+              <!-- end::User Feature -->
+
+              <!-- begin::Create Post -->
               <router-link to="/user/news-form">
                 <a-button class=""> Đăng tin </a-button>
               </router-link>
+              <!-- end::Create Post -->
             </div>
+            <!-- end::Authenticated -->
+
+            <!-- begin::Unauthenticated -->
             <div class="flex" v-else>
-              <div class="flex mx-4 border-x-[1px]">
-                <div class="px-4 border-r-[1px]">
+              <div class="flex border-x-[1px]">
+                <!-- begin::Login Form -->
+                <div class="px-2 sm:px-4 border-r-[1px]">
                   <a-button class="border-0" @click="setModalLoginVisible">
                     Đăng nhập
                   </a-button>
@@ -143,13 +157,13 @@
                         :rules="[
                           {
                             required: true,
-                            message: 'Hãy nhập tên đăng nhập!',
+                            message: 'Hãy nhập email!',
                           },
                         ]"
                       >
                         <a-input
                           v-model:value="formState.username"
-                          placeholder="Số điện thoại hoặc email"
+                          placeholder="Email"
                         >
                           <template #prefix>
                             <UserOutlined class="site-form-item-icon" />
@@ -187,7 +201,7 @@
 
                       <a-form-item>
                         <a-button
-                          :disabled="disabled"
+                          :disabled="disabledLogin"
                           type="primary"
                           html-type="submit"
                           class="login-form-button mb-3"
@@ -196,16 +210,19 @@
                           Đăng nhập
                         </a-button>
                         Hoặc
-                        <a
-                          href=""
-                          class="ml-2 text-[#0891b2] hover:text-[#22d3ee]"
+                        <div
+                          class="text-[#0891b2] hover:text-[#22d3ee] cursor-pointer inline ml-2"
+                          @click="setModalRegisterVisible"
                         >
-                          Đăng ký ngay!</a
-                        >
+                          Đăng ký ngay!
+                        </div>
                       </a-form-item>
                     </a-form>
                   </a-modal>
                 </div>
+                <!-- end::Login Form -->
+
+                <!-- begin::Register Form -->
                 <div class="px-4">
                   <a-button class="border-0" @click="setModalRegisterVisible">
                     Đăng ký
@@ -224,39 +241,103 @@
                       @finishFailed="onFinishFailed"
                     >
                       <a-form-item
-                        name="username"
+                        name="registerName"
                         :rules="[
                           {
                             required: true,
-                            message: 'Hãy nhập số diện thoại!',
+                            message: 'Hãy nhập tên!',
                           },
                         ]"
                       >
-                        <a-input placeholder="Số điện thoại hoặc email">
+                        <a-input
+                          placeholder="Tên"
+                          v-model:value="formState.registerName"
+                        >
                           <template #prefix>
-                            <PhoneOutlined class="site-form-item-icon" />
+                            <UserOutlined class="site-form-item-icon" />
                           </template>
                         </a-input>
                       </a-form-item>
 
+                      <a-form-item
+                        name="registerUsername"
+                        :rules="[
+                          {
+                            required: true,
+                            message: 'Hãy nhập email!',
+                          },
+                        ]"
+                      >
+                        <a-input
+                          placeholder="Email"
+                          v-model:value="formState.registerUsername"
+                        >
+                          <template #prefix>
+                            <UserOutlined class="site-form-item-icon" />
+                          </template>
+                        </a-input>
+                      </a-form-item>
+
+                      <a-form-item
+                        name="registerPassword"
+                        :rules="[
+                          {
+                            required: true,
+                            message: 'Hãy nhập mật khẩu!',
+                          },
+                        ]"
+                      >
+                        <a-input-password
+                          v-model:value="formState.registerPassword"
+                          placeholder="Mật khẩu"
+                        >
+                          <template #prefix>
+                            <LockOutlined class="site-form-item-icon" />
+                          </template>
+                        </a-input-password>
+                      </a-form-item>
+
+                      <a-form-item
+                        name="registerPasswordConfirm"
+                        :rules="[
+                          {
+                            required: true,
+                            compare: formState.registerPassword,
+                            message: 'Không trùng khớp mật khẩu!',
+                          },
+                        ]"
+                      >
+                        <a-input-password
+                          v-model:value="formState.registerPasswordConfirm"
+                          placeholder="Nhập lại mật khẩu"
+                        >
+                          <template #prefix>
+                            <LockOutlined class="site-form-item-icon" />
+                          </template>
+                        </a-input-password>
+                      </a-form-item>
+
                       <a-form-item>
                         <a-button
-                          :disabled="disabled"
+                          :disabled="disabledRegister"
                           type="primary"
                           html-type="submit"
                           class="register-form-button mb-3"
+                          @click="onRegister"
                         >
-                          Tiếp tục
+                          Đăng ký
                         </a-button>
                       </a-form-item>
                     </a-form>
                   </a-modal>
                 </div>
+                <!-- end::Register Form -->
               </div>
               <router-link to="/user/news-form">
-                <a-button class=""> Đăng tin </a-button>
+                <a-button v-if="store.token"> Đăng tin </a-button>
               </router-link>
             </div>
+            <!-- end::Unauthenticated -->
           </div>
           <!-- end::Control Menu Item -->
         </div>
@@ -276,12 +357,12 @@ import {
   UserOutlined,
   ClockCircleOutlined,
   LockOutlined,
-  PhoneOutlined,
 } from "@ant-design/icons-vue";
 import { ref, reactive, computed } from "vue";
 import auth from "../../stores/auth";
 import login from "../../api/auth/login";
 import logout from "../../api/auth/logout";
+import createUserAPI from "../../api/users/createUser";
 import getUserAPI from "../../api/users/getUser";
 
 const store = auth();
@@ -297,24 +378,46 @@ if (localStorage.getItem("token")) {
 const formState = reactive({
   username: "",
   password: "",
+  registerName: "",
+  registerUsername: "",
+  registerPassword: "",
+  registerPasswordConfirm: "",
   remember: true,
 });
 
 const onFinish = (values) => {
   modalLoginVisible.value = false;
 };
+const onFinishFailed = (errorInfo) => {};
+
 const onLogin = async () => {
-  const user = await login(formState.username, formState.password);
-  if (!user) return;
-  store.login(user.token, user);
+  const loginUser = await login(formState.username, formState.password);
+  if (!loginUser) return;
+  store.login(loginUser.token, loginUser);
 };
 const onLogout = async () => {
-  const userLogout = await logout(localStorage.getItem("token"));
+  const logoutUser = await logout(localStorage.getItem("token"));
   store.logout(localStorage.getItem("token"));
 };
-const onFinishFailed = (errorInfo) => {};
-const disabled = computed(() => {
+const onRegister = async () => {
+  const user = {
+    name: formState.registerName,
+    email: formState.registerUsername,
+    password: formState.registerPassword,
+  };
+  const registerUser = await createUserAPI(user);
+};
+
+const disabledLogin = computed(() => {
   return !(formState.username && formState.password);
+});
+const disabledRegister = computed(() => {
+  return !(
+    formState.registerUsername &&
+    formState.registerPassword &&
+    formState.registerPasswordConfirm &&
+    formState.registerName
+  );
 });
 
 // modal
@@ -324,6 +427,7 @@ const setModalLoginVisible = () => {
 };
 const modalRegisterVisible = ref(false);
 const setModalRegisterVisible = () => {
+  modalLoginVisible.value = false;
   modalRegisterVisible.value = true;
 };
 </script>

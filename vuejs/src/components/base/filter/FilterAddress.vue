@@ -21,6 +21,7 @@
     :okText="'Tìm kiếm'"
     :cancelText="'Hủy'"
     :bodyStyle="{ paddingRight: '0' }"
+    title="Chọn khu vực"
   >
     <a-select
       class="w-100 mt-5"

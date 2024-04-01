@@ -149,7 +149,11 @@
               <div class="flex mb-3 justify-between flex-wrap">
                 <div class="col-12 col-xl-8 mb-3 mb-xl-0">
                   <!-- begin::Input -->
-                  <InputBasic title="Tên liên hệ" placeholder="Nhập tên" />
+                  <InputBasic
+                    title="Tên liên hệ"
+                    placeholder="Nhập tên"
+                    :value="post.user.name"
+                  />
                   <!-- end::Input -->
                 </div>
                 <div class="col-12 col-xl-3">
@@ -163,7 +167,11 @@
               <!-- end::Input Group -->
 
               <!-- begin::Input Group -->
-              <InputBasic title="Email" placeholder="Nhập email" />
+              <InputBasic
+                title="Email"
+                placeholder="Nhập email"
+                :value="post.user.email"
+              />
               <!-- end::Input Group -->
             </template>
           </Card>
@@ -207,8 +215,8 @@ const post = reactive({
   price: "",
   unit: "",
   sold_status: "",
-  status_id: "",
-  user_id: "",
+  status: "",
+  user: "",
 });
 
 const province = ref(null);
@@ -227,8 +235,8 @@ if (route.params.id) {
     post.price = getPost.price.toString();
     post.unit = getPost.unit.toString();
     post.sold_status = getPost.sold_status.toString();
-    post.status_id = getPost.status_id.toString();
-    post.user_id = getPost.user_id.toString();
+    post.status = getPost.status;
+    post.user = getPost.user;
   };
   fetchPostById(route.params.id);
 }

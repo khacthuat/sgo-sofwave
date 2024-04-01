@@ -93,7 +93,7 @@
           </a-button>
           <span style="margin-left: 8px">
             <template v-if="hasSelected">
-              {{ `Selected ${state.selectedRowKeys.length} items` }}
+              {{ `Đã chọn ${state.selectedRowKeys.length} tin` }}
             </template>
           </span>
         </div>
@@ -108,23 +108,36 @@
           <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'detail'">
               <div>
-                <a-button
-                  type="link"
-                  style="color: red"
-                  :href="`/admin/news-detail`"
-                  >Chi tiết</a-button
+                <router-link
+                  :to="{ name: 'admin-news-detail', params: { id: record.id } }"
                 >
+                  <a-button type="" style="color: red">Chi tiết</a-button>
+                </router-link>
               </div>
             </template>
-            <template v-if="column.dataIndex === 'status'">
+            <template v-else-if="column.dataIndex === 'username'">
+              <a>{{ record.username }} </a>
+            </template>
+            <template v-else-if="column.dataIndex === 'sold_status'">
               <a-tag
-                :color="record.status === 'unpublished' ? '#f50' : '#87d068'"
+                :color="
+                  record.sold_status === 1
+                    ? '#87d068'
+                    : record.sold_status === 0
+                    ? '#f50'
+                    : ''
+                "
               >
-                {{ record.status }}</a-tag
+                {{ record.sold_status == 1 ? "đã bán" : "chưa bán" }}</a-tag
               >
             </template>
-            <template v-else>
-              {{ record[column.dataIndex] }}
+            <template v-else-if="column.dataIndex === 'status'">
+              <div>
+                <a-tag color="processing"> chờ duyệt </a-tag>
+              </div>
+            </template>
+            <template v-else-if="column.dataIndex === 'title'">
+              <div class="line-clamp-2">{{ record.title }}</div>
             </template>
           </template>
         </a-table>
@@ -143,6 +156,8 @@ import {
 import { computed, reactive } from "vue";
 import messageAnt from "../../../scripts/message";
 import { useSider } from "../../../stores/useSider";
+import formatDate from "../../../scripts/formatDate";
+import listPostsAPI from "../../../api/posts/index";
 
 const store = useSider();
 
@@ -163,19 +178,12 @@ const handleOkModalExport = (e) => {
 const columns = [
   {
     title: "Người đăng",
-    dataIndex: "name",
+    dataIndex: "username",
   },
   {
     title: "Tiêu đề",
     dataIndex: "title",
-  },
-  {
-    title: "Loại bất động sản",
-    dataIndex: "landType",
-  },
-  {
-    title: "Dự án",
-    dataIndex: "project",
+    width: 350,
   },
   {
     title: "Địa chỉ",
@@ -183,7 +191,7 @@ const columns = [
   },
   {
     title: "Ngày đăng",
-    dataIndex: "date",
+    dataIndex: "created_at",
   },
   {
     title: "Trạng thái",
@@ -195,19 +203,38 @@ const columns = [
     key: "detail",
   },
 ];
-const data = [];
-for (let i = 0; i < 46; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    title: `Bất động sản`,
-    landType: `Cho thuê nhà riêng`,
-    project: `Alo city`,
-    address: `London, Park Lane no. ${i}`,
-    date: `2021-10-10`,
-    status: `unpublished`,
-  });
-}
+const data = ref([]);
+
+/**
+ * Hàm lấy danh sách bài viết chờ duyệt
+ * @param
+ * CreatedBy: youngbachhh (29/03/2024)
+ */
+
+const fetchPostsPendingList = async () => {
+  data.value = [];
+
+  const listPosts = await listPostsAPI.getPostPending();
+  const posts = [];
+
+  for (const post of listPosts) {
+    posts.push({
+      id: post.id,
+      username: post.user.name,
+      title: post.title,
+      address: post.address,
+      created_at: formatDate(post.created_at),
+      updated_at: formatDate(post.updated_at),
+      view: 1000,
+      sold_status: post.sold_status,
+      status: post.status.name,
+    });
+  }
+
+  data.value = posts;
+};
+
+fetchPostsPendingList();
 
 const state = reactive({
   selectedRowKeys: [],

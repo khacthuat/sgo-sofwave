@@ -7,7 +7,7 @@
       class="position-relative"
       :trigger="null"
     >
-      <div class="logo"></div>
+      <div class="logo d-none d-sm-block"></div>
 
       <a-menu
         v-model:selectedKeys="siderSelectedKeys"

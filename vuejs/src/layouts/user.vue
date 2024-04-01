@@ -17,51 +17,14 @@
             >Footer</a-layout-footer
         >
     </a-layout>
-    <!-- begin::Support -->
-    <div class="support">
-        <a-float-button-group
-            trigger="click"
-            type="primary"
-            :style="{
-                right: '6px',
-                bottom: '40vh',
-            }"
-        >
-            <template #icon>
-                <CustomerServiceOutlined />
-            </template>
-            <a-float-button />
-            <a-float-button>
-                <template #icon>
-                    <CommentOutlined />
-                </template>
-            </a-float-button>
-        </a-float-button-group>
-    </div>
-    <!-- end::Support -->
 
-    <!-- begin::Back to top -->
-    <div class="back-to-top">
-        <a-back-top :style="{ right: '6px' }">
-            <template #icon>
-                <ArrowUpOutlined />
-            </template>
-        </a-back-top>
-    </div>
-    <!-- end::Back to top -->
 </template>
 
 <script setup>
-import {
-    CustomerServiceOutlined,
-    CommentOutlined,
-    ArrowUpOutlined,
-} from "@ant-design/icons-vue";
-
 const footerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    backgroundColor: "#7dbcea",
+  textAlign: "center",
+  color: "#fff",
+  backgroundColor: "#7dbcea",
 };
 </script>
 
@@ -72,12 +35,12 @@ import ThePageHeader from "../components/ThePageHeader.vue";
 import TheContent from "../components/User/TheContent.vue";
 
 export default {
-    components: {
-        TheHeader,
-        TheSearchBar,
-        ThePageHeader,
-        TheContent,
-    },
+  components: {
+    TheHeader,
+    TheSearchBar,
+    ThePageHeader,
+    TheContent,
+  },
 };
 </script>
 <style></style>

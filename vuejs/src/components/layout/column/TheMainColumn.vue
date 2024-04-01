@@ -9,7 +9,7 @@
         >
           <!-- begin::Image avatar -->
           <div
-            class="image-input-wrapper w-72 h-72"
+            class="image-input-wrapper w-48 h-48 sm:w-64 sm:h-64"
             style="
               background-image: url(https://file4.batdongsan.com.vn/resize/1275x717/2024/03/31/20240331092400-d913_wm.jpg);
             "
@@ -75,8 +75,8 @@ const post = reactive({
   price: "",
   unit: "",
   sold_status: "",
-  status_id: "",
-  user_id: "",
+  status: "",
+  user: "",
 });
 if (route.params.id) {
   const fetchPostById = async (id) => {
@@ -87,8 +87,8 @@ if (route.params.id) {
     post.price = getPost.price.toString();
     post.unit = getPost.unit.toString();
     post.sold_status = getPost.sold_status.toString();
-    post.status_id = getPost.status_id.toString();
-    post.user_id = getPost.user_id.toString();
+    post.status = getPost.status;
+    post.user = getPost.user;
   };
   fetchPostById(route.params.id);
 }

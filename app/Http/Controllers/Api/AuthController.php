@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     /**
      * Hàm đăng nhập
      * @param Request $request
+     * @return $user
      * CreatedBy: youngbachhh (31/03/2024)
      */
     public function login(Request $request)
@@ -35,6 +37,7 @@ class AuthController extends Controller
     /**
      * Hàm đăng xuất
      * @param Request $request
+     * @return $message
      * CreatedBy: youngbachhh (31/03/2024)
      */
     public function logout(Request $request)
@@ -43,6 +46,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'Đăng xuất thành công'], 200);
     }
+
 
     public function me(Request $request)
     {

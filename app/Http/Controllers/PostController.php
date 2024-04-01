@@ -50,9 +50,35 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        $post = Post::findOrFail($id);
+        $post = Post::with(['user', 'status'])->find($id);
         return response()->json($post);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pending()
+    {
+        //
+        $posts = Post::with(['user', 'status'])->where('status_id', 3)->get();
+        return response()->json($posts);
+        // $posts = Post::with(['user', 'status'])->get();
+        // return response()->json($posts);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function notPending()
+    {
+        $posts = Post::with(['user', 'status'])->where('status_id', '!=', 3)->get();
+        return response()->json($posts);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
