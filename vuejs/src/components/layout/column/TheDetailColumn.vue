@@ -141,41 +141,6 @@
             </template>
           </Card>
           <!-- end::Media Option -->
-
-          <!-- begin::Contact Infor Option -->
-          <Card title="Thông tin liên hệ">
-            <template #content>
-              <!-- begin::Input Group -->
-              <div class="flex mb-3 justify-between flex-wrap">
-                <div class="col-12 col-xl-8 mb-3 mb-xl-0">
-                  <!-- begin::Input -->
-                  <InputBasic
-                    title="Tên liên hệ"
-                    placeholder="Nhập tên"
-                    :value="post.user.name"
-                  />
-                  <!-- end::Input -->
-                </div>
-                <div class="col-12 col-xl-3">
-                  <InputSelect
-                    title="Số điện thoại"
-                    :options="phones"
-                    :valueSelected="phoneValue"
-                  />
-                </div>
-              </div>
-              <!-- end::Input Group -->
-
-              <!-- begin::Input Group -->
-              <InputBasic
-                title="Email"
-                placeholder="Nhập email"
-                :value="post.user.email"
-              />
-              <!-- end::Input Group -->
-            </template>
-          </Card>
-          <!-- end::Contact Infor Option -->
         </div>
       </div>
     </a-tab-pane>

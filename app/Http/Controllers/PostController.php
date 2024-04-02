@@ -61,11 +61,8 @@ class PostController extends Controller
      */
     public function pending()
     {
-        //
         $posts = Post::with(['user', 'status'])->where('status_id', 3)->get();
         return response()->json($posts);
-        // $posts = Post::with(['user', 'status'])->get();
-        // return response()->json($posts);
     }
 
     /**
@@ -100,8 +97,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
-
         $post->update($request->all());
         return response()->json($post);
     }
@@ -114,7 +109,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
         $post->delete();
         return response()->json(['message' => 'Xóa thành công'], 200);
     }

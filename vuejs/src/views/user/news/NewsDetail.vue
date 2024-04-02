@@ -16,24 +16,19 @@
         <!-- begin::Short Infor -->
         <div class="short-infor mt-3 border-b-[1px]">
           <div class="py-4 flex flex-wrap justify-between">
-            <div class="infor flex">
+            <div class="infor flex justify-between">
               <div class="price">
                 <a-descriptions title="Mức giá">
                   <a-descriptions-item label="">
-                    Thỏa thuận
+                    {{ formatMoney(data.price) }}
                   </a-descriptions-item>
                 </a-descriptions>
               </div>
               <div class="area mx-5">
                 <a-descriptions title="Diện tích">
                   <a-descriptions-item label="">
-                    Thỏa thuận
+                    {{ data.area }} m&sup2
                   </a-descriptions-item>
-                </a-descriptions>
-              </div>
-              <div class="bedroom">
-                <a-descriptions title="Phòng ngủ">
-                  <a-descriptions-item label=""> 4PN </a-descriptions-item>
                 </a-descriptions>
               </div>
             </div>
@@ -65,9 +60,9 @@
 
               <a-tooltip placement="top">
                 <template #title>
-                  <span>Sao chép ảnh</span>
+                  <span>Sao chép nội dung</span>
                 </template>
-                <a-button class="border-0"
+                <a-button class="border-0" @click="copyText(data.description)"
                   ><CopyOutlined :style="{ fontSize: '24px' }"
                 /></a-button>
               </a-tooltip>
@@ -80,24 +75,7 @@
         <div class="description mt-3 border-b-[1px]">
           <a-descriptions title="Thông tin mô tả">
             <a-descriptions-item label="">
-              Suất ngoại giao cực hot khu P Ciputra - KĐT Nam Thăng Long, Tây
-              Hồ, Hà Nội!
-              <br />
-              - Mặt đường 50m Nguyễn Văn Huyên kéo dài diện tích 300m² (12mx
-              25m).
-              <br />
-              - Mặt đường 30 trục trung tâm Ciputra diện tích 230m² (10mx23m).
-              <br />
-              - Mặt view công viên sân golf diện tích 324m² (12mx27m).
-              <br />
-              - Đường nội bộ diện tích 120m² - 150m² - 180m².
-              <br />
-              - Bàn giao nhà 1 hầm + 3.5 tầng nổi, hoàn thiện mặt ngoài. Suất
-              ngoại giao đợt đầu giá ưu đãi, phù hợp cho khách đầu tư, vào tiền
-              ít, sinh lời cao, pháp lý an toàn, khách mua được vào tên hợp đồng
-              mua bán trực tiếp chủ đầu tư.
-              <br />
-              Anh chị quan tâm đầu tư mua ở liên hệ ngay em Nhữ Hiếu
+              {{ data.description }}
             </a-descriptions-item>
           </a-descriptions>
         </div>
@@ -107,13 +85,13 @@
         <div class="feature mt-3 border-b-[1px]">
           <a-descriptions title="Đặc điểm bất động sản">
             <a-descriptions-item label="Diện tích">
-              300 m&sup2
+              {{ data.area }} m&sup2
             </a-descriptions-item>
             <a-descriptions-item label="Pháp lý">
               Hợp đồng mua bán
             </a-descriptions-item>
             <a-descriptions-item label="Mức giá">
-              Thỏa thuận
+              {{ formatMoney(data.price) }}
             </a-descriptions-item>
           </a-descriptions>
         </div>
@@ -123,10 +101,7 @@
         <div class="date mt-3 border-b-[1px]">
           <a-descriptions title="Thời gian">
             <a-descriptions-item label="Ngày đăng">
-              20/03/2023
-            </a-descriptions-item>
-            <a-descriptions-item label="Ngày hết hạn">
-              27/03/2023
+              {{ formatDate(data.created_at) }}
             </a-descriptions-item>
             <a-descriptions-item label="Mã tin"> 39369169 </a-descriptions-item>
           </a-descriptions>
@@ -162,15 +137,6 @@
           <h2>Nguyễn Văn Bách</h2>
         </div>
       </div>
-      <div class="sidebar-box-content mt-3">
-        <a-button
-          class="sidebar-box-item w-full bg-phone-color text-primary-white-color"
-        >
-          0986853388
-        </a-button>
-        <a-button class="sidebar-box-item w-full"> Chat qua Zalo </a-button>
-        <a-button class="sidebar-box-item w-full"> Yêu cầu gọi lại </a-button>
-      </div>
     </template>
   </SidebarFilter>
   <!-- end::Sidebar -->
@@ -183,6 +149,38 @@ import {
   ShareAltOutlined,
   CopyOutlined,
 } from "@ant-design/icons-vue";
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+
+import getPostAPI from "../../../api/posts/getDetails";
+import formatMoney from "../../../utils/formatMoney";
+import formatDate from "../../../scripts/formatDate";
+import copyText from "../../../scripts/copyText";
+
+const route = useRoute();
+
+const data = ref({});
+
+if (route.params.id) {
+  const fetchPostsList = async (id) => {
+    const post = await getPostAPI.getById(id);
+    data.value = {
+      id: post.id,
+      username: post.user.name,
+      title: post.title,
+      description: post.description,
+      price: post.price,
+      area: post.area,
+      address: post.address,
+      created_at: post.created_at,
+      view: 1000,
+      sold_status: post.sold_status,
+      status: post.status.name,
+    };
+  };
+
+  fetchPostsList(route.params.id);
+}
 </script>
 
 <script>
@@ -213,13 +211,6 @@ export default {
   transition: ease all 0.3s;
   opacity: 0.3;
   z-index: 1;
-}
-:deep(.slick-arrow.custom-slick-arrow:before) {
-  display: none;
-}
-:deep(.slick-arrow.custom-slick-arrow:hover) {
-  color: black;
-  opacity: 0.5;
 }
 
 :deep(.slick-dots) {

@@ -12,9 +12,8 @@ const user = [
                 name: "news-list",
                 component: () => import("../views/user/news/NewsList.vue"),
             },
-
             {
-                path: "news-detail",
+                path: "news-detail/:id",
                 name: "news-detail",
                 component: () => import("../views/user/news/NewsDetail.vue"),
             },

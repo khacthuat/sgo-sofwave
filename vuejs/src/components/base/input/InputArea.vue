@@ -8,11 +8,26 @@
 
     <!-- begin::Input -->
     <div>
-      <a-textarea :placeholder="placeholder" :rows="rows" :value="value" />
+      <a-input-group>
+        <a-textarea
+          :placeholder="placeholder"
+          :rows="rows"
+          :value="value"
+          :maxlength="200"
+          style="width: calc(100% - 46px)"
+        />
+        <a-button type="primary" class="absolute z-2 text-black h-100">
+          <SendOutlined
+        /></a-button>
+      </a-input-group>
     </div>
     <!-- end::Input -->
   </div>
 </template>
+
+<script setup>
+import { SendOutlined } from "@ant-design/icons-vue";
+</script>
 
 <script>
 export default {

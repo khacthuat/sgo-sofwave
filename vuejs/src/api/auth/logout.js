@@ -12,10 +12,9 @@ const logout = async () => {
             { headers }
         );
         if (response.status === 200) {
-            // Hiển thị thông báo đăng xuất thành công
-            console.log("Đăng xuất thành công!");
+            return true;
         } else {
-            console.log("Đăng xuất thất bại!");
+            return false;
         }
     } catch (error) {
         console.log(error);

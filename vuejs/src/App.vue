@@ -41,6 +41,20 @@ import {
   CommentOutlined,
   ArrowUpOutlined,
 } from "@ant-design/icons-vue";
+import auth from "./stores/auth";
+import getUserAPI from "./api/users/getUser";
+
+const store = auth();
+
+const initializeApp = async () => {
+  if (localStorage.getItem("token")) {
+    const token = localStorage.getItem("token");
+    const user = await getUserAPI.getByToken(token);
+    store.login(token, user);
+  }
+};
+
+initializeApp();
 </script>
 
 <script>

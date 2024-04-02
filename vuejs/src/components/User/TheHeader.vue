@@ -75,21 +75,29 @@
                 <template #title>
                   <h2>Thông báo</h2>
                 </template>
-                <a-badge count="5">
+                <a-badge>
                   <a-button class="flex justify-center align-items-center">
                     <NotificationOutlined />
                   </a-button>
+                  <span
+                    class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-sky-400 opacity-75 right-[7px] top-[-3px]"
+                  ></span>
+                  <span
+                    class="relative inline-flex rounded-full h-3 w-3 bg-sky-500 right-[5px] top-[-5px]"
+                  ></span>
                 </a-badge>
               </a-popover>
               <!-- end::Notification -->
 
               <!-- begin::User Feature -->
               <div class="n:px-2 md:px-4 border-x-[1px]">
-                <a-dropdown :placement="'bottomRight'" trigger="click">
+                <a-dropdown :placement="'bottom'" trigger="click">
                   <template #overlay>
-                    <a-menu class="mt-2">
-                      <a-menu-item key="1"> Quản lý tin đăng </a-menu-item>
-                      <a-menu-item key="2"> Quản lý tài trợ </a-menu-item>
+                    <a-menu class="">
+                      <a-menu-item key="1">
+                        Quản lý tin đăng
+                        <router-link to="/user/news-manage"></router-link>
+                      </a-menu-item>
                       <a-menu-item key="3">
                         Thay đổi thông tin các nhân
                       </a-menu-item>
@@ -109,7 +117,9 @@
                         verticalAlign: 'middle',
                       }"
                     >
-                      <span class="text-selected-color"> Bách </span>
+                      <span class="text-selected-color">
+                        {{ store.user.name[0] }}
+                      </span>
                     </a-avatar>
                     <div class="d-none d-sm-block">{{ store.user.name }}</div>
                     <div class="mx-2">
@@ -189,11 +199,6 @@
                       </a-form-item>
 
                       <a-form-item>
-                        <a-form-item name="remember" no-style>
-                          <a-checkbox v-model:checked="formState.remember"
-                            >Ghi nhớ tài khoản</a-checkbox
-                          >
-                        </a-form-item>
                         <a class="login-form-forgot" href="">Quên mật khẩu</a>
                       </a-form-item>
 
@@ -361,16 +366,8 @@ import auth from "../../stores/auth";
 import login from "../../api/auth/login";
 import logout from "../../api/auth/logout";
 import createUserAPI from "../../api/users/createUser";
-import getUserAPI from "../../api/users/getUser";
 
 const store = auth();
-
-if (localStorage.getItem("token")) {
-  store.login(
-    localStorage.getItem("token"),
-    getUserAPI.getByToken(localStorage.getItem("token"))
-  );
-}
 
 // login
 const formState = reactive({
@@ -380,7 +377,6 @@ const formState = reactive({
   registerUsername: "",
   registerPassword: "",
   registerPasswordConfirm: "",
-  remember: true,
 });
 
 const onFinish = (values) => {
@@ -394,9 +390,8 @@ const onLogin = async () => {
   store.login(loginUser.token, loginUser);
 };
 const onLogout = async () => {
-  const token = localStorage.getItem("token");
   const logoutUser = await logout();
-  if (logoutUser == 200) {
+  if (logoutUser) {
     store.logout();
   }
 };

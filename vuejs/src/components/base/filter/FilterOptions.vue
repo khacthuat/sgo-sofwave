@@ -20,37 +20,9 @@
     class="top-1/5"
     title="Lọc thêm"
   >
-    <div class="mt-5">
-      <div class="flex flex-col">
-        <div class="text-md font-semibold">Số phòng ngủ</div>
-        <div class="flex">
-          <label class="custom-checkbox me-2">
-            <input type="checkbox" value="1" />
-            <span>1</span>
-          </label>
-          <label class="custom-checkbox me-2">
-            <input type="checkbox" value="2" />
-            <span>2</span>
-          </label>
-          <label class="custom-checkbox me-2">
-            <input type="checkbox" value="3" />
-            <span>3</span>
-          </label>
-          <label class="custom-checkbox me-2">
-            <input type="checkbox" value="4" />
-            <span>4</span>
-          </label>
-          <label class="custom-checkbox">
-            <input type="checkbox" value="5" />
-            <span>5+</span>
-          </label>
-        </div>
-      </div>
-    </div>
-
     <div class="mt-3 w-50">
       <div class="flex flex-col">
-        <div class="text-md font-semibold">Hướng nhà</div>
+        <div class="text-md font-semibold mb-3">Hướng nhà</div>
         <div class="flex flex-wrap">
           <label class="custom-checkbox me-2">
             <input type="checkbox" value="east" />
@@ -90,7 +62,7 @@
 
     <div class="mt-3 w-100">
       <div class="flex flex-col">
-        <div class="text-md font-semibold">Nội dung tin có</div>
+        <div class="text-md font-semibold mb-3">Nội dung tin có</div>
         <div class="flex flex-wrap">
           <label class="custom-checkbox me-2">
             <input type="checkbox" value="picture" />

@@ -12,6 +12,8 @@ import "bootstrap/dist/css/bootstrap-utilities.min.css";
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/reset.css";
 
+import CKEditor from "@ckeditor/ckeditor5-vue";
+
 window.axios = axios;
 
 router.beforeEach((to, from, next) => {
@@ -23,6 +25,7 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 const app = createApp(App);
 app.use(Antd);
+app.use(CKEditor);
 app.use(pinia);
 app.use(router);
 app.mount("#app");

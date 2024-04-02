@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col d-none d-xl-flex col-lg-2">
     <!-- begin::Sidebar Box -->
-    <div class="flex-col p-3 mb-3 border-1 sidebar-box">
+    <div class="flex-col mb-3 border-1 sidebar-box">
       <!-- begin::Author -->
-      <slot name="author"></slot>
+      <slot name="author" class=""></slot>
       <!-- end::Author -->
     </div>
     <!-- end::Sidebar Box -->
@@ -34,7 +34,7 @@
     <div class="p-3 border-1 sidebar-box">
       <!-- begin::Sidebar Box Title -->
       <div class="mb-3">
-        <h2>Lọc theo khoảng giá</h2>
+        <h2>Lọc theo diện tích</h2>
       </div>
       <!-- end::Sidebar Box Title -->
 
