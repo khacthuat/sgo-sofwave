@@ -36,6 +36,16 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'content' => 'required',
+            'post_id' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $comment = Comment::create($request->all());
+
+        return response()->json($comment, 201);
     }
 
     /**
@@ -44,9 +54,12 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
         //
+        $comments = Comment::where('post_id', $id)->get();
+
+        return response()->json($comments);
     }
 
     /**

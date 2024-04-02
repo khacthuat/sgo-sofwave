@@ -212,6 +212,9 @@ export default {
   opacity: 0.3;
   z-index: 1;
 }
+:deep(.slick-arrow.custom-slick-arrow:before) {
+  display: none;
+}
 
 :deep(.slick-dots) {
   position: relative;

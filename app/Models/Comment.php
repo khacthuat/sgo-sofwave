@@ -17,4 +17,8 @@ class Comment extends Model
         'news_id',
     ];
 
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }

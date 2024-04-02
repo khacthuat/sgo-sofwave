@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,12 @@ Route::group(['prefix' => 'posts'], function () {
 
 Route::get('/pending', [PostController::class, 'pending']);
 Route::get('/notpending', [PostController::class, 'notPending']);
+
+
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('', [CommentController::class, 'index']);
+    Route::get('/{id}', [CommentController::class, 'show']);
+    Route::post('', [CommentController::class, 'store']);
+    Route::put('/{id}', [CommentController::class, 'update']);
+    Route::delete('/{id}', [CommentController::class, 'destroy']);
+});

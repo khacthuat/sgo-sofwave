@@ -14,11 +14,15 @@
           :rows="rows"
           :value="value"
           :maxlength="200"
-          style="width: calc(100% - 46px)"
+          :style="{ width: type === 'comment' ? 'calc(100% - 46px)' : '100%' }"
         />
-        <a-button type="primary" class="absolute z-2 text-black h-100">
-          <SendOutlined
-        /></a-button>
+        <a-button
+          type="primary"
+          class="absolute h-100 bg-[#654321] text-white hover:text-black"
+          v-if="type == 'comment'"
+        >
+          <SendOutlined class="" />
+        </a-button>
       </a-input-group>
     </div>
     <!-- end::Input -->
@@ -45,7 +49,12 @@ export default {
     value: {
       type: String,
     },
+    type: {
+      type: String,
+      default: "textarea",
+    },
   },
 };
 </script>
-<style></style>
+<style>
+</style>

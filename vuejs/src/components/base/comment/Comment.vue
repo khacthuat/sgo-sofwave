@@ -2,7 +2,7 @@
   <div class="comments mt-3">
     <a-descriptions title="Bình luận"> </a-descriptions>
     <div>
-      <InputArea />
+      <InputArea :type="'comment'" />
       <div class="clearfix">
         <a-upload
           v-model:file-list="fileList"

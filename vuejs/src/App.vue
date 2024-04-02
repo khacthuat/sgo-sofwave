@@ -1,27 +1,14 @@
 <template>
   <router-view></router-view>
-  <!-- begin::Support -->
-  <div class="support">
-    <a-float-button-group
-      trigger="click"
-      type="primary"
-      :style="{
-        right: '6px',
-        bottom: '40vh',
-      }"
-    >
-      <template #icon>
-        <CustomerServiceOutlined />
-      </template>
-      <a-float-button />
-      <a-float-button>
-        <template #icon>
-          <CommentOutlined />
-        </template>
-      </a-float-button>
-    </a-float-button-group>
-  </div>
-  <!-- end::Support -->
+  <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: data.colorPrimary,
+        borderRadius: `${data.borderRadius}px`,
+      },
+    }"
+  >
+  </a-config-provider>
 
   <!-- begin::Back to top -->
   <div class="back-to-top">
@@ -36,16 +23,22 @@
 
 
 <script setup>
-import {
-  CustomerServiceOutlined,
-  CommentOutlined,
-  ArrowUpOutlined,
-} from "@ant-design/icons-vue";
+import { ArrowUpOutlined } from "@ant-design/icons-vue";
 import auth from "./stores/auth";
 import getUserAPI from "./api/users/getUser";
+import { ref } from "vue";
+import { theme } from "ant-design-vue";
 
+// color theme
+const defaultData = {
+  borderRadius: 6,
+  colorPrimary: "#654321",
+};
+const data = ref(defaultData);
+const { token } = theme.useToken();
+
+// auth
 const store = auth();
-
 const initializeApp = async () => {
   if (localStorage.getItem("token")) {
     const token = localStorage.getItem("token");
@@ -61,4 +54,9 @@ initializeApp();
 export default {};
 </script>
 
-<style></style>
+<style>
+input[type="color"] {
+  border: 1px solid v-bind("token.colorBorder");
+  background-color: v-bind("token.colorBgBase");
+}
+</style>

@@ -8,62 +8,15 @@
     box-sizing: border-box;
 }
 
-/* .ant-input[type="text"]:focus {
-    outline: 1px solid #555;
-}
-
-.ant-input[type="text"]:hover {
-    outline: 1px solid #555;
-}
-
-.ant-input[type="text"] {
-    outline: none;
-} */
-
-.ant-btn[type="button"]:focus {
-    outline: 1px solid #555;
-    color: black;
-}
-.ant-btn[type="button"]:hover {
-    outline: 1px solid #555;
-    color: black;
-}
-
-/* Button Background color */
-
-.ant-btn-primary {
-    background-color: #1dbabf !important;
-    color: #ffffff !important;
-}
-
-.ant-btn-primary:hover,
-.ant-btn-primary:focus {
-    background-color: #7cdee2 !important;
-    color: black !important;
-}
-
-/* Footer Modal Button color */
-.ant-modal-footer .ant-btn-primary {
-    background-color: #e03c31 !important;
-    color: #ffffff;
-}
-
-.ant-modal-footer .ant-btn-primary:hover {
-    background-color: #f98077 !important;
-    color: #ffffff;
-}
-
-.ant-modal-footer .ant-btn-default {
-    background-color: transparent !important;
-    color: black;
-}
-
-
-
 /* a tag  */
 a,
 a:hover,
 a:focus {
+    color: black;
+}
+.ant-btn-primary {
+    border: 1px solid gray;
+    background-color: #D2B48C;
     color: black;
 }
 

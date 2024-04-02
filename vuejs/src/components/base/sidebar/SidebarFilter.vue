@@ -3,7 +3,7 @@
     <!-- begin::Sidebar Box -->
     <div class="flex-col mb-3 border-1 sidebar-box">
       <!-- begin::Author -->
-      <slot name="author" class=""></slot>
+      <slot name="author"></slot>
       <!-- end::Author -->
     </div>
     <!-- end::Sidebar Box -->
