@@ -9,7 +9,7 @@
         >
           <!-- begin::Image avatar -->
           <div
-            class="image-input-wrapper w-48 h-48 sm:w-64 sm:h-64"
+            class="image-input-wrapper w-48 h-48 sm:w-72 sm:h-64"
             style="
               background-image: url(https://file4.batdongsan.com.vn/resize/1275x717/2024/03/31/20240331092400-d913_wm.jpg);
             "

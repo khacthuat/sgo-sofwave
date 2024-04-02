@@ -109,9 +109,7 @@
                         verticalAlign: 'middle',
                       }"
                     >
-                      <span class="text-selected-color">
-                        {{ store.user.name[0] }}
-                      </span>
+                      <span class="text-selected-color"> Bách </span>
                     </a-avatar>
                     <div class="d-none d-sm-block">{{ store.user.name }}</div>
                     <div class="mx-2">
@@ -396,8 +394,11 @@ const onLogin = async () => {
   store.login(loginUser.token, loginUser);
 };
 const onLogout = async () => {
-  const logoutUser = await logout(localStorage.getItem("token"));
-  store.logout(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
+  const logoutUser = await logout();
+  if (logoutUser == 200) {
+    store.logout();
+  }
 };
 const onRegister = async () => {
   const user = {

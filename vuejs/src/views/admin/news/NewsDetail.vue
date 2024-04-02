@@ -2,10 +2,10 @@
   <ThePageHeader />
   <div class="w-100">
     <!-- begin::Form -->
-    <div class="flex flex-col lg:flex-row w-100">
+    <div class="flex flex-col xl:flex-row w-100">
       <!-- begin::Main Column -->
       <div
-        class="flex flex-col col-12 col-lg-4 gap-3 gap-lg-5"
+        class="flex flex-col col-12 col-xl-4 gap-3 gap-lg-5"
         style="background-color: white"
       >
         <TheMainColumn />
@@ -14,7 +14,7 @@
 
       <!-- begin::Detail Column -->
       <div
-        class="flex flex-col col-12 col-lg-8 gap-7 gap-lg-10 pl-5"
+        class="flex flex-col col-12 col-xl-8 gap-7 gap-lg-10 pl-5"
         style="background-color: white"
       >
         <TheDetailColumn />

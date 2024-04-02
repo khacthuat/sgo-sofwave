@@ -43,6 +43,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         // Chỉ xóa token hiện tại
+        // print_r($request->user()->currentAccessToken());
         $request->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'Đăng xuất thành công'], 200);
     }

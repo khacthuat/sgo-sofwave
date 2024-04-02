@@ -109,7 +109,10 @@
             <template v-if="column.key === 'detail'">
               <div>
                 <router-link
-                  :to="{ name: 'admin-news-detail', params: { id: record.id } }"
+                  :to="{
+                    name: 'admin-news-detail',
+                    params: { id: record.id },
+                  }"
                 >
                   <a-button type="" style="color: red">Chi tiết</a-button>
                 </router-link>
