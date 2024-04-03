@@ -8,7 +8,7 @@
       <div class="clearfix">
         <a-upload
           v-model:file-list="fileList"
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          action="arn:aws:s3:::ptit-store-img"
           list-type="picture-card"
           @preview="handlePreview"
         >
@@ -63,14 +63,12 @@
 </template>
 
 <script setup>
-import InputArea from "../input/InputArea.vue";
 import auth from "../../../stores/auth";
 import { ref, watch } from "vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import { useRoute } from "vue-router";
 
 import createCommentAPI from "../../../api/comment/create";
-import getUserAPI from "../../../api/users/getUser";
 import formatDate from "../../../scripts/formatDate";
 const route = useRoute();
 const store = auth();
@@ -84,8 +82,6 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["submitComment"]);
-
-// const listData = props.comments;
 
 // Data
 const userComment = ref({
@@ -114,8 +110,6 @@ const listData = ref([]);
 watch(
   () => props.comments,
   async (value) => {
-    // Thực hiện các hành động cần thiết khi có sự thay đổi của props.comments
-    // Ví dụ: tính toán lại độ dài của props.comments
     const listComment = [];
 
     for (let i = 0; i < value.length; i++) {
@@ -162,18 +156,6 @@ const fileList = ref([
     status: "done",
     url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
   },
-  {
-    uid: "-xxx",
-    percent: 50,
-    name: "image.png",
-    status: "uploading",
-    url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-  },
-  {
-    uid: "-5",
-    name: "image.png",
-    status: "error",
-  },
 ]);
 const handleCancel = () => {
   previewVisible.value = false;
@@ -191,6 +173,8 @@ const handlePreview = async (file) => {
 </script>
 
 <script>
+import InputArea from "../input/InputArea.vue";
+
 export default {};
 </script>
 

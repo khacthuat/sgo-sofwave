@@ -12,7 +12,8 @@
         <a-textarea
           :placeholder="placeholder"
           :rows="rows"
-          v-model:value="content"
+          v-model="content"
+          :value="value"
           :maxlength="200"
           :style="{ width: type === 'comment' ? 'calc(100% - 46px)' : '100%' }"
         />
