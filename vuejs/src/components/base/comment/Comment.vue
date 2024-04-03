@@ -1,6 +1,7 @@
 <template>
   <div class="comments mt-3">
-    <a-descriptions title="Bình luận"> </a-descriptions>
+    <a-descriptions title="Bình luận" @contentValue="setContentValue">
+    </a-descriptions>
     <div>
       <InputArea :type="'comment'" />
       <div class="clearfix">
@@ -60,9 +61,28 @@
 
 <script setup>
 import InputArea from "../input/InputArea.vue";
+import auth from "../../../stores/auth";
 import { ref } from "vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
+
+// Props
+const props = defineProps({
+  comments: {
+    type: Array,
+    default: () => [],
+  },
+});
+
+// Data
+const content = ref("");
+const comment = ref({
+  content: "",
+  post_id: route.params.id,
+  user_id: "",
+});
 const listData = [];
 for (let i = 0; i < 23; i++) {
   listData.push({
@@ -79,6 +99,11 @@ const pagination = {
   pageSize: 3,
 };
 
+const setContentValue = (value) => {
+  content.value = value;
+};
+
+// Upload Image
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

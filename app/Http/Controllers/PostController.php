@@ -28,6 +28,8 @@ class PostController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -39,6 +41,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'area' => 'required',
+            'price' => 'required',
+            'address' => 'required',
+            'user_id' => 'required',
+            'status_id' => 'required'
+        ]);
+
+        $post = Post::create($request->all());
+
+        return response()->json($post, 201);
     }
 
     /**

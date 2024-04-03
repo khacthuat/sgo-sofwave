@@ -109,7 +109,7 @@
         <!-- end::Date -->
 
         <!-- begin::Comments -->
-        <Comment />
+        <Comment :comments="comments" />
         <!-- end::Comments -->
       </div>
       <!-- end::Detail Infor -->
@@ -160,8 +160,9 @@ import copyText from "../../../scripts/copyText";
 const route = useRoute();
 
 const data = ref({});
-
+const comments = ref([]);
 if (route.params.id) {
+  const postId = route.params.id;
   const fetchPostsList = async (id) => {
     const post = await getPostAPI.getById(id);
     data.value = {
@@ -179,7 +180,14 @@ if (route.params.id) {
     };
   };
 
-  fetchPostsList(route.params.id);
+  fetchPostsList(postId);
+
+  const fetchCommentsList = async (id) => {
+    comments = await getPostAPI.getComments(id);
+    console.log(comments);
+  };
+
+  fetchCommentsList(postId);
 }
 </script>
 
