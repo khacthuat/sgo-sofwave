@@ -119,11 +119,10 @@ watch(
     const listComment = [];
 
     for (let i = 0; i < value.length; i++) {
-      const userName = await getUserAPI.getNameById(value[i].user_id);
       const formattedDate = formatDate(value[i].created_at);
       let ans = {
         href: "https://www.antdv.com/",
-        title: userName,
+        title: value[i].user.name,
         avatar: "",
         description: formattedDate,
         content: value[i].content,

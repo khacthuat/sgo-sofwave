@@ -8,7 +8,7 @@
     <!-- begin::Content Navbar -->
     <div class="flex align-content-center justify-between my-3 w-full">
       <!-- begin::Total land -->
-      <div v-text="totalLand"></div>
+      <div>Hiện có {{ totalLand }} bất động sản</div>
       <!-- end::Total land -->
     </div>
     <!-- end::Content Navbar -->
@@ -123,14 +123,9 @@
 <script setup>
 import listPostsAPI from "../../../api/posts/index";
 import getTimeSincePostCreation from "../../../utils/getTimeSincePostCreation";
-import { MinusOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
-import copyText from "../../../scripts/copyText";
 
-const current = ref(1);
-var totalLand = "Hiện có 1000 bất động sản";
-
-var phoneNumber = "0986853388";
+const totalLand = ref(0);
 
 const data = ref([]);
 
@@ -161,6 +156,7 @@ const fetchPostsList = async () => {
   }
 
   data.value = posts;
+  totalLand.value = posts.length;
 };
 
 fetchPostsList();

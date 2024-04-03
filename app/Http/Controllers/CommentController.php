@@ -57,7 +57,9 @@ class CommentController extends Controller
     public function show($id)
     {
         //
-        $comments = Comment::where('post_id', $id)->orderBy('created_at', 'desc')->get();
+        // $comments = Comment::where('post_id', $id)->orderBy('created_at', 'desc')->get();
+        $comments = Comment::with(['user'])->where('post_id', $id)->orderBy('created_at', 'desc')->get();
+
 
         return response()->json($comments);
     }
