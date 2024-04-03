@@ -4,7 +4,7 @@
       <span>Lọc thêm</span>
     </template>
     <div
-      class="filter-item-content"
+      class="filter-item-content align-items-center"
       @click.prevent
       @click="setModalOptions(true)"
     >

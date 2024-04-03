@@ -19,6 +19,14 @@ a:focus {
     background-color: #D2B48C;
     color: black;
 }
+/* ant list flex col css */
+.ant-list-item-extra {
+    margin-inline-start: 0px !important;
+}
+
+.ant-list-item-meta .ant-list-item-meta-avatar {
+    margin-inline-end: 0px !important;
+}
 
 /* sidebar box */
 .sidebar-box-item {
@@ -98,3 +106,6 @@ a:focus {
     padding-left: 30px !important;
     padding-right: 30px !important;
 }
+
+
+

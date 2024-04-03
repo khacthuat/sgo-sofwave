@@ -16,117 +16,102 @@
     <!-- begin::Main Content -->
     <div class="space-y-10">
       <!-- begin::Content Item -->
-
-      <div class="flex flex-col border-1" v-for="post in data">
-        <router-link :to="{ name: 'news-detail', params: { id: post.id } }">
-          <!-- begin::Card Image -->
-          <div class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]">
-            <div
-              class="n:col-span-6 n:row-span-2 md:col-span-4 md:row-span-2 image-container"
-            >
-              <img
-                src="../../../assets/images/land/land1.png"
-                class="flex object-fit-cover w-full h-full"
-              />
-            </div>
-            <div
-              class="d-none d-md-block md:col-span-2 md:row-span-1 image-container"
-            >
-              <img
-                src="../../../assets/images/land/land1.png"
-                class="flex object-fit-cover w-full h-full"
-              />
-            </div>
-            <div class="d-none d-md-block md:row-span-1 image-container">
-              <img
-                src="../../../assets/images/land/land1.png"
-                class="flex object-fit-cover w-full h-full"
-              />
-            </div>
-            <div class="d-none d-md-block md:row-span-1 image-container">
-              <img
-                src="../../../assets/images/land/land1.png"
-                class="flex object-fit-cover w-full h-full"
-              />
+      <a-list
+        item-layout="vertical"
+        size="large"
+        :data-source="data"
+        :pagination="pagination"
+      >
+        <template #header>
+          <div class="flex justify-between">
+            <div>
+              <h3 class="text-xl font-semibold">Danh sách bài viết</h3>
             </div>
           </div>
-          <!-- end::Card Image -->
+        </template>
+        <template #renderItem="{ item }">
+          <a-list-item key="item.title" class="flex flex-col-reverse px-0">
+            <router-link :to="{ name: 'news-detail', params: { id: item.id } }">
+              <a-list-item-meta class="mt-3">
+                <template #title>
+                  <a :href="item.href">{{ item.title }}</a>
+                </template>
+                <template #description>
+                  <div>
+                    {{ item.address }}
+                  </div>
+                  <div class="line-clamp-2 mt-2">
+                    {{ item.description }}
+                  </div>
+                </template>
+                <template #avatar> </template>
+              </a-list-item-meta>
+            </router-link>
 
-          <!-- begin::Card Info -->
-          <div>
-            <!-- begin::Card Info Content -->
-            <div class="p-3 border-b-[1px]">
-              <!-- begin::Card Info Title -->
-              <div class="mt-1">
-                <h3 class="text-xl font-semibold">
-                  <span class="line-clamp-2">
-                    {{ post.title }}
-                  </span>
-                </h3>
-              </div>
-              <!-- end::Card Info Title -->
-
-              <!-- begin::Card Info -->
-              <CardInfor />
-              <!-- end::Card Info -->
-
-              <!-- begin::Card Info Description -->
-              <div class="mt-2 line-clamp-2">
-                {{ post.description }}
-              </div>
-              <!-- end::Card Info Description -->
-            </div>
-            <!-- end::Card Info Content -->
-          </div>
-          <!-- end::Card Info -->
-        </router-link>
-
-        <!-- begin::Card Contact -->
-        <div class="p-3 flex justify-between">
-          <!-- begin::Card Published Info -->
-          <div class="flex align-items-center">
-            <a-avatar
-              class="me-2"
-              :style="{
-                backgroundColor: '#f50',
-                verticalAlign: 'middle',
-              }"
-            >
-              {{ post.username.charAt(0) }}
-            </a-avatar>
-            <div class="flex flex-col">
-              <div>{{ post.username }}</div>
-              <div>{{ post.created_at }}</div>
-            </div>
-          </div>
-          <!-- end::Card Published Info -->
-
-          <!-- begin::Card Contact Button -->
-          <div>
-            <a-button type="primary ">
-              <div class="flex align-items-center">
-                <div @click="copyText(phoneNumber)">
-                  {{ phoneNumber }}
+            <template #extra>
+              <router-link
+                :to="{ name: 'news-detail', params: { id: item.id } }"
+              >
+                <div class="grid grid-cols-6 grid-rows-2 gap-1 w-100 h-[233px]">
+                  <div
+                    class="n:col-span-6 n:row-span-2 md:col-span-4 md:row-span-2 image-container"
+                  >
+                    <img
+                      src="../../../assets/images/land/land1.png"
+                      class="flex object-fit-cover w-full h-full"
+                    />
+                  </div>
+                  <div
+                    class="d-none d-md-block md:col-span-2 md:row-span-1 image-container"
+                  >
+                    <img
+                      src="../../../assets/images/land/land1.png"
+                      class="flex object-fit-cover w-full h-full"
+                    />
+                  </div>
+                  <div class="d-none d-md-block md:row-span-1 image-container">
+                    <img
+                      src="../../../assets/images/land/land1.png"
+                      class="flex object-fit-cover w-full h-full"
+                    />
+                  </div>
+                  <div class="d-none d-md-block md:row-span-1 image-container">
+                    <img
+                      src="../../../assets/images/land/land1.png"
+                      class="flex object-fit-cover w-full h-full"
+                    />
+                  </div>
                 </div>
-                <MinusOutlined class="mx-1 d-none d-md-block" />
-                <div class="d-none d-md-block">Sao chép</div>
+              </router-link>
+            </template>
+            <!-- begin::Card Contact -->
+            <div class="flex justify-between">
+              <!-- begin::Card Published Info -->
+              <div class="flex align-items-center">
+                <a-avatar
+                  class="me-2"
+                  :style="{
+                    backgroundColor: '#f50',
+                    verticalAlign: 'middle',
+                  }"
+                >
+                  {{ item.username.charAt(0) }}
+                </a-avatar>
+                <div class="flex flex-col">
+                  <div>{{ item.username }}</div>
+                  <div>{{ item.created_at }}</div>
+                </div>
               </div>
-            </a-button>
-          </div>
-          <!-- end::Card Contact Button -->
-        </div>
-        <!-- end::Card Contact -->
-      </div>
+              <!-- end::Card Published Info -->
+            </div>
+            <!-- end::Card Contact -->
+          </a-list-item>
+        </template>
+      </a-list>
+
       <!-- end::Content Item -->
     </div>
     <!-- end::Main Content -->
-
-    <!-- begin::Pagination -->
-    <div class="flex mb-5 justify-center align-items-center">
-      <a-pagination v-model:current="current" :total="100" show-less-items>
-      </a-pagination>
-    </div>
-    <!-- end::Pagination -->
   </div>
   <!-- end::Primary Content -->
 
@@ -179,6 +164,12 @@ const fetchPostsList = async () => {
 };
 
 fetchPostsList();
+
+// Pagination
+const pagination = {
+  onChange: (page) => {},
+  pageSize: 2,
+};
 </script>
 
 <script>
