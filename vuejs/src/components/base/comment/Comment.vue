@@ -1,9 +1,10 @@
 <template>
   <div class="comments mt-3">
-    <a-descriptions title="Bình luận" @contentValue="setContentValue">
-    </a-descriptions>
+    <a-descriptions title="Bình luận"> </a-descriptions>
     <div>
-      <InputArea :type="'comment'" />
+      <div>
+        <InputArea :type="'comment'" @submitComment="onSubmitComment" />
+      </div>
       <div class="clearfix">
         <a-upload
           v-model:file-list="fileList"
@@ -26,6 +27,8 @@
         </a-modal>
       </div>
     </div>
+    <a-divider />
+
     <a-list
       item-layout="vertical"
       size="large"
@@ -48,7 +51,7 @@
                   verticalAlign: 'middle',
                 }"
               >
-                {{ item.title[0].toUpperCase() }}
+                {{ item.title[0] }}
               </a-avatar>
             </template>
           </a-list-item-meta>
@@ -62,11 +65,15 @@
 <script setup>
 import InputArea from "../input/InputArea.vue";
 import auth from "../../../stores/auth";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import { useRoute } from "vue-router";
 
+import createCommentAPI from "../../../api/comment/create";
+import getUserAPI from "../../../api/users/getUser";
+import formatDate from "../../../scripts/formatDate";
 const route = useRoute();
+const store = auth();
 
 // Props
 const props = defineProps({
@@ -76,31 +83,64 @@ const props = defineProps({
   },
 });
 
+const emits = defineEmits(["submitComment"]);
+
+// const listData = props.comments;
+
 // Data
-const content = ref("");
-const comment = ref({
+const userComment = ref({
   content: "",
   post_id: route.params.id,
   user_id: "",
 });
-const listData = [];
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: "https://www.antdv.com/",
-    title: "Nguyễn Văn Bách",
-    avatar: "",
-    description: "2024-03-23 6:58",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  });
-}
-const pagination = {
-  onChange: (page) => {},
-  pageSize: 3,
+
+// Methods
+const onSubmitComment = (content) => {
+  userComment.value.content = content;
+  userComment.value.user_id = store.user.id;
+  const fetchCreateComment = async () => {
+    try {
+      await createCommentAPI(userComment.value);
+      emits("submitComment");
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+  fetchCreateComment();
 };
 
-const setContentValue = (value) => {
-  content.value = value;
+const listData = ref([]);
+
+watch(
+  () => props.comments,
+  async (value) => {
+    // Thực hiện các hành động cần thiết khi có sự thay đổi của props.comments
+    // Ví dụ: tính toán lại độ dài của props.comments
+    const listComment = [];
+
+    for (let i = 0; i < value.length; i++) {
+      const userName = await getUserAPI.getNameById(value[i].user_id);
+      const formattedDate = formatDate(value[i].created_at);
+      let ans = {
+        href: "https://www.antdv.com/",
+        title: userName,
+        avatar: "",
+        description: formattedDate,
+        content: value[i].content,
+      };
+      if (listData.value.length > 0) {
+        listData.value.unshift(ans);
+        break;
+      }
+      listComment.push(ans);
+    }
+    if (listComment.length > 0) listData.value = listComment;
+  }
+);
+
+const pagination = {
+  onChange: (page) => {},
+  pageSize: 5,
 };
 
 // Upload Image

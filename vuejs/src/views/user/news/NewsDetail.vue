@@ -74,7 +74,7 @@
         <!-- begin::Description -->
         <div class="description mt-3 border-b-[1px]">
           <a-descriptions title="Thông tin mô tả">
-            <a-descriptions-item label="">
+            <a-descriptions-item label="" class="select-all">
               {{ data.description }}
             </a-descriptions-item>
           </a-descriptions>
@@ -109,7 +109,7 @@
         <!-- end::Date -->
 
         <!-- begin::Comments -->
-        <Comment :comments="comments" />
+        <Comment :comments="comments" @submitComment="onSubmitComment" />
         <!-- end::Comments -->
       </div>
       <!-- end::Detail Infor -->
@@ -153,6 +153,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 
 import getPostAPI from "../../../api/posts/getDetails";
+import getCommentDetailsAPI from "../../../api/comment/getDetails";
 import formatMoney from "../../../utils/formatMoney";
 import formatDate from "../../../scripts/formatDate";
 import copyText from "../../../scripts/copyText";
@@ -161,34 +162,37 @@ const route = useRoute();
 
 const data = ref({});
 const comments = ref([]);
-if (route.params.id) {
-  const postId = route.params.id;
-  const fetchPostsList = async (id) => {
-    const post = await getPostAPI.getById(id);
-    data.value = {
-      id: post.id,
-      username: post.user.name,
-      title: post.title,
-      description: post.description,
-      price: post.price,
-      area: post.area,
-      address: post.address,
-      created_at: post.created_at,
-      view: 1000,
-      sold_status: post.sold_status,
-      status: post.status.name,
-    };
+
+const postId = route.params.id;
+const fetchPostsList = async (id) => {
+  const post = await getPostAPI.getById(id);
+  data.value = {
+    id: post.id,
+    username: post.user.name,
+    title: post.title,
+    description: post.description,
+    price: post.price,
+    area: post.area,
+    address: post.address,
+    created_at: post.created_at,
+    view: 1000,
+    sold_status: post.sold_status,
+    status: post.status.name,
   };
+};
 
-  fetchPostsList(postId);
+fetchPostsList(postId);
 
-  const fetchCommentsList = async (id) => {
-    comments = await getPostAPI.getComments(id);
-    console.log(comments);
-  };
+const fetchCommentsList = async (id) => {
+  const commentOnPost = await getCommentDetailsAPI(id);
+  comments.value = commentOnPost;
+};
 
+fetchCommentsList(postId);
+
+const onSubmitComment = () => {
   fetchCommentsList(postId);
-}
+};
 </script>
 
 <script>

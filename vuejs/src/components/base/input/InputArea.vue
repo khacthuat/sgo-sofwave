@@ -12,13 +12,14 @@
         <a-textarea
           :placeholder="placeholder"
           :rows="rows"
-          :value="value"
+          v-model:value="content"
           :maxlength="200"
           :style="{ width: type === 'comment' ? 'calc(100% - 46px)' : '100%' }"
         />
         <a-button
           type="primary"
           class="absolute h-100 bg-[#654321] text-white hover:text-black"
+          @click="onsubmit"
           v-if="type == 'comment'"
         >
           <SendOutlined class="" />
@@ -30,7 +31,16 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { SendOutlined } from "@ant-design/icons-vue";
+
+const emits = defineEmits(["submitComment"]);
+const content = ref("");
+
+const onsubmit = () => {
+  emits("submitComment", content.value);
+  content.value = "";
+};
 </script>
 
 <script>

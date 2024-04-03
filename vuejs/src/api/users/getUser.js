@@ -21,6 +21,16 @@ const getUserAPI = {
             console.error(error);
         }
     },
+    getNameById: async (id) => {
+        try {
+            const response = await axios.get(
+                `${apiURL.baseURL}/users/${id}/name`
+            );
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    },
 };
 
 export default getUserAPI;

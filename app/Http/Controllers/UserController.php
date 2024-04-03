@@ -83,6 +83,11 @@ class UserController extends Controller
         return User::findOrFail($id);
     }
 
+    public function getName($id)
+    {
+        return User::findOrFail($id)->name;
+    }
+
     /**
      * Hàm chỉnh sửa người dùng
      * @param $user
