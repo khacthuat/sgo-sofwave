@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+    Route::get('/me', [AuthController::class, 'me']);
+});
+
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('', [UserController::class, 'index']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/{id}/name', [UserController::class, 'getName']);
+    Route::post('', [UserController::class, 'store']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'posts'], function () {
+    Route::get('', [PostController::class, 'index']);
+    Route::get('/{id}', [PostController::class, 'show']);
+
+    Route::post('', [PostController::class, 'store']);
+    Route::put('/{id}', [PostController::class, 'update']);
+    Route::delete('/{id}', [PostController::class, 'destroy']);
+});
+
+Route::get('/pending', [PostController::class, 'pending']);
+Route::get('/notpending', [PostController::class, 'notPending']);
+
+
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('', [CommentController::class, 'index']);
+    Route::get('/{id}', [CommentController::class, 'show']);
+    Route::post('', [CommentController::class, 'store']);
+    Route::put('/{id}', [CommentController::class, 'update']);
+    Route::delete('/{id}', [CommentController::class, 'destroy']);
 });

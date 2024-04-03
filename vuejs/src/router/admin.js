@@ -1,36 +1,32 @@
 const admin = [
     {
-        path: "/",
-        component: () => import("../layouts/admin.vue"),
-    },
-    {
         path: "/admin",
         component: () => import("../layouts/admin.vue"),
         children: [
             {
                 path: "users",
                 name: "admin-users",
-                component: () => import("../pages/admin/users/index.vue"),
-            },
-            {
-                path: "roles",
-                name: "admin-roles",
-                component: () => import("../pages/admin/roles/index.vue"),
-            },
-            {
-                path: "settings",
-                name: "admin-settings",
-                component: () => import("../pages/admin/settings/index.vue"),
+                component: () => import("../views/admin/user/UserList.vue"),
             },
             {
                 path: "news",
                 name: "admin-news",
-                component: () => import("../pages/admin/news/index.vue"),
+                component: () => import("../views/admin/news/NewsList.vue"),
             },
             {
-                path: "news-detail",
+                path: "add/news",
+                name: "add-news",
+                component: () => import("../views/admin/news/NewsDetail.vue"),
+            },
+            {
+                path: "news-detail/:id",
                 name: "admin-news-detail",
-                component: () => import("../pages/admin/news/detail.vue"),
+                component: () => import("../views/admin/news/NewsDetail.vue"),
+            },
+            {
+                path: "news-statistic",
+                name: "admin-news-statistic",
+                component: () => import("../views/admin/news/NewsBrowse.vue"),
             },
         ],
     },
