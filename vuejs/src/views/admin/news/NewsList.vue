@@ -3,7 +3,7 @@
   <div class="card">
     <!-- begin::Card Header -->
 
-    <div class="card-header flex justify-between flex-wrap py-4">
+    <div class="card-header flex justify-between flex-wrap pb-4">
       <!-- begin::Card Title -->
       <div class="card-title">
         <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
@@ -129,6 +129,12 @@
                     ? "không công khai"
                     : ""
                 }}
+                <template #icon>
+                  <check-circle-outlined v-if="record.status === 'published'" />
+                  <close-circle-outlined
+                    v-else-if="record.status === 'unpublished'"
+                  />
+                </template>
               </a-tag>
             </div>
           </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="comments mt-3">
     <a-descriptions title="Bình luận"> </a-descriptions>
-    <div>
+    <div v-if="store.token">
       <div>
         <InputArea :type="'comment'" @submitComment="onSubmitComment" />
       </div>

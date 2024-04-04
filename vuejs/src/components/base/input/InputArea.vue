@@ -12,8 +12,7 @@
         <a-textarea
           :placeholder="placeholder"
           :rows="rows"
-          v-model="content"
-          :value="value"
+          v-model:value="content"
           :maxlength="200"
           :style="{ width: type === 'comment' ? 'calc(100% - 46px)' : '100%' }"
         />
@@ -32,11 +31,38 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { SendOutlined } from "@ant-design/icons-vue";
 
+const props = defineProps({
+  title: {
+    type: String,
+    default: "",
+  },
+  placeholder: {
+    type: String,
+    default: "",
+  },
+  rows: {
+    type: Number,
+    default: 4,
+  },
+  type: {
+    type: String,
+    default: "input",
+  },
+  value: {
+    type: String,
+    default: "",
+  },
+});
+
 const emits = defineEmits(["submitComment"]);
-const content = ref("");
+const content = ref(props.value);
+watch(
+  () => props.value,
+  () => (content.value = props.value)
+);
 
 const onsubmit = () => {
   emits("submitComment", content.value);
@@ -45,27 +71,7 @@ const onsubmit = () => {
 </script>
 
 <script>
-export default {
-  props: {
-    title: {
-      type: String,
-    },
-    placeholder: {
-      type: String,
-    },
-    rows: {
-      type: Number,
-      default: 4,
-    },
-    value: {
-      type: String,
-    },
-    type: {
-      type: String,
-      default: "textarea",
-    },
-  },
-};
+export default {};
 </script>
 <style>
 </style>

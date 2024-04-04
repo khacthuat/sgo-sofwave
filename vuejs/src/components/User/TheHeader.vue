@@ -95,13 +95,20 @@
                   <template #overlay>
                     <a-menu class="">
                       <a-menu-item key="1">
+                        <BarChartOutlined />
                         Quản lý tin đăng
                         <router-link to="/user/news-manage"></router-link>
                       </a-menu-item>
                       <a-menu-item key="3">
+                        <InfoOutlined />
                         Thay đổi thông tin các nhân
                       </a-menu-item>
-                      <a-menu-item key="4" @click="onLogout">
+                      <a-menu-item
+                        key="4"
+                        @click="onLogout"
+                        class="mt-2 border-t-[1px]"
+                      >
+                        <LogoutOutlined />
                         Đăng xuất
                       </a-menu-item>
                     </a-menu>
@@ -360,6 +367,9 @@ import {
   UserOutlined,
   ClockCircleOutlined,
   LockOutlined,
+  LogoutOutlined,
+  BarChartOutlined,
+  InfoOutlined,
 } from "@ant-design/icons-vue";
 import { ref, reactive, computed } from "vue";
 import auth from "../../stores/auth";
@@ -433,7 +443,7 @@ export default {};
 </script>
 <style>
 .login-form {
-  max-width: 300px;
+  max-width: 350px;
 }
 .login-form-forgot {
   float: right;

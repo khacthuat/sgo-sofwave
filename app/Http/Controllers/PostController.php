@@ -7,11 +7,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    //
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Hàm lấy danh sách toàn bộ bài viết
+     * @param
+     * @return $posts
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function index()
     {
@@ -28,25 +28,24 @@ class PostController extends Controller
     public function create()
     {
         //
-
-
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Hàm lưu bài viết mới
+     * @param Request $request
+     * @return $users
+     * CreatedBy: youngbachhh (04/04/2024)
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'address' => 'required',
             'area' => 'required',
             'price' => 'required',
-            'address' => 'required',
+            'unit' => 'required',
+            'sold_status' => 'required',
             'user_id' => 'required',
             'status_id' => 'required'
         ]);
@@ -57,22 +56,22 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * Hàm lấy thông tin bài viết theo id
+     * @param Request $request
+     * @return $users
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function show($id)
     {
-        //
         $post = Post::with(['user', 'status'])->find($id);
         return response()->json($post);
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Hàm lấy ra danh bài viết đang chờ duyệt
+     * @param
+     * @return $posts
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function pending()
     {
@@ -81,9 +80,10 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Hàm lấy ra danh bài viết không phải đang chờ duyệt
+     * @param
+     * @return $posts
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function notPending()
     {
@@ -104,11 +104,10 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * Hàm cập nhật thông tin bài viết theo id
+     * @param Request $request, Post $post
+     * @return $posts
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function update(Request $request, Post $post)
     {
@@ -117,10 +116,10 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * Hàm xóa bài viết theo id
+     * @param Post $post
+     * @return message
+     * CreatedBy: youngbachhh (31/03/2024)
      */
     public function destroy(Post $post)
     {

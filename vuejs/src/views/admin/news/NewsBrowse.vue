@@ -1,8 +1,8 @@
 <template>
   <ThePageHeader />
-  <div class="">
+  <div class="card">
     <!-- begin::Card Header -->
-    <div class="card-header flex justify-between flex-wrap py-4">
+    <div class="card-header flex justify-between flex-wrap pb-4">
       <!-- begin::Card Title -->
       <div class="card-title">
         <a-input-search placeholder="Tìm kiếm" style="width: 200px" />
@@ -104,6 +104,7 @@
           }"
           :columns="columns"
           :data-source="data"
+          :scroll="{ x: 1500 }"
         >
           <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'detail'">
@@ -131,12 +132,17 @@
                     : ''
                 "
               >
-                {{ record.sold_status == 1 ? "đã bán" : "chưa bán" }}</a-tag
-              >
+                {{ record.sold_status == 1 ? "đã bán" : "chưa bán" }}
+              </a-tag>
             </template>
             <template v-else-if="column.dataIndex === 'status'">
               <div>
-                <a-tag color="processing"> chờ duyệt </a-tag>
+                <a-tag color="processing">
+                  chờ duyệt
+                  <template #icon>
+                    <sync-outlined :spin="true" />
+                  </template>
+                </a-tag>
               </div>
             </template>
             <template v-else-if="column.dataIndex === 'title'">
@@ -155,6 +161,7 @@ import {
   FilterOutlined,
   ExportOutlined,
   UserOutlined,
+  SyncOutlined,
 } from "@ant-design/icons-vue";
 import { computed, reactive } from "vue";
 import messageAnt from "../../../scripts/message";

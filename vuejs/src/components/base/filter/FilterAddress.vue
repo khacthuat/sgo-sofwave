@@ -12,7 +12,9 @@
       </div>
     </div>
 
-    <div class="list-search-selected w-100 text-black flex mt-2">Toàn quốc</div>
+    <div class="list-search-selected w-100 text-black flex mt-2">
+      <div v-text="computedAddress"></div>
+    </div>
   </div>
   <a-modal
     class="top-[20%]"
@@ -57,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { DownOutlined } from "@ant-design/icons-vue";
 import addressAPI from "../../../api/address.js";
 
@@ -129,6 +131,16 @@ fetchWardsData();
 const filterOption = (input, option) => {
   return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 };
+
+const computedAddress = computed(() => {
+  return ward.value
+    ? wardsList.value.find((item) => item.value === ward.value).label
+    : district.value
+    ? districtsList.value.find((item) => item.value === district.value).label
+    : province.value
+    ? provincesList.value.find((item) => item.value === province.value).label
+    : "Toàn quốc";
+});
 </script>
 
 <script>

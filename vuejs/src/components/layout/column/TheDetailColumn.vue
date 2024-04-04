@@ -47,7 +47,7 @@
               <!-- begin::Input Group -->
               <InputBasic
                 title="Địa chỉ hiển thị trên tin đăng"
-                placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ`...`"
+                placeholder="Bạn có thể bổ sung hẻm, ngách, ngõ, ..."
                 :value="post.address_detail"
               />
               <!-- end::Input Group -->
@@ -71,6 +71,7 @@
                 title="Mô tả"
                 placeholder="Nhập mô tả bài viết"
                 :value="post.description"
+                :rows="6"
               />
               <!-- end::Input Group -->
             </template>
@@ -83,8 +84,8 @@
               <!-- begin::Input Group -->
               <InputBasic
                 title="Diện tích"
-                placeholder="Nhập diện tích, VD 80"
-                :value="post.area"
+                placeholder="Nhập diện tích, VD: 80"
+                :value="post.area.toString()"
               />
               <!-- end::Input Group -->
 
@@ -94,8 +95,8 @@
                   <!-- begin::Input -->
                   <InputBasic
                     title="Mức giá"
-                    placeholder="Nhập giá, VD 12000000"
-                    v-model:value="post.price"
+                    placeholder="Nhập giá, VD: 12000000"
+                    :value="post.price.toString()"
                   />
                   <!-- end::Input -->
                 </div>
@@ -103,7 +104,7 @@
                   <InputSelect
                     title="Đơn vị"
                     :options="units"
-                    :valueSelected="post.unit"
+                    :valueSelected="post.unit.toString()"
                   />
 
                   <!-- end::Select -->
@@ -144,7 +145,12 @@
         </div>
       </div>
     </a-tab-pane>
-    <a-tab-pane key="2" tab="Bình luận" force-render>
+    <a-tab-pane
+      key="2"
+      tab="Bình luận"
+      force-render
+      :disabled="disabledCommentTab"
+    >
       <div class="flex flex-col gap-7 gap-lg-10">
         <Card>
           <template #content>
@@ -170,6 +176,7 @@ import getPostAPI from "../../../api/posts/getDetails";
 import addressAPI from "../../../api/address.js";
 
 const route = useRoute();
+const disabledCommentTab = ref(false);
 
 const post = reactive({
   title: "",
@@ -188,22 +195,23 @@ const province = ref(null);
 const district = ref(null);
 const ward = ref(null);
 
+if (!route.params.id) {
+  Object.keys(post).forEach((key) => {
+    post[key] = "";
+  });
+  disabledCommentTab.value = true;
+}
+
 if (route.params.id) {
   // Hàm lấy thông tin bài viết theo id
   const fetchPostById = async (id) => {
     const getPost = await getPostAPI.getById(id);
-    post.title = getPost.title;
-    post.description = getPost.description;
-    post.address = getPost.address;
-    post.address_detail = getPost.address_detail;
-    post.area = getPost.area.toString();
-    post.price = getPost.price.toString();
-    post.unit = getPost.unit.toString();
-    post.sold_status = getPost.sold_status.toString();
-    post.status = getPost.status;
-    post.user = getPost.user;
+    Object.keys(post).forEach((key) => {
+      post[key] = getPost[key];
+    });
   };
   fetchPostById(route.params.id);
+} else {
 }
 
 const provincesList = ref([]);
@@ -266,8 +274,6 @@ const filterOption = (input, option) => {
   return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 };
 
-const phoneValue = ref("phone1");
-
 const units = ref([
   {
     value: "1",
@@ -280,17 +286,6 @@ const units = ref([
   {
     value: "3",
     label: "Thỏa thuận",
-  },
-]);
-
-const phones = ref([
-  {
-    value: "phone1",
-    label: "0986853388",
-  },
-  {
-    value: "phone2",
-    label: "0373388843",
   },
 ]);
 </script>
