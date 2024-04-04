@@ -18,7 +18,7 @@
         <!-- end::Search Bar Item Wrapper -->
 
         <!-- begin::Filter Item Wrapper -->
-        <div class="flex align-items-center h-14 col-12 col-xl-8">
+        <div class="flex align-items-center h-14 col-12 col-xl-8 my-3">
           <!-- begin::Filter Item -->
           <div class="filter-item col-4 col-xl-4">
             <FilterAddress />

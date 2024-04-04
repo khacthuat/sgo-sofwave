@@ -43,7 +43,13 @@ const initializeApp = async () => {
   if (localStorage.getItem("token")) {
     const token = localStorage.getItem("token");
     const user = await getUserAPI.getByToken(token);
-    store.login(token, user);
+    if (user) {
+      store.login(token, user);
+    } else {
+      store.logout();
+    }
+  } else {
+    store.logout();
   }
 };
 

@@ -411,7 +411,7 @@ const onRegister = async () => {
     email: formState.registerUsername,
     password: formState.registerPassword,
   };
-  const registerUser = await createUserAPI(user);
+  await createUserAPI(user);
 };
 
 const disabledLogin = computed(() => {
