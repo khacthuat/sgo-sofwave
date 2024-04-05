@@ -15,6 +15,7 @@
           v-model:value="content"
           :maxlength="200"
           :style="{ width: type === 'comment' ? 'calc(100% - 46px)' : '100%' }"
+          @input="() => emits('input', content)"
         />
         <a-button
           type="primary"
@@ -57,7 +58,7 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits(["submitComment"]);
+const emits = defineEmits(["submitComment", "input"]);
 const content = ref(props.value);
 watch(
   () => props.value,

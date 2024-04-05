@@ -7,9 +7,12 @@
     <!-- end::Label -->
 
     <!-- begin::Input -->
-    <div class="form-control mb-2">
-      <a-input :placeholder="placeholder" v-model:value="valueText" />
-    </div>
+
+    <a-input
+      :placeholder="placeholder"
+      v-model:value="valueText"
+      @input="() => emits('input', valueText)"
+    />
     <!-- end::Input -->
   </div>
 </template>
@@ -20,8 +23,13 @@ import { ref, watch } from "vue";
 const props = defineProps({
   title: String,
   placeholder: String,
-  value: String,
+  value: {
+    type: String,
+    default: "",
+  },
 });
+
+const emits = defineEmits(["input"]);
 
 const valueText = ref(props.value);
 watch(

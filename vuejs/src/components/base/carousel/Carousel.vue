@@ -1,7 +1,12 @@
 <template>
   <!-- begin::Carousel Container -->
   <div class="flex justify-end">
-    <a-carousel class="w-100 h-100" arrows dots-class="slick-dots slick-thumb">
+    <a-carousel
+      class="w-100 h-100"
+      arrows
+      dots-class="slick-dots slick-thumb"
+      autoplay
+    >
       <!-- begin::Arrow -->
       <template #prevArrow>
         <div
@@ -20,20 +25,17 @@
 
       <!-- begin::Paging -->
       <template #customPaging="props">
-        <div class="flex">
-          <a class="flex">
-            <img class="" :src="getImgUrl(props.i)" />
-          </a>
-        </div>
+        <a class="flex">
+          <img class="" :src="getImgUrl(props.i)" />
+        </a>
       </template>
       <!-- end::Paging -->
-
       <div
-        v-for="item in 10"
+        v-for="item in 3"
         :key="item"
         class="d-flex align-items-center justify-center w-100"
       >
-        <img :src="getImgUrl(item - 1)" />
+        <img :src="getImgUrl(item - 1)" class="" />
       </div>
     </a-carousel>
   </div>

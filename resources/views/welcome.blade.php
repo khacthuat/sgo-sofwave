@@ -544,8 +544,12 @@
             </div>
         </div>
     </div>
+
     <?php
-    phpinfo();
+    if (DB::connection()->getDatabaseName()) {
+        echo 'connected successfully to database ' . DB::table('users')->get();
+        echo 'connected successfully to database ' . DB::connection()->getDatabaseName();
+    }
     ?>
 </body>
 

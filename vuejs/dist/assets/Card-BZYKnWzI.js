@@ -1,0 +1,1 @@
+import{r as a,b as o,d as c,e as s,t as n,K as r}from"./index-uDXqgQ0i.js";const l={class:"card p-4"},_={class:"mb-3"},i={class:"text-lg"},d={class:""},p={},f=Object.assign(p,{__name:"Card",props:{title:String},setup(t){return a(t.valueSelected),(e,h)=>(o(),c("div",l,[s("div",_,[s("span",i,n(t.title),1)]),s("div",d,[r(e.$slots,"content")])]))}});export{f as _};

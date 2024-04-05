@@ -14,7 +14,7 @@
 
       <!-- begin::Detail Column -->
       <div
-        class="flex flex-col col-12 col-xl-8 gap-7 gap-lg-10 pl-5"
+        class="flex flex-col col-12 col-xl-8 gap-7 gap-lg-10 px-3 px-lg-5"
         style="background-color: white"
       >
         <TheDetailColumn />

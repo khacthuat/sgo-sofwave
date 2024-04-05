@@ -30,3 +30,6 @@ composer.lock
 /database/*.sqlite3
 /database/*.db
 /database/*.sql
+
+
+.env

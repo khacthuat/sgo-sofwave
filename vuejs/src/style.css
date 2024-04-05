@@ -108,4 +108,8 @@ a:focus {
 }
 
 
-
+.slick-thumb li {
+    width: 200px !important;
+    height: auto !important;
+    margin: 0 10px;
+}

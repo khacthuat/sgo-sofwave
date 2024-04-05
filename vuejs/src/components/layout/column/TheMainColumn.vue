@@ -25,7 +25,7 @@
   <!-- end::Thumbnail setting -->
 
   <!-- begin::Status -->
-  <Card title="Trạng thái">
+  <Card title="Trạng thái" v-if="selectedPost == true">
     <template #content>
       <div class="mb-3">
         <InputSelect
