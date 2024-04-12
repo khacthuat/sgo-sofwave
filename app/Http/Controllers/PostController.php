@@ -126,4 +126,21 @@ class PostController extends Controller
         $post->delete();
         return response()->json(['message' => 'Xóa thành công'], 200);
     }
+
+    public function filter_posts(Request $request)
+    {
+        $validatedData = $request->validate([
+            'column' => 'required|string',
+            'min' => 'required|integer',
+            'max' => 'required|integer',
+        ]);
+
+        $column = strval($validatedData['column']);
+        $min = $validatedData['min'];
+        $max = $validatedData['max'];
+
+        $posts = Post::whereBetween($column, [$min, $max])->get();
+
+        return response()->json($posts, 200);
+    }
 }

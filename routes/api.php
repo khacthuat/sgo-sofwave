@@ -49,6 +49,8 @@ Route::group(['prefix' => 'posts'], function () {
     Route::delete('/{id}', [PostController::class, 'destroy']);
 });
 
+Route::get('/filter-posts', [PostController::class, 'filter_posts']);
+
 Route::get('/pending', [PostController::class, 'pending']);
 Route::get('/notpending', [PostController::class, 'notPending']);
 
